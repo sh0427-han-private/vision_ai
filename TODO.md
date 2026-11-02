@@ -1,7 +1,7 @@
 # TODO — CS231n / PRML 시각자료 품질 개선
 
-> Repository: https://github.com/sh0427-han-private/vision_ai  
-> Pages: https://sh0427-han-private.github.io/vision_ai/  
+> Repository: https://github.com/sh0427-han-private/vision_ai<br>
+> Pages: https://sh0427-han-private.github.io/vision_ai/<br>
 > 최근 inventory 재검수 기준 main commit: `dea42ace075ced294702d26ddd7bc1b35ff0f959`
 
 ## 작업 목적
