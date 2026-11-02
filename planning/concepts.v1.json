@@ -1,0 +1,4023 @@
+{
+  "schema_version": "1.0.0",
+  "repo": "sh0427-han-private/vision_ai",
+  "baseline_sha": "e2b2c2f377c1c97c3b6d010cb34c63988d0fca05",
+  "note": "이 설계 그래프는 개별 페이지 구현 완료 현황이 아니다. existing-section은 해당 주제가 기존 Anchor에서 다뤄졌다는 뜻이다.",
+  "parts": [
+    {
+      "id": "PART 00",
+      "name": "AI & Mathematical Foundations",
+      "concept_ids": [
+        "m.ai",
+        "m.python",
+        "m.numpy",
+        "m.plot",
+        "m.scalar",
+        "m.vector",
+        "m.matrix",
+        "m.tensor",
+        "m.shape",
+        "m.dot",
+        "m.matmul",
+        "m.norm",
+        "m.cosine",
+        "m.function",
+        "m.derivative",
+        "m.gradient",
+        "m.prob",
+        "m.bayes",
+        "m.mean",
+        "m.median",
+        "m.distribution",
+        "m.likelihood",
+        "m.entropy",
+        "m.sample"
+      ]
+    },
+    {
+      "id": "PART 01",
+      "name": "Machine Learning Fundamentals",
+      "concept_ids": [
+        "ml.paradigm",
+        "ml.dataset",
+        "ml.classification",
+        "ml.regression",
+        "ml.linear",
+        "ml.logistic",
+        "ml.loss",
+        "ml.softmax",
+        "ml.ce",
+        "ml.mse",
+        "ml.optim",
+        "ml.split",
+        "ml.generalize",
+        "ml.bias",
+        "ml.regularize",
+        "ml.cv",
+        "ml.leakage",
+        "ml.knn",
+        "ml.svm",
+        "ml.calibration"
+      ]
+    },
+    {
+      "id": "PART 02",
+      "name": "Deep Learning",
+      "concept_ids": [
+        "dl.perceptron",
+        "dl.mlp",
+        "dl.activation",
+        "dl.forward",
+        "dl.backprop",
+        "dl.gd",
+        "dl.sgd",
+        "dl.adam",
+        "dl.lr",
+        "dl.init",
+        "dl.vanish",
+        "dl.dropout",
+        "dl.bn",
+        "dl.residual",
+        "dl.transfer",
+        "dl.finetune",
+        "dl.mixed"
+      ]
+    },
+    {
+      "id": "PART 03",
+      "name": "Image Processing",
+      "concept_ids": [
+        "img.pixel",
+        "img.rgb",
+        "img.tensor",
+        "img.dtype",
+        "img.resize",
+        "img.color",
+        "img.hist",
+        "img.blur",
+        "img.edge",
+        "img.threshold",
+        "img.morph",
+        "img.contour",
+        "img.fft",
+        "img.quality",
+        "img.augment"
+      ]
+    },
+    {
+      "id": "PART 04",
+      "name": "CNN & Vision Architectures",
+      "concept_ids": [
+        "cnn.kernel",
+        "cnn.conv",
+        "cnn.stride",
+        "cnn.map",
+        "cnn.multi",
+        "cnn.rf",
+        "cnn.pool",
+        "cnn.base",
+        "cnn.bnh",
+        "cnn.vgg",
+        "cnn.resnet",
+        "cnn.bottleneck",
+        "cnn.efficient",
+        "cnn.fpn",
+        "cnn.design"
+      ]
+    },
+    {
+      "id": "PART 05",
+      "name": "Computer Vision Tasks",
+      "concept_ids": [
+        "cv.task",
+        "cv.class",
+        "cv.box",
+        "cv.detect",
+        "cv.semantic",
+        "cv.instance",
+        "cv.panoptic",
+        "cv.mask",
+        "cv.iou",
+        "cv.nms",
+        "cv.map",
+        "cv.yolo",
+        "cv.small",
+        "cv.unet",
+        "cv.sam",
+        "cv.sam2",
+        "cv.grounding"
+      ]
+    },
+    {
+      "id": "PART 06",
+      "name": "Transformer & Foundation Models",
+      "concept_ids": [
+        "tr.token",
+        "tr.position",
+        "tr.qkv",
+        "tr.attention",
+        "tr.multi",
+        "tr.encoder",
+        "tr.vit",
+        "tr.ssl",
+        "tr.dino",
+        "tr.dinov2",
+        "tr.clip",
+        "tr.foundation",
+        "tr.open",
+        "tr.relative"
+      ]
+    },
+    {
+      "id": "PART 07",
+      "name": "Anomaly Detection",
+      "concept_ids": [
+        "an.outlier",
+        "an.one",
+        "an.recon",
+        "an.feature",
+        "an.embedding",
+        "an.nearest",
+        "an.memory",
+        "an.coreset",
+        "an.ann",
+        "an.patchcore",
+        "an.padim",
+        "an.spade",
+        "an.stfpm",
+        "an.efficientad",
+        "an.svdd",
+        "an.ae",
+        "an.score",
+        "an.threshold"
+      ]
+    },
+    {
+      "id": "PART 08",
+      "name": "Video AI & Temporal Models",
+      "concept_ids": [
+        "video.frame",
+        "video.sample",
+        "video.class",
+        "video.rnn",
+        "video.temporal",
+        "video.cnn3d",
+        "video.mae",
+        "video.flow",
+        "video.track",
+        "video.aggregate",
+        "video.persist",
+        "video.anomaly"
+      ]
+    },
+    {
+      "id": "PART 09",
+      "name": "Geometry & Mathematical Vision",
+      "concept_ids": [
+        "geo.coords",
+        "geo.affine",
+        "geo.homo",
+        "geo.calib",
+        "geo.circle",
+        "geo.ls",
+        "geo.eigen",
+        "geo.svd",
+        "geo.ransac",
+        "geo.mad",
+        "geo.fit",
+        "geo.subpixel",
+        "geo.boundary"
+      ]
+    },
+    {
+      "id": "PART 10",
+      "name": "Statistics & Time-series",
+      "concept_ids": [
+        "ts.series",
+        "ts.moving",
+        "ts.z",
+        "ts.threshold",
+        "ts.step",
+        "ts.ewma",
+        "ts.cusum",
+        "ts.ph",
+        "ts.changepoint",
+        "ts.drift",
+        "ts.baseline",
+        "ts.event"
+      ]
+    },
+    {
+      "id": "PART 11",
+      "name": "Dataset & Model Training",
+      "concept_ids": [
+        "data.label",
+        "data.format",
+        "data.collect",
+        "data.auto",
+        "data.augment",
+        "data.imbalance",
+        "data.hard",
+        "data.group",
+        "data.kfold",
+        "data.temporal",
+        "data.version",
+        "data.experiment",
+        "data.repro",
+        "data.privacy"
+      ]
+    },
+    {
+      "id": "PART 12",
+      "name": "Model Evaluation",
+      "concept_ids": [
+        "eval.confusion",
+        "eval.prf",
+        "eval.auc",
+        "eval.iou",
+        "eval.boundary",
+        "eval.reg",
+        "eval.threshold",
+        "eval.error",
+        "eval.ci",
+        "eval.effect",
+        "eval.ablation",
+        "eval.ood"
+      ]
+    },
+    {
+      "id": "PART 13",
+      "name": "AI Deployment & MLOps",
+      "concept_ids": [
+        "ops.pytorch",
+        "ops.onnx",
+        "ops.ort",
+        "ops.trt",
+        "ops.triton",
+        "ops.batch",
+        "ops.gpu",
+        "ops.latency",
+        "ops.airflow",
+        "ops.kafka",
+        "ops.s3",
+        "ops.rtsp",
+        "ops.ntp",
+        "ops.monitor",
+        "ops.registry",
+        "ops.cicd",
+        "ops.pipeline"
+      ]
+    },
+    {
+      "id": "PART 14",
+      "name": "Software Engineering for AI",
+      "concept_ids": [
+        "eng.project",
+        "eng.venv",
+        "eng.jupyter",
+        "eng.deps",
+        "eng.config",
+        "eng.module",
+        "eng.test",
+        "eng.git",
+        "eng.review",
+        "eng.repro",
+        "eng.agent",
+        "eng.independent"
+      ]
+    },
+    {
+      "id": "PART 15",
+      "name": "Advanced Research",
+      "concept_ids": [
+        "res.bayes",
+        "res.graph",
+        "res.gmm",
+        "res.em",
+        "res.vi",
+        "res.mcmc",
+        "res.hmm",
+        "res.kalman",
+        "res.domain",
+        "res.continual",
+        "res.ood",
+        "res.quant",
+        "res.prune",
+        "res.distill",
+        "res.diffusion",
+        "res.research"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "m.ai",
+      "title": "AI·ML·Deep Learning의 관계",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [],
+      "next_topics": [
+        "ml.paradigm"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.python",
+      "title": "Python 기본 문법",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [],
+      "next_topics": [
+        "m.numpy",
+        "m.plot",
+        "m.sample",
+        "ops.pytorch",
+        "eng.project"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.numpy",
+      "title": "NumPy 배열",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.python"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.plot",
+      "title": "Matplotlib",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.python"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.scalar",
+      "title": "Scalar",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [],
+      "next_topics": [
+        "m.vector",
+        "m.function",
+        "m.mean"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.vector",
+      "title": "Vector",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.scalar"
+      ],
+      "next_topics": [
+        "m.matrix",
+        "m.dot",
+        "m.norm",
+        "m.derivative",
+        "tr.token",
+        "geo.coords"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.matrix",
+      "title": "Matrix",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.vector"
+      ],
+      "next_topics": [
+        "m.tensor",
+        "m.matmul",
+        "cnn.kernel",
+        "geo.homo",
+        "geo.eigen",
+        "res.kalman"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.tensor",
+      "title": "Tensor",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.matrix"
+      ],
+      "next_topics": [
+        "m.shape",
+        "img.pixel",
+        "ops.pytorch"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.shape",
+      "title": "Shape·Dimension·Axis",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.tensor"
+      ],
+      "next_topics": [
+        "img.rgb",
+        "img.tensor",
+        "cnn.stride"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.dot",
+      "title": "Dot Product",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.vector"
+      ],
+      "next_topics": [
+        "m.matmul",
+        "m.cosine",
+        "img.fft",
+        "cnn.conv"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.matmul",
+      "title": "Matrix Multiplication",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.dot",
+        "m.matrix"
+      ],
+      "next_topics": [
+        "ml.linear",
+        "dl.perceptron",
+        "cnn.multi",
+        "tr.qkv",
+        "geo.affine"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.norm",
+      "title": "Norm·Euclidean Distance",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.vector"
+      ],
+      "next_topics": [
+        "m.cosine",
+        "ml.regularize",
+        "ml.knn",
+        "an.nearest",
+        "geo.ls"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.cosine",
+      "title": "Cosine Similarity",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.dot",
+        "m.norm"
+      ],
+      "next_topics": [
+        "tr.ssl"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.function",
+      "title": "Function·Linear/Nonlinear",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.scalar"
+      ],
+      "next_topics": [
+        "m.derivative",
+        "ml.loss",
+        "ml.softmax",
+        "dl.activation",
+        "img.fft"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.derivative",
+      "title": "Derivative·Partial Derivative",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.function",
+        "m.vector"
+      ],
+      "next_topics": [
+        "m.gradient"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.gradient",
+      "title": "Gradient·Chain Rule",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.derivative"
+      ],
+      "next_topics": [
+        "ml.optim",
+        "dl.backprop",
+        "dl.gd",
+        "img.edge"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.prob",
+      "title": "Probability·Random Variable",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [],
+      "next_topics": [
+        "m.bayes",
+        "m.distribution",
+        "m.entropy",
+        "m.sample",
+        "ts.series"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.bayes",
+      "title": "Conditional Probability·Bayes Rule",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.prob"
+      ],
+      "next_topics": [
+        "res.bayes"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.mean",
+      "title": "Mean·Variance·Standard Deviation",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.scalar"
+      ],
+      "next_topics": [
+        "m.median",
+        "m.distribution",
+        "ml.mse",
+        "ml.bias",
+        "dl.init",
+        "dl.bn",
+        "img.hist",
+        "img.quality",
+        "geo.svd",
+        "ts.series"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.median",
+      "title": "Median·Quantile",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.mean"
+      ],
+      "next_topics": [
+        "geo.mad",
+        "ts.moving"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.distribution",
+      "title": "Probability Distributions",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.prob",
+        "m.mean"
+      ],
+      "next_topics": [
+        "m.likelihood",
+        "an.padim",
+        "res.gmm",
+        "res.diffusion"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.likelihood",
+      "title": "Likelihood·Log-likelihood",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.distribution"
+      ],
+      "next_topics": [
+        "ml.logistic",
+        "res.bayes"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.entropy",
+      "title": "Entropy·KL Divergence",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.prob"
+      ],
+      "next_topics": [
+        "ml.ce",
+        "res.vi"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.sample",
+      "title": "Sampling·Random Seed",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.python",
+        "m.prob"
+      ],
+      "next_topics": [
+        "data.repro",
+        "eval.ci",
+        "res.mcmc"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.paradigm",
+      "title": "Supervised·Unsupervised·Self-supervised",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "m.ai"
+      ],
+      "next_topics": [
+        "ml.dataset",
+        "tr.ssl"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.dataset",
+      "title": "Sample·Feature·Label",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.paradigm"
+      ],
+      "next_topics": [
+        "ml.classification",
+        "ml.regression",
+        "ml.loss",
+        "ml.split",
+        "dl.sgd",
+        "an.outlier",
+        "data.label",
+        "res.gmm"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.classification",
+      "title": "Classification",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "ml.logistic",
+        "ml.knn",
+        "ml.svm",
+        "dl.perceptron",
+        "cv.task",
+        "data.imbalance",
+        "eval.confusion"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.regression",
+      "title": "Regression",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "ml.linear"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.linear",
+      "title": "Linear Regression",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.regression",
+        "m.matmul"
+      ],
+      "next_topics": [
+        "geo.ls"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.logistic",
+      "title": "Logistic Regression",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.classification",
+        "m.likelihood"
+      ],
+      "next_topics": [
+        "ml.calibration"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.loss",
+      "title": "Loss Function",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "m.function",
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "ml.ce",
+        "ml.mse",
+        "ml.optim",
+        "ml.regularize",
+        "ml.svm",
+        "dl.backprop"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cs231n.html#linear"
+    },
+    {
+      "id": "ml.softmax",
+      "title": "Sigmoid·Softmax",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "m.function"
+      ],
+      "next_topics": [
+        "ml.ce",
+        "tr.attention"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.ce",
+      "title": "Cross-entropy",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.loss",
+        "m.entropy",
+        "ml.softmax"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.mse",
+      "title": "MAE·MSE·RMSE",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.loss",
+        "m.mean"
+      ],
+      "next_topics": [
+        "eval.reg"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.optim",
+      "title": "Optimization Objective",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.loss",
+        "m.gradient"
+      ],
+      "next_topics": [
+        "dl.gd"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.split",
+      "title": "Train·Validation·Test",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "ml.generalize",
+        "ml.cv",
+        "ml.leakage",
+        "ml.calibration",
+        "cv.map",
+        "data.experiment",
+        "eval.confusion"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/training.html#split"
+    },
+    {
+      "id": "ml.generalize",
+      "title": "Generalization·Overfitting",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.split"
+      ],
+      "next_topics": [
+        "ml.bias",
+        "dl.dropout",
+        "dl.transfer",
+        "ts.drift"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.bias",
+      "title": "Bias–Variance Trade-off",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.generalize",
+        "m.mean"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.regularize",
+      "title": "L1·L2 Regularization",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.loss",
+        "m.norm"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.cv",
+      "title": "Cross-validation",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.split"
+      ],
+      "next_topics": [
+        "data.kfold"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/training.html#cv"
+    },
+    {
+      "id": "ml.leakage",
+      "title": "Data Leakage",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.split"
+      ],
+      "next_topics": [
+        "data.group"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/training.html#split"
+    },
+    {
+      "id": "ml.knn",
+      "title": "k-Nearest Neighbors",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.classification",
+        "m.norm"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.svm",
+      "title": "SVM·Decision Boundary",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.classification",
+        "ml.loss"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ml.calibration",
+      "title": "Probability Calibration",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.logistic",
+        "ml.split"
+      ],
+      "next_topics": [
+        "an.threshold",
+        "eval.threshold"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.perceptron",
+      "title": "Perceptron",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ml.classification",
+        "m.matmul"
+      ],
+      "next_topics": [
+        "dl.mlp"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.mlp",
+      "title": "Multi-layer Perceptron",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.perceptron"
+      ],
+      "next_topics": [
+        "dl.activation",
+        "dl.forward",
+        "dl.dropout",
+        "dl.bn",
+        "dl.transfer",
+        "an.recon",
+        "an.svdd",
+        "video.rnn",
+        "res.diffusion"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.activation",
+      "title": "Activation·ReLU·GELU",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "m.function",
+        "dl.mlp"
+      ],
+      "next_topics": [
+        "cnn.base"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.forward",
+      "title": "Forward Propagation·Weight·Bias",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.mlp"
+      ],
+      "next_topics": [
+        "dl.backprop",
+        "dl.init",
+        "dl.residual",
+        "dl.mixed",
+        "res.prune"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.backprop",
+      "title": "Backpropagation",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.forward",
+        "m.gradient",
+        "ml.loss"
+      ],
+      "next_topics": [
+        "dl.vanish",
+        "dl.mixed"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cs231n.html#optimization"
+    },
+    {
+      "id": "dl.gd",
+      "title": "Gradient Descent",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "m.gradient",
+        "ml.optim"
+      ],
+      "next_topics": [
+        "dl.sgd"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.sgd",
+      "title": "SGD·Mini-batch",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.gd",
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "dl.adam",
+        "dl.lr"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.adam",
+      "title": "Momentum·Adam·AdamW",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.sgd"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.lr",
+      "title": "Learning Rate·Epoch·Batch",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.sgd"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.init",
+      "title": "Weight Initialization",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.forward",
+        "m.mean"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.vanish",
+      "title": "Vanishing·Exploding Gradient",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.backprop"
+      ],
+      "next_topics": [
+        "dl.residual"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.dropout",
+      "title": "Dropout",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.mlp",
+        "ml.generalize"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.bn",
+      "title": "Batch·Layer Normalization",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.mlp",
+        "m.mean"
+      ],
+      "next_topics": [
+        "tr.encoder"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.residual",
+      "title": "Residual Connection",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.forward",
+        "dl.vanish"
+      ],
+      "next_topics": [
+        "cnn.resnet"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.transfer",
+      "title": "Representation·Transfer Learning",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.mlp",
+        "ml.generalize"
+      ],
+      "next_topics": [
+        "dl.finetune",
+        "cv.sam",
+        "tr.token",
+        "tr.foundation",
+        "res.distill"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.finetune",
+      "title": "Fine-tuning",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.transfer"
+      ],
+      "next_topics": [
+        "res.domain",
+        "res.continual"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.mixed",
+      "title": "Mixed Precision",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.forward",
+        "dl.backprop"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.pixel",
+      "title": "Pixel·Image Decode",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "m.tensor"
+      ],
+      "next_topics": [
+        "img.rgb",
+        "img.resize",
+        "img.hist",
+        "img.quality",
+        "geo.coords"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/pixels.html#pixels"
+    },
+    {
+      "id": "img.rgb",
+      "title": "RGB·Channel",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.pixel",
+        "m.shape"
+      ],
+      "next_topics": [
+        "img.tensor",
+        "img.color"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/pixels.html#pixels"
+    },
+    {
+      "id": "img.tensor",
+      "title": "Image Tensor·HWC/CHW/NCHW",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.rgb",
+        "m.shape"
+      ],
+      "next_topics": [
+        "img.dtype",
+        "img.blur",
+        "cnn.kernel",
+        "cv.task",
+        "tr.vit",
+        "video.frame"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/pixels.html#layout"
+    },
+    {
+      "id": "img.dtype",
+      "title": "Dtype·Scaling·Normalization",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.tensor"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/pixels.html#normalization"
+    },
+    {
+      "id": "img.resize",
+      "title": "Resize·Crop·ROI",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.pixel"
+      ],
+      "next_topics": [
+        "img.augment"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/pixels.html#resize"
+    },
+    {
+      "id": "img.color",
+      "title": "BGR·HSV·Grayscale",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.rgb"
+      ],
+      "next_topics": [
+        "img.augment"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.hist",
+      "title": "Histogram",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.pixel",
+        "m.mean"
+      ],
+      "next_topics": [
+        "img.threshold"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.blur",
+      "title": "Blur·Sharpening",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.tensor"
+      ],
+      "next_topics": [
+        "img.edge"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.edge",
+      "title": "Sobel·Canny Edge",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.blur",
+        "m.gradient"
+      ],
+      "next_topics": [
+        "img.contour",
+        "video.flow",
+        "geo.subpixel"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.threshold",
+      "title": "Thresholding·Otsu",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.hist"
+      ],
+      "next_topics": [
+        "img.morph",
+        "img.contour"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.morph",
+      "title": "Morphology",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.threshold"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.contour",
+      "title": "Contour·Connected Components",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.edge",
+        "img.threshold"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.fft",
+      "title": "FFT·DCT",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "m.function",
+        "m.dot"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.quality",
+      "title": "Noise·Image Quality",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "m.mean",
+        "img.pixel"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "img.augment",
+      "title": "Data Augmentation",
+      "part": "PART 03",
+      "level": "Basic",
+      "prerequisites": [
+        "img.resize",
+        "img.color"
+      ],
+      "next_topics": [
+        "data.augment"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.kernel",
+      "title": "Spatial Filter Kernel",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "m.matrix",
+        "img.tensor"
+      ],
+      "next_topics": [
+        "cnn.conv"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.conv",
+      "title": "Convolution·Cross-correlation",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.kernel",
+        "m.dot"
+      ],
+      "next_topics": [
+        "cnn.stride",
+        "cnn.map",
+        "cnn.base"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#convolution"
+    },
+    {
+      "id": "cnn.stride",
+      "title": "Stride·Padding·Dilation",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.conv",
+        "m.shape"
+      ],
+      "next_topics": [
+        "cnn.map",
+        "cnn.rf"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#shape"
+    },
+    {
+      "id": "cnn.map",
+      "title": "Feature Map·Channel",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.conv",
+        "cnn.stride"
+      ],
+      "next_topics": [
+        "cnn.multi",
+        "cnn.pool",
+        "cv.semantic",
+        "an.feature",
+        "an.embedding"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.multi",
+      "title": "Multi-channel Convolution",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.map",
+        "m.matmul"
+      ],
+      "next_topics": [
+        "cnn.bottleneck",
+        "cnn.design"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#channels"
+    },
+    {
+      "id": "cnn.rf",
+      "title": "Receptive Field",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.stride"
+      ],
+      "next_topics": [
+        "cnn.fpn"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#shape"
+    },
+    {
+      "id": "cnn.pool",
+      "title": "Pooling",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.map"
+      ],
+      "next_topics": [
+        "cnn.base"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.base",
+      "title": "CNN·Activation Blocks",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.conv",
+        "cnn.pool",
+        "dl.activation"
+      ],
+      "next_topics": [
+        "cnn.bnh",
+        "cnn.vgg",
+        "cnn.resnet",
+        "cnn.efficient",
+        "cv.class",
+        "cv.unet",
+        "video.cnn3d"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#overview"
+    },
+    {
+      "id": "cnn.bnh",
+      "title": "Backbone·Neck·Head",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.base"
+      ],
+      "next_topics": [
+        "cnn.fpn",
+        "cv.yolo"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.vgg",
+      "title": "VGG",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.base"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.resnet",
+      "title": "ResNet",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.base",
+        "dl.residual"
+      ],
+      "next_topics": [
+        "cnn.bottleneck"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#resnet_problem"
+    },
+    {
+      "id": "cnn.bottleneck",
+      "title": "Bottleneck·1×1 Conv",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.resnet",
+        "cnn.multi"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#resnet_bottleneck"
+    },
+    {
+      "id": "cnn.efficient",
+      "title": "EfficientNet",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.base"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.fpn",
+      "title": "Feature Pyramid·Multi-scale",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.bnh",
+        "cnn.rf"
+      ],
+      "next_topics": [
+        "cnn.design",
+        "cv.small"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cnn.design",
+      "title": "Architecture Design·Compute",
+      "part": "PART 04",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cnn.fpn",
+        "cnn.multi"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.task",
+      "title": "Classification·Detection·Segmentation Output",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "img.tensor",
+        "ml.classification"
+      ],
+      "next_topics": [
+        "cv.class",
+        "cv.box",
+        "cv.semantic"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#overview"
+    },
+    {
+      "id": "cv.class",
+      "title": "Image Classification",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.task",
+        "cnn.base"
+      ],
+      "next_topics": [
+        "cv.detect",
+        "video.class"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#overview"
+    },
+    {
+      "id": "cv.box",
+      "title": "Bounding Box·Coordinates",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.task"
+      ],
+      "next_topics": [
+        "cv.detect",
+        "cv.iou"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.detect",
+      "title": "Object Detection",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.class",
+        "cv.box"
+      ],
+      "next_topics": [
+        "cv.instance",
+        "cv.nms",
+        "cv.yolo",
+        "cv.small",
+        "cv.grounding",
+        "video.track"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#overview"
+    },
+    {
+      "id": "cv.semantic",
+      "title": "Semantic Segmentation",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.task",
+        "cnn.map"
+      ],
+      "next_topics": [
+        "cv.instance",
+        "cv.panoptic",
+        "cv.mask",
+        "cv.unet",
+        "geo.boundary",
+        "eval.boundary"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#segmentation_context"
+    },
+    {
+      "id": "cv.instance",
+      "title": "Instance Segmentation",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.semantic",
+        "cv.detect"
+      ],
+      "next_topics": [
+        "cv.panoptic",
+        "cv.sam"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#overview"
+    },
+    {
+      "id": "cv.panoptic",
+      "title": "Panoptic Segmentation",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.semantic",
+        "cv.instance"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.mask",
+      "title": "Polygon·Mask·Hole",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.semantic"
+      ],
+      "next_topics": [
+        "cv.iou",
+        "data.format"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.iou",
+      "title": "IoU·Dice",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.mask",
+        "cv.box"
+      ],
+      "next_topics": [
+        "cv.nms",
+        "eval.iou",
+        "eval.boundary"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#iou"
+    },
+    {
+      "id": "cv.nms",
+      "title": "Non-maximum Suppression",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.detect",
+        "cv.iou"
+      ],
+      "next_topics": [
+        "cv.map"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.map",
+      "title": "AP·mAP",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.nms",
+        "ml.split"
+      ],
+      "next_topics": [
+        "eval.iou"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.yolo",
+      "title": "YOLO Detection·Segmentation",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.detect",
+        "cnn.bnh"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.small",
+      "title": "Small Object Detection",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.detect",
+        "cnn.fpn"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.unet",
+      "title": "U-Net",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.semantic",
+        "cnn.base"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/tasks.html#unet_architecture"
+    },
+    {
+      "id": "cv.sam",
+      "title": "SAM",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.instance",
+        "dl.transfer"
+      ],
+      "next_topics": [
+        "cv.sam2"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.sam2",
+      "title": "SAM2 Video Segmentation",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.sam",
+        "video.frame"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.grounding",
+      "title": "Grounding DINO",
+      "part": "PART 05",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.detect",
+        "tr.clip"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.token",
+      "title": "Token·Embedding",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "m.vector",
+        "dl.transfer"
+      ],
+      "next_topics": [
+        "tr.position",
+        "tr.qkv"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/vit.html#tokens"
+    },
+    {
+      "id": "tr.position",
+      "title": "Positional Encoding",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.token"
+      ],
+      "next_topics": [
+        "tr.relative"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.qkv",
+      "title": "Query·Key·Value",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.token",
+        "m.matmul"
+      ],
+      "next_topics": [
+        "tr.attention"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/vit.html#attention"
+    },
+    {
+      "id": "tr.attention",
+      "title": "Self-attention",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.qkv",
+        "ml.softmax"
+      ],
+      "next_topics": [
+        "tr.multi",
+        "tr.relative"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/vit.html#attention"
+    },
+    {
+      "id": "tr.multi",
+      "title": "Multi-head Attention",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.attention"
+      ],
+      "next_topics": [
+        "tr.encoder"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.encoder",
+      "title": "Transformer Encoder",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.multi",
+        "dl.bn"
+      ],
+      "next_topics": [
+        "tr.vit",
+        "video.temporal"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/vit.html#encoder"
+    },
+    {
+      "id": "tr.vit",
+      "title": "Vision Transformer",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.encoder",
+        "img.tensor"
+      ],
+      "next_topics": [
+        "tr.dino",
+        "tr.clip"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/vit.html#patches"
+    },
+    {
+      "id": "tr.ssl",
+      "title": "Self-supervised·Contrastive Learning",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "ml.paradigm",
+        "m.cosine"
+      ],
+      "next_topics": [
+        "tr.dino",
+        "tr.clip",
+        "tr.foundation",
+        "an.stfpm",
+        "video.mae"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.dino",
+      "title": "DINO·Teacher–Student",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.ssl",
+        "tr.vit"
+      ],
+      "next_topics": [
+        "tr.dinov2"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.dinov2",
+      "title": "DINOv2",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.dino"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.clip",
+      "title": "CLIP",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.ssl",
+        "tr.vit"
+      ],
+      "next_topics": [
+        "cv.grounding",
+        "tr.open"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.foundation",
+      "title": "Foundation Model",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.ssl",
+        "dl.transfer"
+      ],
+      "next_topics": [
+        "tr.open"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.open",
+      "title": "Open-vocabulary Recognition",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.clip",
+        "tr.foundation"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "tr.relative",
+      "title": "Relative Position Bias",
+      "part": "PART 06",
+      "level": "Advanced",
+      "prerequisites": [
+        "tr.position",
+        "tr.attention"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.outlier",
+      "title": "Outlier·Novelty Detection",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "an.one",
+        "video.anomaly",
+        "geo.ransac",
+        "res.ood"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/patchcore.html#problem"
+    },
+    {
+      "id": "an.one",
+      "title": "One-class Learning",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.outlier"
+      ],
+      "next_topics": [
+        "an.recon",
+        "an.feature",
+        "an.svdd"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.recon",
+      "title": "Reconstruction-based Detection",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.one",
+        "dl.mlp"
+      ],
+      "next_topics": [
+        "an.ae"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.feature",
+      "title": "Feature-based Detection",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.one",
+        "cnn.map"
+      ],
+      "next_topics": [
+        "an.embedding",
+        "an.stfpm"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.embedding",
+      "title": "Patch Embedding",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.feature",
+        "cnn.map"
+      ],
+      "next_topics": [
+        "an.nearest",
+        "an.padim",
+        "an.spade"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.nearest",
+      "title": "Nearest Neighbor",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.embedding",
+        "m.norm"
+      ],
+      "next_topics": [
+        "an.memory",
+        "an.ann",
+        "an.spade"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/patchcore.html#score"
+    },
+    {
+      "id": "an.memory",
+      "title": "Memory Bank",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.nearest"
+      ],
+      "next_topics": [
+        "an.coreset",
+        "an.patchcore"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/patchcore.html#memory"
+    },
+    {
+      "id": "an.coreset",
+      "title": "Coreset Sampling",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.memory"
+      ],
+      "next_topics": [
+        "an.patchcore"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.ann",
+      "title": "Approximate Nearest Neighbor",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.nearest"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.patchcore",
+      "title": "PatchCore",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.memory",
+        "an.coreset"
+      ],
+      "next_topics": [
+        "an.score"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/patchcore.html#pipeline"
+    },
+    {
+      "id": "an.padim",
+      "title": "PaDiM",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.embedding",
+        "m.distribution"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.spade",
+      "title": "SPADE",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.embedding",
+        "an.nearest"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.stfpm",
+      "title": "STFPM",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.feature",
+        "tr.ssl"
+      ],
+      "next_topics": [
+        "an.efficientad",
+        "an.ae"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.efficientad",
+      "title": "EfficientAD",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.stfpm"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.svdd",
+      "title": "Deep SVDD",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.one",
+        "dl.mlp"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.ae",
+      "title": "Autoencoder·Reverse Distillation",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.recon",
+        "an.stfpm"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.score",
+      "title": "Anomaly Score·Heatmap",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.patchcore"
+      ],
+      "next_topics": [
+        "an.threshold"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.threshold",
+      "title": "Threshold Calibration·Domain Shift",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.score",
+        "ml.calibration"
+      ],
+      "next_topics": [
+        "eval.ood",
+        "res.domain"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.frame",
+      "title": "Frame·FPS·Timestamp",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "img.tensor"
+      ],
+      "next_topics": [
+        "cv.sam2",
+        "video.sample",
+        "video.flow",
+        "video.track",
+        "data.temporal",
+        "ops.rtsp"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.sample",
+      "title": "Sampling·Temporal Window",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.frame"
+      ],
+      "next_topics": [
+        "video.class",
+        "video.rnn",
+        "video.temporal",
+        "video.cnn3d",
+        "res.hmm"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.class",
+      "title": "Video Classification",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.sample",
+        "cv.class"
+      ],
+      "next_topics": [
+        "video.aggregate"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.rnn",
+      "title": "RNN·LSTM·GRU",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.mlp",
+        "video.sample"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.temporal",
+      "title": "Temporal Transformer",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.sample",
+        "tr.encoder"
+      ],
+      "next_topics": [
+        "video.mae"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.cnn3d",
+      "title": "3D CNN",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.sample",
+        "cnn.base"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.mae",
+      "title": "VideoMAE",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.temporal",
+        "tr.ssl"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.flow",
+      "title": "Optical Flow",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.frame",
+        "img.edge"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.track",
+      "title": "Object Tracking",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.detect",
+        "video.frame"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.aggregate",
+      "title": "Temporal Aggregation",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.class"
+      ],
+      "next_topics": [
+        "video.persist",
+        "video.anomaly"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.persist",
+      "title": "Persistence·Hysteresis",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.aggregate"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "video.anomaly",
+      "title": "Video Anomaly Detection",
+      "part": "PART 08",
+      "level": "Intermediate",
+      "prerequisites": [
+        "video.aggregate",
+        "an.outlier"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.coords",
+      "title": "Coordinate Systems",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "m.vector",
+        "img.pixel"
+      ],
+      "next_topics": [
+        "geo.affine",
+        "geo.circle"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.affine",
+      "title": "Affine Transform",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.coords",
+        "m.matmul"
+      ],
+      "next_topics": [
+        "geo.homo"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.homo",
+      "title": "Perspective·Homography",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.affine",
+        "m.matrix"
+      ],
+      "next_topics": [
+        "geo.calib"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.calib",
+      "title": "Camera Calibration",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.homo"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.circle",
+      "title": "Circle·Ellipse Geometry",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.coords"
+      ],
+      "next_topics": [
+        "geo.fit"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.ls",
+      "title": "Least Squares",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "ml.linear",
+        "m.norm"
+      ],
+      "next_topics": [
+        "geo.ransac",
+        "geo.fit"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.eigen",
+      "title": "Eigenvalue·Eigenvector",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "m.matrix"
+      ],
+      "next_topics": [
+        "geo.svd"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.svd",
+      "title": "SVD·PCA",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.eigen",
+        "m.mean"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.ransac",
+      "title": "RANSAC",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.ls",
+        "an.outlier"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.mad",
+      "title": "MAD·Robust Statistics",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "m.median"
+      ],
+      "next_topics": [
+        "geo.fit",
+        "ts.z"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.fit",
+      "title": "Robust Ellipse Fitting",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.circle",
+        "geo.ls",
+        "geo.mad"
+      ],
+      "next_topics": [
+        "geo.boundary"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.subpixel",
+      "title": "Subpixel Edge",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "img.edge"
+      ],
+      "next_topics": [
+        "geo.boundary"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "geo.boundary",
+      "title": "Boundary Refinement",
+      "part": "PART 09",
+      "level": "Advanced",
+      "prerequisites": [
+        "geo.fit",
+        "geo.subpixel",
+        "cv.semantic"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.series",
+      "title": "Time-series·Autocorrelation",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "m.mean",
+        "m.prob"
+      ],
+      "next_topics": [
+        "ts.moving",
+        "ts.z"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.moving",
+      "title": "Moving Average·Median",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.series",
+        "m.median"
+      ],
+      "next_topics": [
+        "ts.threshold",
+        "ts.ewma"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.z",
+      "title": "Z-score·IQR·MAD",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.series",
+        "geo.mad"
+      ],
+      "next_topics": [
+        "ts.threshold"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.threshold",
+      "title": "Static·Adaptive Threshold",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.z",
+        "ts.moving"
+      ],
+      "next_topics": [
+        "ts.step"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.step",
+      "title": "Step Change Detection",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.threshold"
+      ],
+      "next_topics": [
+        "ts.cusum",
+        "ts.changepoint",
+        "ts.baseline"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.ewma",
+      "title": "EWMA",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.moving"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.cusum",
+      "title": "CUSUM",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.step"
+      ],
+      "next_topics": [
+        "ts.ph",
+        "ts.changepoint"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.ph",
+      "title": "Page–Hinkley",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.cusum"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.changepoint",
+      "title": "Change-point Detection",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.step",
+        "ts.cusum"
+      ],
+      "next_topics": [
+        "ts.drift",
+        "ts.event"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.drift",
+      "title": "Concept Drift·Data Drift",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.changepoint",
+        "ml.generalize"
+      ],
+      "next_topics": [
+        "res.continual"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.baseline",
+      "title": "Baseline Freeze·Online Update",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.step"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ts.event",
+      "title": "Event-level Evaluation",
+      "part": "PART 10",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ts.changepoint",
+        "eval.confusion"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.label",
+      "title": "Annotation·Taxonomy",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "data.format",
+        "data.collect"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.format",
+      "title": "Box·Polygon·Mask Formats",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.label",
+        "cv.mask"
+      ],
+      "next_topics": [
+        "data.auto"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.collect",
+      "title": "Data Collection·Cleaning",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.label"
+      ],
+      "next_topics": [
+        "data.augment",
+        "data.imbalance",
+        "data.version",
+        "data.privacy"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.auto",
+      "title": "Auto-labeling·QA",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.format"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.augment",
+      "title": "Augmentation·Train-only",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.collect",
+        "img.augment"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.imbalance",
+      "title": "Class Imbalance·Sampling",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.collect",
+        "ml.classification"
+      ],
+      "next_topics": [
+        "data.hard"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.hard",
+      "title": "Hard Negative Mining",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.imbalance"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.group",
+      "title": "Group Split·Leakage",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ml.leakage"
+      ],
+      "next_topics": [
+        "data.kfold",
+        "data.temporal"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/training.html#split"
+    },
+    {
+      "id": "data.kfold",
+      "title": "Group K-fold",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.group",
+        "ml.cv"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.temporal",
+      "title": "Temporal Split",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.group",
+        "video.frame"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.version",
+      "title": "Dataset Versioning",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.collect"
+      ],
+      "next_topics": [
+        "data.experiment",
+        "ops.registry"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.experiment",
+      "title": "Experiment Tracking",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.version",
+        "ml.split"
+      ],
+      "next_topics": [
+        "data.repro",
+        "eval.ablation"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.repro",
+      "title": "Reproducibility·Seed",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.experiment",
+        "m.sample"
+      ],
+      "next_topics": [
+        "res.research"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "data.privacy",
+      "title": "Privacy·License",
+      "part": "PART 11",
+      "level": "Intermediate",
+      "prerequisites": [
+        "data.collect"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.confusion",
+      "title": "Confusion Matrix",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ml.classification",
+        "ml.split"
+      ],
+      "next_topics": [
+        "ts.event",
+        "eval.prf"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.prf",
+      "title": "Accuracy·Precision·Recall·F1",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.confusion"
+      ],
+      "next_topics": [
+        "eval.auc",
+        "eval.threshold",
+        "eval.error",
+        "eval.ci"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/training.html#metrics"
+    },
+    {
+      "id": "eval.auc",
+      "title": "ROC-AUC·PR-AUC",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.prf"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.iou",
+      "title": "IoU·mAP",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.iou",
+        "cv.map"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.boundary",
+      "title": "Boundary IoU·ASSD·HD95",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "cv.semantic",
+        "cv.iou"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.reg",
+      "title": "MAE·MSE·RMSE",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "ml.mse"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.threshold",
+      "title": "Threshold Analysis",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.prf",
+        "ml.calibration"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.error",
+      "title": "Error Analysis",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.prf"
+      ],
+      "next_topics": [
+        "eval.ablation",
+        "eval.ood"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.ci",
+      "title": "Confidence Interval·Bootstrap",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.prf",
+        "m.sample"
+      ],
+      "next_topics": [
+        "eval.effect"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.effect",
+      "title": "Significance·Effect Size",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.ci"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.ablation",
+      "title": "Ablation Study",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.error",
+        "data.experiment"
+      ],
+      "next_topics": [
+        "res.research"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eval.ood",
+      "title": "OOD·Robustness Evaluation",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.error",
+        "an.threshold"
+      ],
+      "next_topics": [
+        "res.ood"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.pytorch",
+      "title": "PyTorch·CUDA",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "m.tensor",
+        "m.python"
+      ],
+      "next_topics": [
+        "ops.onnx",
+        "ops.gpu"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.onnx",
+      "title": "ONNX·Opset",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.pytorch"
+      ],
+      "next_topics": [
+        "ops.ort",
+        "ops.trt",
+        "ops.registry",
+        "res.quant"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.ort",
+      "title": "ONNX Runtime",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.onnx"
+      ],
+      "next_topics": [
+        "ops.triton"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.trt",
+      "title": "TensorRT",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.onnx"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.triton",
+      "title": "Triton Inference Server",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.ort"
+      ],
+      "next_topics": [
+        "ops.batch",
+        "ops.pipeline"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.batch",
+      "title": "Batch Inference",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.triton"
+      ],
+      "next_topics": [
+        "ops.latency"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.gpu",
+      "title": "GPU Memory·Precision",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.pytorch"
+      ],
+      "next_topics": [
+        "res.quant"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.latency",
+      "title": "Latency·Throughput",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.batch"
+      ],
+      "next_topics": [
+        "ops.monitor"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.airflow",
+      "title": "Airflow·DAG",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.kafka",
+      "title": "Kafka",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [
+        "ops.pipeline"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.s3",
+      "title": "S3·MinIO",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [
+        "ops.pipeline"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.rtsp",
+      "title": "RTSP·FFmpeg",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "video.frame"
+      ],
+      "next_topics": [
+        "ops.ntp"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.ntp",
+      "title": "Timestamp·NTP",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.rtsp"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.monitor",
+      "title": "Logging·Monitoring",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.latency"
+      ],
+      "next_topics": [
+        "ops.pipeline"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.registry",
+      "title": "Model Registry·Versioning",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.onnx",
+        "data.version"
+      ],
+      "next_topics": [
+        "ops.cicd"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.cicd",
+      "title": "CI/CD·Regression",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.registry",
+        "eng.test"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "ops.pipeline",
+      "title": "End-to-end Pipeline",
+      "part": "PART 13",
+      "level": "Advanced",
+      "prerequisites": [
+        "ops.kafka",
+        "ops.s3",
+        "ops.triton",
+        "ops.monitor"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.project",
+      "title": "Python Project Structure",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "m.python"
+      ],
+      "next_topics": [
+        "ops.airflow",
+        "ops.kafka",
+        "ops.s3",
+        "eng.venv",
+        "eng.config",
+        "eng.module",
+        "eng.git"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.venv",
+      "title": "Virtual Environment",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [
+        "eng.jupyter",
+        "eng.deps"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.jupyter",
+      "title": "Jupyter",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.venv"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.deps",
+      "title": "Dependency Management",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.venv"
+      ],
+      "next_topics": [
+        "eng.repro"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.config",
+      "title": "Configuration·Secrets",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [
+        "eng.repro"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.module",
+      "title": "Modular Design",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [
+        "eng.test"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.test",
+      "title": "Unit·Integration Tests",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.module"
+      ],
+      "next_topics": [
+        "ops.cicd",
+        "eng.review",
+        "eng.independent"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.git",
+      "title": "Git·GitHub",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.project"
+      ],
+      "next_topics": [
+        "eng.review"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.review",
+      "title": "Code Review",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.git",
+        "eng.test"
+      ],
+      "next_topics": [
+        "eng.agent"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.repro",
+      "title": "Reproducible Development",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.deps",
+        "eng.config"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.agent",
+      "title": "Multi-Agent Workflow",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.review"
+      ],
+      "next_topics": [
+        "eng.independent"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "eng.independent",
+      "title": "Independent Validation",
+      "part": "PART 14",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eng.agent",
+        "eng.test"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.bayes",
+      "title": "Bayesian Inference",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "m.bayes",
+        "m.likelihood"
+      ],
+      "next_topics": [
+        "res.graph",
+        "res.em",
+        "res.vi",
+        "res.mcmc"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch1"
+    },
+    {
+      "id": "res.graph",
+      "title": "Graphical Models",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "res.bayes"
+      ],
+      "next_topics": [
+        "res.hmm"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.gmm",
+      "title": "Gaussian Mixture",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "m.distribution",
+        "ml.dataset"
+      ],
+      "next_topics": [
+        "res.em"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch9"
+    },
+    {
+      "id": "res.em",
+      "title": "EM Algorithm",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "res.gmm",
+        "res.bayes"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch9"
+    },
+    {
+      "id": "res.vi",
+      "title": "Variational Inference·ELBO",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "res.bayes",
+        "m.entropy"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch10"
+    },
+    {
+      "id": "res.mcmc",
+      "title": "Monte Carlo·MCMC",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "m.sample",
+        "res.bayes"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch11"
+    },
+    {
+      "id": "res.hmm",
+      "title": "HMM",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "res.graph",
+        "video.sample"
+      ],
+      "next_topics": [
+        "res.kalman"
+      ],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch13"
+    },
+    {
+      "id": "res.kalman",
+      "title": "Kalman Filter",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "res.hmm",
+        "m.matrix"
+      ],
+      "next_topics": [],
+      "status": "existing-section",
+      "legacy_url": "notes/prml.html#ch13"
+    },
+    {
+      "id": "res.domain",
+      "title": "Domain Adaptation",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "an.threshold",
+        "dl.finetune"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.continual",
+      "title": "Continual Learning",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "dl.finetune",
+        "ts.drift"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.ood",
+      "title": "OOD Detection",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "eval.ood",
+        "an.outlier"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.quant",
+      "title": "Quantization",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "ops.onnx",
+        "ops.gpu"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.prune",
+      "title": "Pruning",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "dl.forward"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.distill",
+      "title": "Knowledge Distillation",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "dl.transfer"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.diffusion",
+      "title": "Diffusion Models",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "m.distribution",
+        "dl.mlp"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "res.research",
+      "title": "Research Reproduction",
+      "part": "PART 15",
+      "level": "Research",
+      "prerequisites": [
+        "data.repro",
+        "eval.ablation"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    }
+  ]
+}
