@@ -10,8 +10,8 @@
 
 | Phase | 작업 | 완료 조건 | 이번 설계 브랜치 상태 |
 |---|---|---|---|
-| P1 Audit | Python 빌더·70개 Section·JS/CSS·Workflow·Legacy URL 및 반도체 메뉴 조사 | 누락 없이 기존 자산 분류 | 인벤토리 작성, 독립 리뷰 대기 |
-| P2 Curriculum | PART 00–15, 248개 후보 개념, 선수/후속 DAG, 여러 학습 경로 | 그래프 검사 + 의미론적 선수 검수 | 구조 자체 검사 완료, 독립 의미 검토 대기 |
+| P1 Audit | Python 빌더·70개 Section·JS/CSS·Workflow·Legacy URL 및 반도체 메뉴 조사 | 누락 없이 기존 자산 분류 | 인벤토리 작성, 의미론적 감사 반영·독립 리뷰 대기 |
+| P2 Curriculum | PART 00–15, 260개 후보 개념, 선수/후속 DAG, 여러 학습 경로 | 그래프 검사 + 의미론적 선수 검수 | 구조 검사 및 자체 의미론적 정정 완료, 독립 검토 대기 |
 | P3 Design | 기존 note/section, Figure, URL/탐색 확장 설계 | 새 Framework 없음, 호환 계약 | 문서 작성, 독립 리뷰 대기 |
 | P4 Vertical Slice | Scalar→Vector→Matrix→Tensor→Image Tensor→Convolution→Feature Map→CNN | 계산·Shape·Python·Figure·링크/브라우저 검사 | **미착수** |
 | P5 Track Expansion | Foundation/ML/DL/CV/Anomaly/Video/Geometry/Time-series/MLOps/Research | Chapter별 근거와 독립 검수 | 미착수 |
@@ -59,3 +59,10 @@ Browser에서는 Desktop 1440px/모바일 390px 기준으로 H1, Sidebar 열기�
 ## 승인 게이트
 
 P1–3 설계의 독립 검토 전에는 그 설계를 검증된 정본처럼 취급하지 않습니다. P4 구현은 독립 검토/최신 main 대조 이후 진행하고, main merge/배포는 별도 승인 후 수행합니다.
+
+## Semantic Audit 후속 정정 — 2026-11-02
+
+- 개념 수준의 최소 선수 관계를 바로잡고 서로 다른 개념의 ID를 분리했습니다. [감사 결정 기록](SEMANTIC_AUDIT.md).
+- `existing-section` / `needs-expansion` / `planned` 세 가지 커버리지로 기존 원고 재활용과 신규 원고를 구분했습니다.
+- Curriculum·Catalog·Learning Paths·DAG·Validator를 함께 갱신했습니다.
+- 독립 Reviewer가 본문 심도·선수 개념의 의미론적 완전성·다른 PR과의 충돌을 검토하기 전에는 P4를 완료하거나 PR을 병합하지 않습니다.
