@@ -66,6 +66,8 @@ python -m http.server 8000
 
 `main` 변경 시 빌드·정적 검증 후 Pages에 배포합니다. 수동 실행은 Actions → Deploy study notes → Run workflow에서 `main`을 선택합니다. PR에서는 검증만 하고 배포하지 않으므로, 초안 PR의 수정 화면은 아직 공개 사이트에 반영되지 않습니다.
 
+Source를 GitHub Actions로 전환한 뒤 새 main 실행이 없다면 위 수동 실행으로 최초 배포를 시작합니다. PR 실행의 초록색 성공은 배포 성공을 뜻하지 않으며, `deploy`가 `skipped`이면 사이트는 갱신되지 않습니다.
+
 Actions 실행 결과의 `validate`와 `deploy`가 모두 성공했는지 확인하고, Settings → Pages의 게시 주소로 접속합니다. Source 설정을 바꾼 사실만으로 새 배포 실행이 성공한 것으로 보지는 않습니다. 커스텀 도메인 없이 위 기본 주소를 사용합니다.
 
 저장소 소유 계정은 `sh0427-han-private`입니다. 도메인/경로를 변경할 때는 이 README, PROJECT_CONTEXT, TODO의 주소와 `scripts/build.py`의 저장소 링크를 함께 수정하고 빌드합니다.
