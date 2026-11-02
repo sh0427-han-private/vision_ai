@@ -5,6 +5,12 @@ on:
     paths:
       - 'planning/concepts.v1.json'
       - 'scripts/validate_concept_graph.py'
+      - 'planning/CONCEPT_CATALOG.md'
+      - 'scripts/build.py'
+      - 'scripts/reference_notes.py'
+      - 'scripts/cs231n_note.py'
+      - 'scripts/prml_note.py'
+      - 'notes/**'
       - '.github/workflows/concept-graph.yml'
   workflow_dispatch:
 
@@ -16,5 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Rebuild current pages before checking anchors
+        run: python3 scripts/build.py
       - name: Check concept references, cycles, and existing anchors
         run: python3 scripts/validate_concept_graph.py
