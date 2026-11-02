@@ -10,7 +10,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 GRAPH_PATH = ROOT / "planning" / "concepts.v1.json"
 LEVELS = {"Foundation", "Basic", "Intermediate", "Advanced", "Research"}
-STATUSES = {"existing-section", "planned"}
+STATUSES = {"existing-section", "needs-expansion", "planned"}
 
 
 class AnchorParser(HTMLParser):
@@ -82,7 +82,7 @@ def validate() -> list[str]:
                 errors.append(f"Forward dependency missing: {node_id} -> {successor}")
 
         legacy_url = node["legacy_url"]
-        if node["status"] == "existing-section" and not legacy_url:
+        if node["status"] in {"existing-section", "needs-expansion"} and not legacy_url:
             errors.append(f"Existing section has no URL: {node_id}")
         if node["status"] == "planned" and legacy_url:
             errors.append(f"Planned node unexpectedly has URL: {node_id}")
@@ -117,6 +117,38 @@ def validate() -> list[str]:
     if visited != len(ids):
         cyclic = [node_id for node_id, degree in in_degree.items() if degree > 0]
         errors.append(f"Graph cycle or invalid references: {cyclic[:20]}")
+
+    # Targeted curriculum regression checks: not a replacement for human review.
+    mandatory_edges = {
+        ("dl.backprop", "m.chain"),
+        ("tr.encoder", "dl.ln"),
+        ("cv.grounding", "cv.dino_detr"),
+        ("res.kalman", "res.state"),
+    }
+    forbidden_edges = {
+        ("eval.ood", "an.threshold"),
+        ("cv.grounding", "tr.clip"),
+        ("res.kalman", "res.hmm"),
+        ("ops.batch", "ops.triton"),
+        ("an.efficientad", "an.stfpm"),
+        ("tr.encoder", "dl.bn"),
+    }
+    for concept_id, prerequisite in mandatory_edges:
+        if concept_id not in node_by_id or prerequisite not in node_by_id:
+            errors.append(f"Semantic invariant concept missing: {concept_id}, {prerequisite}")
+        elif prerequisite not in node_by_id[concept_id]["prerequisites"]:
+            errors.append(f"Required curriculum edge missing: {concept_id} <- {prerequisite}")
+    for concept_id, prerequisite in forbidden_edges:
+        if (concept_id in node_by_id
+                and prerequisite in node_by_id[concept_id]["prerequisites"]):
+            errors.append(f"Over-restrictive curriculum edge: {concept_id} <- {prerequisite}")
+
+    catalog_path = ROOT / "planning" / "CONCEPT_CATALOG.md"
+    catalog = catalog_path.read_text(encoding="utf-8")
+    for node in nodes:
+        expected = f"| `{node['id']}` | {node['title']} |"
+        if catalog.count(expected) != 1:
+            errors.append(f"Catalog concept missing or duplicated: {node['id']}")
 
     if not errors:
         edges = sum(len(node["prerequisites"]) for node in nodes)
