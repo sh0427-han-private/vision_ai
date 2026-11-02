@@ -4,7 +4,7 @@
 
 ## 1. AI/ML Foundations
 
-Scalar → Vector → Matrix → Tensor 및 Function → Derivative → Gradient → Gradient Descent → Backpropagation. Probability → Bayes Rule → Likelihood → Classification/Loss도 병행합니다.
+Scalar → Vector → Matrix → Tensor와 Function → Derivative에서 Gradient·Chain Rule로 분기합니다. Gradient + Objective → Gradient Descent, Forward + Chain Rule + Loss → Backpropagation으로 이어지며 두 역할을 구분합니다. Probability → Bayes Rule → Likelihood → Classification/Loss도 병행합니다.
 
 기존 시작: [CS231n 최적화](../notes/cs231n.html#optimization), [PRML 확률](../notes/prml.html#ch1), [학습/평가](../notes/training.html#loop). 별도의 기초 수학 페이지는 아직 작성되지 않았습니다.
 
@@ -16,7 +16,7 @@ Matrix/Tensor → Pixel/RGB/Image Tensor → Kernel → Convolution → Feature 
 
 ## 3. Anomaly Detection
 
-Outlier/Novelty → One-class → Feature Extraction → Embedding → Nearest Neighbor → Memory Bank → Coreset → PatchCore → Anomaly Score/Threshold. 합성 정상 특징과 검사 점으로 NN 거리를 검산합니다.
+Outlier/Novelty → One-class → Feature Extraction → Embedding → Memory Bank → Coreset + Nearest Neighbor → PatchCore를 학습합니다. Anomaly Score/Threshold는 PatchCore에 종속되지 않는 공통 개념으로 별도 학습합니다. 합성 정상 특징과 검사 점으로 NN 거리를 검산합니다.
 
 기존 활용: [Anomaly Detection·PatchCore](../notes/patchcore.html).
 
@@ -40,16 +40,18 @@ Moving Median → Z-score/Robust Threshold → Step Change → Baseline Update/F
 
 ## 7. AI Engineering / MLOps
 
-Project Structure → Tests → PyTorch → ONNX → ONNX Runtime → Triton → Batch/Latency → Monitoring. 영상 데이터 경로는 RTSP/FFmpeg와 Timestamp/NTP를 함께 살핍니다.
+Project Structure → Tests → PyTorch → Batch Inference/Latency를 먼저 다루고, 선택적으로 ONNX → ONNX Runtime 또는 Triton Serving을 학습합니다. 모델·데이터·모니터링을 결합해 Pipeline을 설계하되 Kafka/S3/Triton은 필수 선수 아닌 적용 예시입니다. 영상 데이터 경로는 RTSP/FFmpeg와 Timestamp/NTP를 함께 살핍니다.
 
 실습: shape·dtype·채널 순서 계약, 단일 vs 배치 추론, 배포 회귀를 검증합니다.
 
 ## 8. Advanced Research
 
-확률 기초 → PRML Bayesian → Graphical Models/GMM → EM/VI/MCMC, 또는 CNN/Transformer → Self-supervised Learning → DINO/CLIP → OOD/Domain Adaptation.
+확률 기초 → PRML Bayesian → Graphical Models/GMM → EM/VI/MCMC 또는 State-space → HMM/Kalman으로 분기합니다. CNN/Transformer → Self-supervised Learning → DINO(자기지도) 또는 Contrastive Learning → CLIP을 학습할 수 있습니다. 객체 탐지 경로의 DETR → DINO-DETR → Grounding DINO는 별도로 학습합니다. OOD 평가 및 Domain Adaptation은 특정 PatchCore/CLIP 학습을 필수로 요구하지 않습니다.
 
 기존 활용: [PRML 종합](../notes/prml.html), [CS231n 종합](../notes/cs231n.html). 모델이나 논문명을 별도의 최상위 카테고리로 놓지 않습니다.
 
 ## 탐색 UI 계약
 
 홈에서 시작 경로를 선택할 수 있고, 각 개념 설명 옆에 필수 선수·관련 후속·기존 출처를 표시합니다. 관련 concept가 planned라면 링크 없는 계획 상태로 표시합니다. 기존 index.html?topic=ai 와 ?topic=vision 북마크를 고려하되 기존 notes/*.html 및 #anchor는 바꾸지 않습니다. 반도체 전용 탐색을 제외한 뒤 과거 ?topic=semiconductor는 overview로 안전하게 fallback 합니다.
+
+개념 커버리지의 `needs-expansion`은 기존 설명이 있지만 보강 대상이라는 의미이며, 기존 링크를 새 독립 학습 페이지로 오해하지 않습니다. 자세한 연결은 [Dependency Graph](CONCEPT_DEPENDENCIES.md)를 기준으로 합니다.
