@@ -140,3 +140,28 @@
 ## 변경 불가 기준
 
 기존 `notes/*.html` URL·Anchor(특히 두 legacy redirect), 소스 등록 순서의 의미, 수식·figure의 실측/합성 구분, 기존 4개 JS 실습, Pages 배포 방식은 초기 설계·Vertical Slice 동안 보존합니다. 전면 재작성·대규모 프레임워크 전환·산업 비공개 데이터 복사는 제외합니다.
+
+## 의미론적 감사 이후: 기존 소개와 신규 작성의 구분
+
+`concepts.v1.json`에서 `existing-section`은 기존 교육 절 매핑, `needs-expansion`은 기존 자료에 일부 설명이 있지만 독립 단원 수준의 보강이 필요한 개념, `planned`은 직접 대응 절을 아직 확인하지 못한 개념입니다. 기존 URL을 새 페이지로 복제하지 않습니다. 아래는 보수적으로 확인한 `needs-expansion` 참조입니다.
+
+| Concept | 기존 소개 위치 |
+|---|---|
+| `m.prob` | [notes/prml.html#ch1](../notes/prml.html#ch1) |
+| `m.bayes` | [notes/prml.html#ch1](../notes/prml.html#ch1) |
+| `m.distribution` | [notes/prml.html#ch2](../notes/prml.html#ch2) |
+| `m.likelihood` | [notes/prml.html#ch1](../notes/prml.html#ch1) |
+| `ml.linear` | [notes/prml.html#ch3](../notes/prml.html#ch3) |
+| `ml.logistic` | [notes/prml.html#ch4](../notes/prml.html#ch4) |
+| `ml.knn` | [notes/cs231n.html#classification](../notes/cs231n.html#classification) |
+| `ml.softmax` | [notes/prml.html#ch4](../notes/prml.html#ch4) |
+| `ml.sigmoid` | [notes/prml.html#ch4](../notes/prml.html#ch4) |
+| `dl.mlp` | [notes/cs231n.html#nn](../notes/cs231n.html#nn) |
+| `dl.transfer` | [notes/cs231n.html#transfer](../notes/cs231n.html#transfer) |
+| `dl.repr` | [notes/cs231n.html#transfer](../notes/cs231n.html#transfer) |
+| `tr.ssl` | [notes/cs231n.html#modern](../notes/cs231n.html#modern) |
+| `tr.dino` | [notes/cs231n.html#modern](../notes/cs231n.html#modern) |
+| `tr.clip` | [notes/cs231n.html#modern](../notes/cs231n.html#modern) |
+| `geo.svd` | [notes/prml.html#ch12](../notes/prml.html#ch12) |
+
+이 참조는 기존 절의 **접근 가능한 주소와 개념 소개 여부**에 관한 정보이며, 독립 페이지 완성 또는 학습 목표 충족 판정은 아닙니다. 독립 Reviewer가 실제 본문 심도·출처·필요 보강 분량을 별도 검토해야 합니다.
