@@ -4,13 +4,13 @@
 
 ## 1. AI/ML Foundations
 
-Scalar → Vector → Matrix → Tensor와 Function → Derivative에서 Gradient·Chain Rule로 분기합니다. Gradient + Objective → Gradient Descent, Forward + Chain Rule + Loss → Backpropagation으로 이어지며 두 역할을 구분합니다. Probability → Bayes Rule → Likelihood → Classification/Loss도 병행합니다.
+Scalar → Vector → Matrix → Tensor와 Function → Derivative에서 Gradient·Chain Rule로 분기합니다. Gradient + Objective → Gradient Descent, Forward + Chain Rule → Computation Graph/Autograd → Backpropagation(+Gradient/Loss)으로 이어지며 두 역할을 구분합니다. Probability → Bayes Rule → Likelihood → Classification/Loss도 병행합니다.
 
 기존 시작: [CS231n 최적화](../notes/cs231n.html#optimization), [PRML 확률](../notes/prml.html#ch1), [학습/평가](../notes/training.html#loop). 별도의 기초 수학 페이지는 아직 작성되지 않았습니다.
 
 ## 2. Computer Vision
 
-Matrix/Tensor → Pixel/RGB/Image Tensor → Kernel → Convolution → Feature Map → CNN → Classification/Detection/Segmentation. 형상/채널 예시는 실제 계산과 일치해야 합니다.
+Pixel → RGB는 Tensor를 전제로 하지 않는 시작 경로입니다. Scalar/Vector/Matrix/Tensor/Shape + Dot Product는 Image Tensor에서 합류하는 수학 경로이며, Kernel → Convolution → Stride → Feature Map → Pooling + Activation → CNN → Classification/Detection/Segmentation으로 이어집니다. Polygon/Mask는 Pixel 기반의 데이터 형식으로 모델보다 먼저 학습할 수 있습니다. 형상/채널 예시는 실제 계산과 일치해야 합니다.
 
 기존 활용: [이미지](../notes/pixels.html), [CNN](../notes/cnn.html#convolution), [Vision Tasks](../notes/tasks.html).
 
@@ -46,7 +46,7 @@ Project Structure → Tests → PyTorch → Batch Inference/Latency를 먼저 �
 
 ## 8. Advanced Research
 
-확률 기초 → PRML Bayesian → Graphical Models/GMM → EM/VI/MCMC 또는 State-space → HMM/Kalman으로 분기합니다. CNN/Transformer → Self-supervised Learning → DINO(자기지도) 또는 Contrastive Learning → CLIP을 학습할 수 있습니다. 객체 탐지 경로의 DETR → DINO-DETR → Grounding DINO는 별도로 학습합니다. OOD 평가 및 Domain Adaptation은 특정 PatchCore/CLIP 학습을 필수로 요구하지 않습니다.
+확률 기초 → PRML Bayesian → Graphical Models/GMM → EM/VI/MCMC 또는 State-space → HMM/Kalman으로 분기합니다. CNN/Transformer → Self-supervised Learning → DINO(자기지도) 또는 Contrastive Learning → CLIP을 학습할 수 있습니다. 객체 탐지 경로의 DETR → DINO-DETR → Grounding DINO는 별도로 학습합니다. OOD 점수 평가에서 먼저 Positive Class·score direction을 정의하고 AUROC/AP(AUPR) 및 FPR@95TPR을 계산합니다. Covariance/Multivariate Gaussian을 PaDiM·GMM·Kalman에 연결하고 PCA/SVD 심화로 확장합니다. OOD 및 Domain Adaptation은 PatchCore/CLIP을 필수로 요구하지 않습니다.
 
 기존 활용: [PRML 종합](../notes/prml.html), [CS231n 종합](../notes/cs231n.html). 모델이나 논문명을 별도의 최상위 카테고리로 놓지 않습니다.
 
@@ -55,3 +55,14 @@ Project Structure → Tests → PyTorch → Batch Inference/Latency를 먼저 �
 홈에서 시작 경로를 선택할 수 있고, 각 개념 설명 옆에 필수 선수·관련 후속·기존 출처를 표시합니다. 관련 concept가 planned라면 링크 없는 계획 상태로 표시합니다. 기존 index.html?topic=ai 와 ?topic=vision 북마크를 고려하되 기존 notes/*.html 및 #anchor는 바꾸지 않습니다. 반도체 전용 탐색을 제외한 뒤 과거 ?topic=semiconductor는 overview로 안전하게 fallback 합니다.
 
 개념 커버리지의 `needs-expansion`은 기존 설명이 있지만 보강 대상이라는 의미이며, 기존 링크를 새 독립 학습 페이지로 오해하지 않습니다. 자세한 연결은 [Dependency Graph](CONCEPT_DEPENDENCIES.md)를 기준으로 합니다.
+
+
+## P4 폐포·수치 재현 — R1 설계
+
+<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+
+P4는 핵심 8개 + 필수 보조 9개를 포함하며 각 Concept의 신규 페이지·기존 Section·P4 내부 Section을 [Roadmap](IMPLEMENTATION_ROADMAP.md)에 지정했습니다. 기초 Pixel/Mask에는 고급 모델이 필요하지 않습니다.
+
+**OOD 평가 예제 (합성값)**: Positive=OOD인 `y=[1,1,1,0,0,0]`, 높은 값이 OOD인 `score=[0.9,0.8,0.4,0.7,0.3,0.1]`. 정렬 순서 P,P,N,P,N,N. AUROC=`8/9≈0.8889`(9개 양성-음성 쌍 중 8개 순위 성공). AP 방식 AUPR=`(1+1+3/4)/3=11/12≈0.9167`. TPR≥95%를 충족하려면 score≥0.4가 필요하여 `FPR@95TPR=1/3≈0.3333`(TPR=1)입니다. 소수 Positive로 정확히 95% 운영점을 만들 수 없으며, PR의 trapezoidal AUC와 AP는 다를 수 있습니다. Score tie, ID/OOD convention, 클래스 비율을 항상 보고합니다. AUROC/AP는 threshold-free, FPR@95TPR은 threshold-dependent입니다.
+
+**Covariance 예제**: 2D feature `[1,2],[3,4]`의 평균 `[2,3]`, 표본 공분산(분모 n−1)은 `[[2,2],[2,2]]`. Singular covariance이므로 Mahalanobis 역행렬을 그대로 사용할 수 없고 regularization이 필요합니다. PaDiM(위치별 Gaussian), Kalman(process/measurement noise), GMM(성분별 Gaussian), PCA(주축/분산)의 수학적 역할을 따로 다룹니다.

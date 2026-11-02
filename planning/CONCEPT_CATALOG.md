@@ -11,6 +11,8 @@
 - 각 수준은 PART 전체에 일괄 적용하지 않고 실제 설명 및 수학적·시스템적 선수 지식에 따라 지정합니다. 추가 콘텐츠 검증 시 조정합니다.
 - 기존 CS231n·PRML의 개요/논문 지도를 새 상세 학습 페이지로 오인하지 않습니다. [기존 콘텐츠 인벤토리](EXISTING_CONTENT_AUDIT.md) 참조.
 
+<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+
 ## PART 00 — AI & Mathematical Foundations
 
 | ID | 개념 | 수준 | 현재 대응 |
@@ -35,10 +37,12 @@
 | `m.prob` | Probability·Random Variable | Foundation | [기존 소개·보강 필요](../notes/prml.html#ch1) |
 | `m.bayes` | Conditional Probability·Bayes Rule | Basic | [기존 소개·보강 필요](../notes/prml.html#ch1) |
 | `m.mean` | Mean·Variance·Standard Deviation | Foundation | 신규 작성 계획 |
+| `m.covariance` | Covariance·Covariance Matrix | Basic | 신규 작성 계획 |
 | `m.median` | Median·Quantile | Foundation | 신규 작성 계획 |
 | `m.distribution` | Probability Distributions | Basic | [기존 소개·보강 필요](../notes/prml.html#ch2) |
+| `m.gaussian_multi` | Multivariate Gaussian Distribution | Intermediate | 신규 작성 계획 |
 | `m.likelihood` | Likelihood·Log-likelihood | Basic | [기존 소개·보강 필요](../notes/prml.html#ch1) |
-| `m.entropy` | Entropy·KL Divergence | Basic | 신규 작성 계획 |
+| `m.entropy` | Entropy·KL Divergence | Basic | [기존 소개·보강 필요](../notes/prml.html#ch1) |
 | `m.sample` | Sampling·Random Seed | Foundation | 신규 작성 계획 |
 
 ## PART 01 — Machine Learning Fundamentals
@@ -73,18 +77,19 @@
 |---|---|---|---|
 | `dl.perceptron` | Perceptron | Basic | 신규 작성 계획 |
 | `dl.mlp` | Multi-layer Perceptron | Basic | [기존 소개·보강 필요](../notes/cs231n.html#nn) |
-| `dl.activation` | Activation·ReLU·GELU | Basic | 신규 작성 계획 |
+| `dl.activation` | Activation·ReLU·GELU | Basic | [기존 소개·보강 필요](../notes/cnn.html#nonlinear) |
 | `dl.forward` | Forward Propagation·Weight·Bias | Basic | 신규 작성 계획 |
+| `dl.autograd` | Computation Graph·Automatic Differentiation | Intermediate | 신규 작성 계획 |
 | `dl.backprop` | Backpropagation | Intermediate | [기존 절](../notes/cs231n.html#optimization) |
 | `dl.gd` | Gradient Descent | Basic | 신규 작성 계획 |
-| `dl.sgd` | SGD·Mini-batch | Intermediate | 신규 작성 계획 |
+| `dl.sgd` | Stochastic Gradient Descent (SGD) | Intermediate | 신규 작성 계획 |
 | `dl.adam` | Momentum·Adam·AdamW | Intermediate | 신규 작성 계획 |
 | `dl.lr` | Learning Rate | Basic | 신규 작성 계획 |
-| `dl.epoch` | Epoch·Mini-batch | Basic | 신규 작성 계획 |
+| `dl.epoch` | Epoch·Batch·Mini-batch | Basic | 신규 작성 계획 |
 | `dl.init` | Weight Initialization | Intermediate | 신규 작성 계획 |
 | `dl.vanish` | Vanishing·Exploding Gradient | Intermediate | 신규 작성 계획 |
 | `dl.dropout` | Dropout | Intermediate | 신규 작성 계획 |
-| `dl.bn` | Batch·Layer Normalization | Intermediate | 신규 작성 계획 |
+| `dl.bn` | Batch Normalization | Intermediate | 신규 작성 계획 |
 | `dl.ln` | Layer Normalization | Intermediate | 신규 작성 계획 |
 | `dl.residual` | Residual Connection | Intermediate | 신규 작성 계획 |
 | `dl.transfer` | Transfer Learning | Intermediate | [기존 소개·보강 필요](../notes/cs231n.html#transfer) |
@@ -119,7 +124,7 @@
 | `cnn.kernel` | Spatial Filter Kernel | Basic | 신규 작성 계획 |
 | `cnn.conv` | Convolution·Cross-correlation | Intermediate | [기존 절](../notes/cnn.html#convolution) |
 | `cnn.stride` | Stride·Padding·Dilation | Basic | [기존 절](../notes/cnn.html#shape) |
-| `cnn.map` | Feature Map·Channel | Basic | 신규 작성 계획 |
+| `cnn.map` | Feature Map·Channel | Basic | [기존 소개·보강 필요](../notes/cnn.html#overview) |
 | `cnn.multi` | Multi-channel Convolution | Intermediate | [기존 절](../notes/cnn.html#channels) |
 | `cnn.rf` | Receptive Field | Intermediate | [기존 절](../notes/cnn.html#shape) |
 | `cnn.pool` | Pooling | Basic | 신규 작성 계획 |
@@ -164,7 +169,7 @@
 | `tr.position` | Positional Encoding | Basic | 신규 작성 계획 |
 | `tr.qkv` | Query·Key·Value | Intermediate | [기존 절](../notes/vit.html#attention) |
 | `tr.attention` | Self-attention | Intermediate | [기존 절](../notes/vit.html#attention) |
-| `tr.multi` | Multi-head Attention | Intermediate | 신규 작성 계획 |
+| `tr.multi` | Multi-head Attention | Intermediate | [기존 소개·보강 필요](../notes/vit.html#attention) |
 | `tr.encoder` | Transformer Encoder | Intermediate | [기존 절](../notes/vit.html#encoder) |
 | `tr.vit` | Vision Transformer | Advanced | [기존 절](../notes/vit.html#patches) |
 | `tr.ssl` | Self-Supervised Learning | Intermediate | [기존 소개·보강 필요](../notes/cs231n.html#modern) |
@@ -197,7 +202,7 @@
 | `an.svdd` | Deep SVDD | Advanced | 신규 작성 계획 |
 | `an.ae` | Autoencoder for Anomaly Detection | Advanced | 신규 작성 계획 |
 | `an.reverse` | Reverse Distillation | Advanced | 신규 작성 계획 |
-| `an.score` | Anomaly Score·Heatmap | Basic | 신규 작성 계획 |
+| `an.score` | Anomaly Score·Heatmap | Basic | [기존 소개·보강 필요](../notes/patchcore.html#score) |
 | `an.threshold` | Anomaly Threshold Selection | Intermediate | 신규 작성 계획 |
 | `an.shift` | Anomaly Domain Shift | Advanced | 신규 작성 계획 |
 
@@ -279,9 +284,9 @@
 | `eval.confusion` | Confusion Matrix | Basic | 신규 작성 계획 |
 | `eval.prf` | Accuracy·Precision·Recall·F1 | Basic | [기존 절](../notes/training.html#metrics) |
 | `eval.auc` | ROC-AUC·PR-AUC | Intermediate | 신규 작성 계획 |
-| `eval.iou` | IoU·mAP | Intermediate | 신규 작성 계획 |
+| `eval.iou` | Detection Evaluation Protocols (IoU Thresholds) | Intermediate | 신규 작성 계획 |
 | `eval.boundary` | Boundary IoU·ASSD·HD95 | Intermediate | 신규 작성 계획 |
-| `eval.reg` | MAE·MSE·RMSE | Basic | 신규 작성 계획 |
+| `eval.reg` | Regression Evaluation·Error Diagnostics | Basic | 신규 작성 계획 |
 | `eval.threshold` | Threshold Analysis | Intermediate | 신규 작성 계획 |
 | `eval.error` | Error Analysis | Intermediate | 신규 작성 계획 |
 | `eval.ci` | Confidence Interval·Bootstrap | Intermediate | 신규 작성 계획 |
@@ -353,5 +358,6 @@
 
 ## 현재 범위
 
-- 16 PART · 260 Concept · 411 직접 prerequisite edge.
-- 기존 원고를 건드리지 않고 기존 Anchor를 보존합니다. [의미론적 정정 내역](SEMANTIC_AUDIT.md)을 확인합니다.
+- 16 PART · 263 Concept · 394 직접 prerequisite edge. 커버리지: existing-section 42, needs-expansion 21, planned 200.
+- 기존 260개 ID 유지; 추가 Stable ID는 `m.covariance`, `m.gaussian_multi`, `dl.autograd`.
+- AP/mAP 정의는 `cv.map`, Detection 평가 프로토콜은 `eval.iou`; MAE/MSE/RMSE의 정의는 `ml.mse`, 평가 응용은 `eval.reg`을 정본으로 합니다.

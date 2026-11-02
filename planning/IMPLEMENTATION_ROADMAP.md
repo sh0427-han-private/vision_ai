@@ -11,11 +11,41 @@
 | Phase | 작업 | 완료 조건 | 이번 설계 브랜치 상태 |
 |---|---|---|---|
 | P1 Audit | Python 빌더·70개 Section·JS/CSS·Workflow·Legacy URL 및 반도체 메뉴 조사 | 누락 없이 기존 자산 분류 | 인벤토리 작성, 의미론적 감사 반영·독립 리뷰 대기 |
-| P2 Curriculum | PART 00–15, 260개 후보 개념, 선수/후속 DAG, 여러 학습 경로 | 그래프 검사 + 의미론적 선수 검수 | 구조 검사 및 자체 의미론적 정정 완료, 독립 검토 대기 |
+| P2 Curriculum | PART 00–15, 263개 후보 개념, 선수/후속 DAG, 여러 학습 경로 | 그래프 검사 + 의미론적 선수 검수 | 구조 검사 및 자체 의미론적 정정 완료, 독립 검토 대기 |
 | P3 Design | 기존 note/section, Figure, URL/탐색 확장 설계 | 새 Framework 없음, 호환 계약 | 문서 작성, 독립 리뷰 대기 |
 | P4 Vertical Slice | Scalar→Vector→Matrix→Tensor→Image Tensor→Convolution→Feature Map→CNN | 계산·Shape·Python·Figure·링크/브라우저 검사 | **미착수** |
 | P5 Track Expansion | Foundation/ML/DL/CV/Anomaly/Video/Geometry/Time-series/MLOps/Research | Chapter별 근거와 독립 검수 | 미착수 |
 | P6 Site QA | Build·Validator·JS·Browser·Pages/CI 확인 | 실행 근거·기존 URL 회귀 | 미착수 |
+
+## P4 필수 선수 폐포 — R1 계획 (구현 전)
+
+<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+
+핵심 8개: `m.scalar`, `m.vector`, `m.matrix`, `m.tensor`, `img.tensor`, `cnn.conv`, `cnn.map`, `cnn.base`. 추가 필수 보조 9개: `img.rgb`, `img.pixel`, `m.shape`, `cnn.kernel`, `m.dot`, `cnn.stride`, `cnn.pool`, `dl.activation`, `m.function`. 전체 **17개** Concept은 아래의 제공 위치가 예정되어 있습니다. “신규 페이지” 및 “P4 내부 Section”은 아직 작성되지 않았으며 링크로 노출하지 않습니다.
+
+| Concept ID | 역할 | 제공 방식 | 정본 위치·필요한 보강 |
+|---|---|---|---|
+| `m.scalar` | 핵심 | 신규 페이지 | P4 수학 기초: Scalar |
+| `m.vector` | 핵심 | 신규 페이지 | P4 수학 기초: Vector |
+| `m.matrix` | 핵심 | 신규 페이지 | P4 수학 기초: Matrix |
+| `m.tensor` | 핵심 | 신규 페이지 | P4 수학 기초: Tensor |
+| `m.shape` | 보조·필수 | 신규 페이지 | P4 수학 기초: Shape/Dimension/Axis |
+| `m.dot` | 보조·필수 | 신규 페이지 | P4 수학 기초: Dot Product |
+| `m.function` | 보조·필수 | 신규 페이지 | P4 수학 기초: Function/Linear·Nonlinear |
+| `dl.activation` | 보조·필수 | 기존 Section | notes/cnn.html#nonlinear — ReLU; GELU 보강 |
+| `img.pixel` | 보조·필수 | 기존 Section | notes/pixels.html#pixels — 픽셀 값·Decode |
+| `img.rgb` | 보조·필수 | 기존 Section | notes/pixels.html#pixels — RGB 3채널 |
+| `img.tensor` | 핵심 | 기존 Section | notes/pixels.html#layout — HWC/CHW/NCHW |
+| `cnn.kernel` | 보조·필수 | P4 내부 Section | notes/cnn.html#convolution에 Kernel 수치 연습 보강 |
+| `cnn.conv` | 핵심 | 기존 Section | notes/cnn.html#convolution — Convolution 수치 실습 |
+| `cnn.stride` | 보조·필수 | 기존 Section | notes/cnn.html#shape — Stride/Padding/Dilation |
+| `cnn.map` | 핵심 | 기존 Section | notes/cnn.html#overview — Feature Map; 수치 보강 |
+| `cnn.pool` | 보조·필수 | P4 내부 Section | notes/cnn.html#nonlinear에 Pooling 수치 보강 |
+| `cnn.base` | 핵심 | 기존 Section | notes/cnn.html#overview — CNN Architecture |
+
+- 기초 Pixel → RGB는 Tensor 없이 도입합니다. Image Tensor는 별도 수학 경로(Shape/Matrix/Tensor)와 합류합니다.
+- Polygon/Mask는 Pixel 이후 배우는 데이터 표현이며 Semantic Segmentation 모델은 필요하지 않습니다.
+- P4 검산 사례는 Dot Product, Kernel의 곱·합, Stride/Output Shape, 2×2 Pooling, Activation, 채널 변환을 입력·계산·출력으로 정합 검증합니다.
 
 ## P4 구현 단계
 
@@ -66,3 +96,8 @@ P1–3 설계의 독립 검토 전에는 그 설계를 검증된 정본처럼 �
 - `existing-section` / `needs-expansion` / `planned` 세 가지 커버리지로 기존 원고 재활용과 신규 원고를 구분했습니다.
 - Curriculum·Catalog·Learning Paths·DAG·Validator를 함께 갱신했습니다.
 - 독립 Reviewer가 본문 심도·선수 개념의 의미론적 완전성·다른 PR과의 충돌을 검토하기 전에는 P4를 완료하거나 PR을 병합하지 않습니다.
+
+
+## R1 범위와 인계
+
+16 PART · 263 Concept · 394 직접 prerequisite edge; P4 페이지 구현·브라우저 검증·Merge·배포는 포함하지 않습니다. PR #35/#36의 병합 여부 확인 후 독립 Reviewer 검수 대상으로 인계합니다.

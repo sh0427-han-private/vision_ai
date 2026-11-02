@@ -14,13 +14,13 @@
 
 ### Scalar → CNN
 
-`m.scalar` → `m.vector` → `m.matrix` → `m.tensor` → `img.pixel` → `img.rgb` → `img.tensor` → `cnn.kernel` → `cnn.conv` → `cnn.stride` → `cnn.map` → `cnn.base`.
+`m.scalar` → `m.vector` → `m.matrix` → `m.tensor`은 수학 경로이고, `img.pixel` → `img.rgb`는 Tensor가 필요 없는 기초 경로입니다. `img.tensor`에서 `m.shape`·RGB가 합류해 `cnn.kernel` → `cnn.conv` → `cnn.stride` → `cnn.map` → `cnn.pool` → `cnn.base`로 진행합니다..
 
 Convolution의 Dot Product, CNN의 Activation/Pooling 등은 합류 선수입니다. HWC/NCHW 축 순서·출력 Shape는 별도 수치 검산합니다.
 
 ### Calculus → Training
 
-`m.function` → `m.derivative`에서 `m.gradient`와 `m.chain`으로 분기합니다. `dl.forward` + `m.gradient` + `m.chain` + `ml.loss` → `dl.backprop`은 파라미터 Gradient 계산이고, `dl.gd` → `dl.sgd` → `dl.adam`은 갱신 알고리즘입니다. 개념적 Gradient Descent의 이해에 Backpropagation이 반드시 선행할 필요는 없습니다.
+`m.function` → `m.derivative`에서 `m.gradient`와 `m.chain`으로 분기합니다. `dl.forward` + `m.chain` → `dl.autograd`, `dl.autograd` + `m.gradient` + `ml.loss` → `dl.backprop`은 파라미터 Gradient 계산이고, `dl.gd` → `dl.sgd` → `dl.adam`은 갱신 알고리즘입니다. 개념적 Gradient Descent의 이해에 Backpropagation이 반드시 선행할 필요는 없습니다.
 
 ### Normal Features → PatchCore
 
@@ -36,7 +36,7 @@ Convolution의 Dot Product, CNN의 Activation/Pooling 등은 합류 선수입니
 
 ### Serving과 평가
 
-Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·벡터화 개념을 다룹니다. `ops.triton`은 그중 하나의 배포 환경입니다. `eval.ood`은 `eval.prf`와 `an.outlier`에서 진입하며 특정 이상탐지 모델이나 Threshold Calibration을 강제하지 않습니다. `eval.robust`는 별도 견고성 평가 개념입니다.
+Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·벡터화 개념을 다룹니다. `ops.triton`은 그중 하나의 배포 환경입니다. `eval.ood`은 `eval.auc`(점수 기반 ROC/PR) 및 `an.score`에서 진입하며 특정 이상탐지 모델이나 Threshold Calibration을 강제하지 않습니다. `eval.robust`는 별도 견고성 평가 개념입니다.
 
 ### Geometry·Time-series
 
@@ -54,7 +54,7 @@ Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·�
 | status | `existing-section` 기존 절 매핑, `needs-expansion` 기존 소개·보강, `planned` 신규 계획 |
 | legacy_url | 기존 매핑 두 상태에는 URL/Anchor 필수; planned에는 없음 |
 
-현재 16 PART / 260 concepts / 411 direct edges. 검사기는 구조와 알려진 의미론적 회귀 규칙을 검사하지만 **교육과정 전체의 교육학적 타당성을 자동 보장하지 않습니다.** 독립 Reviewer는 별도 세션/Agent에서 검토해야 합니다.
+현재 16 PART / 263 concepts / 394 direct edges. 검사기는 구조와 알려진 의미론적 회귀 규칙을 검사하지만 **교육과정 전체의 교육학적 타당성을 자동 보장하지 않습니다.** 독립 Reviewer는 별도 세션/Agent에서 검토해야 합니다.
 
 ## 참고 원 논문
 
@@ -63,3 +63,16 @@ Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·�
 - Liu et al. (ECCV 2024), *Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection*: https://arxiv.org/abs/2303.05499
 
 상세 수정 의사결정: [SEMANTIC_AUDIT.md](SEMANTIC_AUDIT.md).
+
+
+## R1 선수 의미론·정본 개념
+
+<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+
+- Pixel 기초(`img.pixel`)는 Tensor에, Polygon/Mask(`cv.mask`)는 Semantic Segmentation에 필수로 의존하지 않습니다.
+- `m.covariance` → `m.gaussian_multi`는 PaDiM/GMM/Kalman의 확률 선행입니다. PCA/SVD(`geo.svd`)는 중심화·Covariance와 연관하되 SVD 자체가 Covariance 역행렬을 계산한다는 뜻은 아닙니다.
+- Chain Rule → Computation Graph/Autograd(`dl.autograd`) → Backpropagation. Autograd 구현, 손실 미분, Optimizer 갱신을 분리합니다.
+- OOD 예제는 y=1:OOD, score 높음:OOD를 기본으로 설정합니다. AUROC/AP(AUPR 계단 적분)는 threshold-free 요약, FPR@95TPR은 TPR≥0.95의 임계점 기반 값입니다.
+- `cv.map`에서 AP/mAP 정의·정렬·적분; `eval.iou`에서 IoU 임계값/평가 프로토콜. `ml.mse`에서 MAE/MSE/RMSE 수식; `eval.reg`에서 오차 평가. BatchNorm `dl.bn`과 LayerNorm `dl.ln`, Epoch/Mini-batch `dl.epoch`와 SGD 업데이트 `dl.sgd`를 분리합니다.
+- ViT→SSL-DINO, NMS→AP/mAP, Calibration→Threshold, CUSUM→Change-point, GMM→EM, 평가→OOD Detection, Transfer→Distillation, ONNX→Model Registry, Agent→Independent Validation은 필수 정의가 아닌 권장·선택 학습 경로입니다.
+- R0에서 전이 중복 26개 직접 Edge 후보를 검토하고 변경 후 남은 중복을 제거했습니다. 필수/권장 분리는 [Semantic Audit](SEMANTIC_AUDIT.md)에 기록합니다.
