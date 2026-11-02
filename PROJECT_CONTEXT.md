@@ -5,8 +5,8 @@
 개인 Vision AI 지식을 계속 축적하고 GitHub Pages에서 HTML로 읽는 학습 자료.
 강의용 저장소 `vision_ai_lecture`와 별개의 프로젝트다.
 
-- Repository: https://github.com/sh0427-han/vision_ai
-- Site: https://sh0427-han.github.io/vision_ai/
+- Repository: https://github.com/sh0427-han-private/vision_ai
+- Site: https://sh0427-han-private.github.io/vision_ai/
 
 ## 자료 작성 기준
 

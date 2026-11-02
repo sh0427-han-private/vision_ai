@@ -2,8 +2,8 @@
 
 Vision AI 지식을 개념, 데이터 흐름, 수치 예시와 도식으로 정리하는 개인 학습 사이트.
 
-- 사이트: https://sh0427-han.github.io/vision_ai/
-- 저장소: https://github.com/sh0427-han/vision_ai
+- 사이트: https://sh0427-han-private.github.io/vision_ai/
+- 저장소: https://github.com/sh0427-han-private/vision_ai
 - 프로젝트 기준: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md)
 
 ## 현재 자료
@@ -60,9 +60,15 @@ python -m http.server 8000
 
 ## GitHub Pages
 
-최초 1회 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정합니다.
-이후 main 변경 시 `Deploy study notes` workflow가 검증 후 정적 파일을 배포합니다.
-Pages가 활성화되지 않았다면 코드 반영만으로 사이트가 열리지 않을 수 있습니다.
+- 배포 주소: https://sh0427-han-private.github.io/vision_ai/
+- 배포 설정: Settings → Pages → Build and deployment → Source → **GitHub Actions**
+- 배포 workflow: [Deploy study notes](.github/workflows/pages.yml)
+
+`main` 변경 시 빌드·정적 검증 후 Pages에 배포합니다. 수동 실행은 Actions → Deploy study notes → Run workflow에서 `main`을 선택합니다. PR에서는 검증만 하고 배포하지 않으므로, 초안 PR의 수정 화면은 아직 공개 사이트에 반영되지 않습니다.
+
+Actions 실행 결과의 `validate`와 `deploy`가 모두 성공했는지 확인하고, Settings → Pages의 게시 주소로 접속합니다. Source 설정을 바꾼 사실만으로 새 배포 실행이 성공한 것으로 보지는 않습니다. 커스텀 도메인 없이 위 기본 주소를 사용합니다.
+
+저장소 소유 계정은 `sh0427-han-private`입니다. 도메인/경로를 변경할 때는 이 README, PROJECT_CONTEXT, TODO의 주소와 `scripts/build.py`의 저장소 링크를 함께 수정하고 빌드합니다.
 
 ## 출처와 예시
 
