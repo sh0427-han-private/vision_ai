@@ -6,7 +6,7 @@
 
 기초 → 원리 → 수식 → 계산 예시 → Python 구현 → 응용 → 한계 → 논문/공식 구현의 연결을 지향합니다. PART 번호는 읽기 순서를 제안하는 **정보 계층**이지, 모든 학습자가 한 줄로 반드시 완주해야 하는 단일 순서는 아닙니다. 선수 관계는 DAG를 정본으로 하며, 상위 PART의 심화 개념에 선수가 부족하면 다른 경로를 거쳐 진입합니다.
 
-**난이도**: Foundation (처음 도입), Basic (기본 알고리즘), Intermediate (수식·구현), Advanced (최적화·시스템 설계), Research (논문 재현). 초기 값은 설계안이며 사람 Reviewer가 선수 관계와 난이도를 검수합니다.
+**난이도**: Foundation (처음 도입), Basic (기본 알고리즘), Intermediate (수식·구현), Advanced (최적화·시스템 설계), Research (논문 재현). 수준은 PART 단위로 일괄 지정하지 않고 Concept마다 선수 지식을 기준으로 설정했습니다. 해당 값도 설계안이며 독립 Reviewer 검수가 필요합니다.
 
 ## PART별 교육 목표와 Chapter
 
@@ -16,7 +16,7 @@
 
 **Chapter 후보:** CH 00.1 Python & 배열 · CH 00.2 선형대수 · CH 00.3 미적분 · CH 00.4 확률·통계.
 
-**Concept (24개):** AI·ML·Deep Learning의 관계 · Python 기본 문법 · NumPy 배열 · Matplotlib · Scalar · Vector · Matrix · Tensor · Shape·Dimension·Axis · Dot Product · Matrix Multiplication · Norm·Euclidean Distance · Cosine Similarity · Function·Linear/Nonlinear · Derivative·Partial Derivative · Gradient·Chain Rule · Probability·Random Variable · Conditional Probability·Bayes Rule · Mean·Variance·Standard Deviation · Median·Quantile · Probability Distributions · Likelihood·Log-likelihood · Entropy·KL Divergence · Sampling·Random Seed.
+**Concept (25개):** AI·ML·Deep Learning의 관계 · Python 기본 문법 · NumPy 배열 · Matplotlib · Scalar · Vector · Matrix · Tensor · Shape·Dimension·Axis · Dot Product · Matrix Multiplication · Norm·Euclidean Distance · Cosine Similarity · Function·Linear/Nonlinear · Derivative·Partial Derivative · Gradient (Partial Derivatives) · Chain Rule · Probability·Random Variable · Conditional Probability·Bayes Rule · Mean·Variance·Standard Deviation · Median·Quantile · Probability Distributions · Likelihood·Log-likelihood · Entropy·KL Divergence · Sampling·Random Seed.
 
 **대표 연결:** 기초 수학과 Python → ML / Image Tensor.
 
@@ -26,7 +26,7 @@
 
 **Chapter 후보:** CH 01.1 데이터·과업 · CH 01.2 모델·손실 · CH 01.3 일반화·검증.
 
-**Concept (20개):** Supervised·Unsupervised·Self-supervised · Sample·Feature·Label · Classification · Regression · Linear Regression · Logistic Regression · Loss Function · Sigmoid·Softmax · Cross-entropy · MAE·MSE·RMSE · Optimization Objective · Train·Validation·Test · Generalization·Overfitting · Bias–Variance Trade-off · L1·L2 Regularization · Cross-validation · Data Leakage · k-Nearest Neighbors · SVM·Decision Boundary · Probability Calibration.
+**Concept (21개):** Supervised·Unsupervised·Self-supervised · Sample·Feature·Label · Classification · Regression · Linear Regression · Logistic Regression · Loss Function · Softmax · Sigmoid · Cross-entropy · MAE·MSE·RMSE · Optimization Objective · Train·Validation·Test · Generalization·Overfitting · Bias–Variance Trade-off · L1·L2 Regularization · Cross-validation · Data Leakage · k-Nearest Neighbors · SVM·Decision Boundary · Probability Calibration.
 
 **대표 연결:** 선수 개념에서 시작해 관련 응용·검증·논문으로 확장.
 
@@ -36,7 +36,7 @@
 
 **Chapter 후보:** CH 02.1 MLP·forward · CH 02.2 backprop·optimizer · CH 02.3 regularization·transfer.
 
-**Concept (17개):** Perceptron · Multi-layer Perceptron · Activation·ReLU·GELU · Forward Propagation·Weight·Bias · Backpropagation · Gradient Descent · SGD·Mini-batch · Momentum·Adam·AdamW · Learning Rate·Epoch·Batch · Weight Initialization · Vanishing·Exploding Gradient · Dropout · Batch·Layer Normalization · Residual Connection · Representation·Transfer Learning · Fine-tuning · Mixed Precision.
+**Concept (20개):** Perceptron · Multi-layer Perceptron · Activation·ReLU·GELU · Forward Propagation·Weight·Bias · Backpropagation · Gradient Descent · SGD·Mini-batch · Momentum·Adam·AdamW · Learning Rate · Epoch·Mini-batch · Weight Initialization · Vanishing·Exploding Gradient · Dropout · Batch·Layer Normalization · Layer Normalization · Residual Connection · Transfer Learning · Representation Learning · Fine-tuning · Mixed Precision.
 
 **대표 연결:** 선수 개념에서 시작해 관련 응용·검증·논문으로 확장.
 
@@ -66,7 +66,7 @@
 
 **Chapter 후보:** CH 05.1 Classification·Box · CH 05.2 Segmentation·Mask · CH 05.3 U-Net·YOLO·SAM.
 
-**Concept (17개):** Classification·Detection·Segmentation Output · Image Classification · Bounding Box·Coordinates · Object Detection · Semantic Segmentation · Instance Segmentation · Panoptic Segmentation · Polygon·Mask·Hole · IoU·Dice · Non-maximum Suppression · AP·mAP · YOLO Detection·Segmentation · Small Object Detection · U-Net · SAM · SAM2 Video Segmentation · Grounding DINO.
+**Concept (19개):** Classification·Detection·Segmentation Output · Image Classification · Bounding Box·Coordinates · Object Detection · Semantic Segmentation · Instance Segmentation · Panoptic Segmentation · Polygon·Mask·Hole · IoU·Dice · Non-maximum Suppression · AP·mAP · YOLO Detection·Segmentation · Small Object Detection · U-Net · SAM · SAM2 Video Segmentation · Grounding DINO (Open-Vocabulary Detection) · DETR·Object Queries · DINO-DETR (Denoising Detector).
 
 **대표 연결:** 선수 개념에서 시작해 관련 응용·검증·논문으로 확장.
 
@@ -76,7 +76,7 @@
 
 **Chapter 후보:** CH 06.1 Token·QKV · CH 06.2 Encoder·ViT · CH 06.3 SSL·CLIP·DINO.
 
-**Concept (14개):** Token·Embedding · Positional Encoding · Query·Key·Value · Self-attention · Multi-head Attention · Transformer Encoder · Vision Transformer · Self-supervised·Contrastive Learning · DINO·Teacher–Student · DINOv2 · CLIP · Foundation Model · Open-vocabulary Recognition · Relative Position Bias.
+**Concept (15개):** Token·Embedding · Positional Encoding · Query·Key·Value · Self-attention · Multi-head Attention · Transformer Encoder · Vision Transformer · Self-Supervised Learning · Contrastive Learning · DINO·Teacher–Student · DINOv2 · CLIP · Foundation Model · Open-vocabulary Recognition · Relative Position Bias.
 
 **대표 연결:** Embedding → QKV → Self-attention → ViT → SSL / CLIP.
 
@@ -86,7 +86,7 @@
 
 **Chapter 후보:** CH 07.1 One-class · CH 07.2 Feature·Memory · CH 07.3 PatchCore·PaDiM·Calibration.
 
-**Concept (18개):** Outlier·Novelty Detection · One-class Learning · Reconstruction-based Detection · Feature-based Detection · Patch Embedding · Nearest Neighbor · Memory Bank · Coreset Sampling · Approximate Nearest Neighbor · PatchCore · PaDiM · SPADE · STFPM · EfficientAD · Deep SVDD · Autoencoder·Reverse Distillation · Anomaly Score·Heatmap · Threshold Calibration·Domain Shift.
+**Concept (20개):** Outlier·Novelty Detection · One-class Learning · Reconstruction-based Detection · Feature-based Detection · Patch Embedding · Nearest Neighbor · Memory Bank · Coreset Sampling · Approximate Nearest Neighbor · PatchCore · PaDiM · SPADE · STFPM · EfficientAD · Deep SVDD · Autoencoder for Anomaly Detection · Reverse Distillation · Anomaly Score·Heatmap · Anomaly Threshold Selection · Anomaly Domain Shift.
 
 **대표 연결:** 정상 특징 → Patch Embedding → NN → Memory → Coreset → PatchCore.
 
@@ -136,7 +136,7 @@
 
 **Chapter 후보:** CH 12.1 Confusion Metrics · CH 12.2 Segmentation Boundary · CH 12.3 CI·Ablation.
 
-**Concept (12개):** Confusion Matrix · Accuracy·Precision·Recall·F1 · ROC-AUC·PR-AUC · IoU·mAP · Boundary IoU·ASSD·HD95 · MAE·MSE·RMSE · Threshold Analysis · Error Analysis · Confidence Interval·Bootstrap · Significance·Effect Size · Ablation Study · OOD·Robustness Evaluation.
+**Concept (13개):** Confusion Matrix · Accuracy·Precision·Recall·F1 · ROC-AUC·PR-AUC · IoU·mAP · Boundary IoU·ASSD·HD95 · MAE·MSE·RMSE · Threshold Analysis · Error Analysis · Confidence Interval·Bootstrap · Significance·Effect Size · Ablation Study · OOD Detection Evaluation · Robustness Evaluation.
 
 **대표 연결:** 선수 개념에서 시작해 관련 응용·검증·논문으로 확장.
 
@@ -166,7 +166,7 @@
 
 **Chapter 후보:** CH 15.1 PRML·Bayesian · CH 15.2 EM·VI·MCMC · CH 15.3 Domain·OOD·Compression.
 
-**Concept (16개):** Bayesian Inference · Graphical Models · Gaussian Mixture · EM Algorithm · Variational Inference·ELBO · Monte Carlo·MCMC · HMM · Kalman Filter · Domain Adaptation · Continual Learning · OOD Detection · Quantization · Pruning · Knowledge Distillation · Diffusion Models · Research Reproduction.
+**Concept (17개):** Bayesian Inference · Graphical Models · Gaussian Mixture · EM Algorithm · Variational Inference·ELBO · Monte Carlo·MCMC · HMM · State-space Models · Kalman Filter · Domain Adaptation · Continual Learning · OOD Detection · Quantization · Pruning · Knowledge Distillation · Diffusion Models · Research Reproduction.
 
 **대표 연결:** 선수 개념에서 시작해 관련 응용·검증·논문으로 확장.
 
@@ -181,3 +181,7 @@ CS231n은 개념별 학습 뒤 해당 강의 흐름을 다시 연결하는 **교
 ## 추가/중복 기준
 
 새 용어가 이미 있는 Concept의 부분 개념이면 해당 페이지 내 Section으로 추가합니다. 별도 전제·수식·실습·재사용 수요가 있는 경우에만 Concept 승격을 제안합니다. 출처는 논문→공식 구현/문서→대학 강의 순서로 확인합니다.
+
+## 의미론적 정정 및 상태
+
+개념 분리, 과도한 의존성 제거, 기존 내용의 부분 커버리지 분류는 [SEMANTIC_AUDIT.md](SEMANTIC_AUDIT.md)에 기록했습니다. Curriculum의 개념명·수량은 DAG JSON과 동기화했습니다. 독립 Reviewer의 최종 PASS는 아직 받지 않았습니다.
