@@ -1,0 +1,200 @@
+{
+  "cases": [
+    {
+      "viewport": [
+        1600,
+        950
+      ],
+      "overflow": false,
+      "tracking": "-1.33333px",
+      "broken": [],
+      "overviewFigures": 1,
+      "convFigures": 1,
+      "mathErrors": 0,
+      "fonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Regular",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "mathjax_loaded": true,
+      "selected_values": [
+        3,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        3,
+        0
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        1440,
+        810
+      ],
+      "overflow": false,
+      "tracking": "-1.33333px",
+      "broken": [],
+      "overviewFigures": 1,
+      "convFigures": 1,
+      "mathErrors": 0,
+      "fonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Regular",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "mathjax_loaded": true,
+      "selected_values": [
+        3,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        3,
+        0
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "tracking": "-1.33333px",
+      "broken": [],
+      "overviewFigures": 1,
+      "convFigures": 1,
+      "mathErrors": 0,
+      "fonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Regular",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "mathjax_loaded": true,
+      "selected_values": [
+        3,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        3,
+        0
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "overflow": false,
+      "tracking": "-1.33333px",
+      "broken": [],
+      "overviewFigures": 1,
+      "convFigures": 1,
+      "mathErrors": 0,
+      "fonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Regular",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "mathjax_loaded": true,
+      "selected_values": [
+        3,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        3,
+        0
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "tracking": "-1.33333px",
+      "broken": [],
+      "overviewFigures": 1,
+      "convFigures": 1,
+      "mathErrors": 0,
+      "fonts": [],
+      "mathjax_loaded": true,
+      "selected_values": [
+        3,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        3,
+        0
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        430,
+        900
+      ],
+      "overflow": false,
+      "tracking": "-1.33333px",
+      "broken": [],
+      "overviewFigures": 1,
+      "convFigures": 1,
+      "mathErrors": 0,
+      "fonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Regular",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "mathjax_loaded": true,
+      "selected_values": [
+        3,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        3,
+        0
+      ],
+      "errors": []
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Existing paper SVG typography is retained; not claimed Pretendard",
+    "No full chapter scientific peer review or user approval"
+  ]
+}

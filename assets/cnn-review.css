@@ -1,0 +1,18 @@
+@font-face{font-family:'Pretendard Variable';font-weight:100 900;font-style:normal;font-display:swap;src:url('fonts/pretendard/PretendardVariable.woff2') format('woff2')}
+body[data-page=cnn]{font-family:'Pretendard Variable',sans-serif;--blue:#3168C8;--green:#26A6A1;--ink:#12233F;letter-spacing:-1pt}
+body[data-page=cnn] :not(mjx-container):not(mjx-container *){letter-spacing:-1pt}
+body[data-page=cnn] .layout{max-width:1360px}
+body[data-page=cnn] h1{line-height:1.2;letter-spacing:-1pt}
+body[data-page=cnn] h2{line-height:1.3;margin-bottom:20px}
+body[data-page=cnn] p{line-height:1.8}
+body[data-page=cnn] .eyebrow{color:#3168C8}
+body[data-page=cnn] .article-section{padding-top:32px;margin-top:32px}
+body[data-page=cnn] .article-section>p{max-width:900px}
+body[data-page=cnn] code,body[data-page=cnn] .matrix span,body[data-page=cnn] .lab-output{font-family:'Pretendard Variable',sans-serif}
+body[data-page=cnn] .paper-figure{overflow-x:auto;box-shadow:none}
+body[data-page=cnn] .paper-figure img{min-width:1020px}
+body[data-page=cnn] .meta{display:none}
+body[data-page=cnn] .lab{padding:24px;line-height:1.6}
+body[data-page=cnn] .lab-heading{margin-bottom:24px}
+body[data-page=cnn] .lab-output{margin-top:20px}
+@media(max-width:520px){body[data-page=cnn] .lab{padding:17px}}
