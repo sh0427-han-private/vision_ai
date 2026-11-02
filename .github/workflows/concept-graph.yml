@@ -1,0 +1,20 @@
+name: Validate concept dependency graph
+
+on:
+  pull_request:
+    paths:
+      - 'planning/concepts.v1.json'
+      - 'scripts/validate_concept_graph.py'
+      - '.github/workflows/concept-graph.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check concept references, cycles, and existing anchors
+        run: python3 scripts/validate_concept_graph.py
