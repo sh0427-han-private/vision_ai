@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "repo": "sh0427-han-private/vision_ai",
   "baseline_sha": "e2b2c2f377c1c97c3b6d010cb34c63988d0fca05",
-  "note": "이 설계 그래프는 개별 페이지 구현 완료 현황이 아니다. existing-section은 해당 주제가 기존 Anchor에서 다뤄졌다는 뜻이다.",
+  "note": "Initial concept inventory revised by semantic audit: prerequisites are minimum conceptual dependencies, not optional technology preferences. mapped-existing vs needs-expansion vs planned are coverage states, not page-completion claims.",
   "parts": [
     {
       "id": "PART 00",
@@ -24,6 +24,7 @@
         "m.function",
         "m.derivative",
         "m.gradient",
+        "m.chain",
         "m.prob",
         "m.bayes",
         "m.mean",
@@ -46,6 +47,7 @@
         "ml.logistic",
         "ml.loss",
         "ml.softmax",
+        "ml.sigmoid",
         "ml.ce",
         "ml.mse",
         "ml.optim",
@@ -73,12 +75,15 @@
         "dl.sgd",
         "dl.adam",
         "dl.lr",
+        "dl.epoch",
         "dl.init",
         "dl.vanish",
         "dl.dropout",
         "dl.bn",
+        "dl.ln",
         "dl.residual",
         "dl.transfer",
+        "dl.repr",
         "dl.finetune",
         "dl.mixed"
       ]
@@ -145,7 +150,9 @@
         "cv.unet",
         "cv.sam",
         "cv.sam2",
-        "cv.grounding"
+        "cv.grounding",
+        "cv.detr",
+        "cv.dino_detr"
       ]
     },
     {
@@ -160,6 +167,7 @@
         "tr.encoder",
         "tr.vit",
         "tr.ssl",
+        "tr.contrast",
         "tr.dino",
         "tr.dinov2",
         "tr.clip",
@@ -188,8 +196,10 @@
         "an.efficientad",
         "an.svdd",
         "an.ae",
+        "an.reverse",
         "an.score",
-        "an.threshold"
+        "an.threshold",
+        "an.shift"
       ]
     },
     {
@@ -282,7 +292,8 @@
         "eval.ci",
         "eval.effect",
         "eval.ablation",
-        "eval.ood"
+        "eval.ood",
+        "eval.robust"
       ]
     },
     {
@@ -337,6 +348,7 @@
         "res.vi",
         "res.mcmc",
         "res.hmm",
+        "res.state",
         "res.kalman",
         "res.domain",
         "res.continual",
@@ -382,7 +394,7 @@
       "id": "m.numpy",
       "title": "NumPy 배열",
       "part": "PART 00",
-      "level": "Foundation",
+      "level": "Basic",
       "prerequisites": [
         "m.python"
       ],
@@ -394,7 +406,7 @@
       "id": "m.plot",
       "title": "Matplotlib",
       "part": "PART 00",
-      "level": "Foundation",
+      "level": "Basic",
       "prerequisites": [
         "m.python"
       ],
@@ -429,6 +441,8 @@
         "m.dot",
         "m.norm",
         "m.derivative",
+        "ml.softmax",
+        "dl.ln",
         "tr.token",
         "geo.coords"
       ],
@@ -449,7 +463,7 @@
         "cnn.kernel",
         "geo.homo",
         "geo.eigen",
-        "res.kalman"
+        "res.state"
       ],
       "status": "planned",
       "legacy_url": null
@@ -550,7 +564,7 @@
         "m.norm"
       ],
       "next_topics": [
-        "tr.ssl"
+        "tr.contrast"
       ],
       "status": "planned",
       "legacy_url": null
@@ -567,6 +581,7 @@
         "m.derivative",
         "ml.loss",
         "ml.softmax",
+        "ml.sigmoid",
         "dl.activation",
         "img.fft"
       ],
@@ -583,14 +598,15 @@
         "m.vector"
       ],
       "next_topics": [
-        "m.gradient"
+        "m.gradient",
+        "m.chain"
       ],
       "status": "planned",
       "legacy_url": null
     },
     {
       "id": "m.gradient",
-      "title": "Gradient·Chain Rule",
+      "title": "Gradient (Partial Derivatives)",
       "part": "PART 00",
       "level": "Foundation",
       "prerequisites": [
@@ -601,6 +617,20 @@
         "dl.backprop",
         "dl.gd",
         "img.edge"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "m.chain",
+      "title": "Chain Rule",
+      "part": "PART 00",
+      "level": "Foundation",
+      "prerequisites": [
+        "m.derivative"
+      ],
+      "next_topics": [
+        "dl.backprop"
       ],
       "status": "planned",
       "legacy_url": null
@@ -618,22 +648,22 @@
         "m.sample",
         "ts.series"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch1"
     },
     {
       "id": "m.bayes",
       "title": "Conditional Probability·Bayes Rule",
       "part": "PART 00",
-      "level": "Foundation",
+      "level": "Basic",
       "prerequisites": [
         "m.prob"
       ],
       "next_topics": [
         "res.bayes"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch1"
     },
     {
       "id": "m.mean",
@@ -650,10 +680,12 @@
         "ml.bias",
         "dl.init",
         "dl.bn",
+        "dl.ln",
         "img.hist",
         "img.quality",
         "geo.svd",
-        "ts.series"
+        "ts.series",
+        "ts.z"
       ],
       "status": "planned",
       "legacy_url": null
@@ -668,7 +700,8 @@
       ],
       "next_topics": [
         "geo.mad",
-        "ts.moving"
+        "ts.moving",
+        "ts.z"
       ],
       "status": "planned",
       "legacy_url": null
@@ -677,7 +710,7 @@
       "id": "m.distribution",
       "title": "Probability Distributions",
       "part": "PART 00",
-      "level": "Foundation",
+      "level": "Basic",
       "prerequisites": [
         "m.prob",
         "m.mean"
@@ -686,16 +719,17 @@
         "m.likelihood",
         "an.padim",
         "res.gmm",
+        "res.state",
         "res.diffusion"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch2"
     },
     {
       "id": "m.likelihood",
       "title": "Likelihood·Log-likelihood",
       "part": "PART 00",
-      "level": "Foundation",
+      "level": "Basic",
       "prerequisites": [
         "m.distribution"
       ],
@@ -703,14 +737,14 @@
         "ml.logistic",
         "res.bayes"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch1"
     },
     {
       "id": "m.entropy",
       "title": "Entropy·KL Divergence",
       "part": "PART 00",
-      "level": "Foundation",
+      "level": "Basic",
       "prerequisites": [
         "m.prob"
       ],
@@ -757,7 +791,7 @@
       "id": "ml.dataset",
       "title": "Sample·Feature·Label",
       "part": "PART 01",
-      "level": "Basic",
+      "level": "Foundation",
       "prerequisites": [
         "ml.paradigm"
       ],
@@ -767,6 +801,7 @@
         "ml.loss",
         "ml.split",
         "dl.sgd",
+        "dl.epoch",
         "an.outlier",
         "data.label",
         "res.gmm"
@@ -778,7 +813,7 @@
       "id": "ml.classification",
       "title": "Classification",
       "part": "PART 01",
-      "level": "Basic",
+      "level": "Foundation",
       "prerequisites": [
         "ml.dataset"
       ],
@@ -798,7 +833,7 @@
       "id": "ml.regression",
       "title": "Regression",
       "part": "PART 01",
-      "level": "Basic",
+      "level": "Foundation",
       "prerequisites": [
         "ml.dataset"
       ],
@@ -820,8 +855,8 @@
       "next_topics": [
         "geo.ls"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch3"
     },
     {
       "id": "ml.logistic",
@@ -830,13 +865,14 @@
       "level": "Basic",
       "prerequisites": [
         "ml.classification",
-        "m.likelihood"
+        "m.likelihood",
+        "ml.sigmoid"
       ],
       "next_topics": [
         "ml.calibration"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch4"
     },
     {
       "id": "ml.loss",
@@ -860,18 +896,32 @@
     },
     {
       "id": "ml.softmax",
-      "title": "Sigmoid·Softmax",
+      "title": "Softmax",
+      "part": "PART 01",
+      "level": "Basic",
+      "prerequisites": [
+        "m.function",
+        "m.vector"
+      ],
+      "next_topics": [
+        "tr.attention"
+      ],
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch4"
+    },
+    {
+      "id": "ml.sigmoid",
+      "title": "Sigmoid",
       "part": "PART 01",
       "level": "Basic",
       "prerequisites": [
         "m.function"
       ],
       "next_topics": [
-        "ml.ce",
-        "tr.attention"
+        "ml.logistic"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch4"
     },
     {
       "id": "ml.ce",
@@ -880,8 +930,7 @@
       "level": "Basic",
       "prerequisites": [
         "ml.loss",
-        "m.entropy",
-        "ml.softmax"
+        "m.entropy"
       ],
       "next_topics": [],
       "status": "planned",
@@ -931,6 +980,7 @@
         "ml.leakage",
         "ml.calibration",
         "cv.map",
+        "an.threshold",
         "data.experiment",
         "eval.confusion"
       ],
@@ -949,7 +999,11 @@
         "ml.bias",
         "dl.dropout",
         "dl.transfer",
-        "ts.drift"
+        "dl.repr",
+        "an.shift",
+        "ts.drift",
+        "eval.robust",
+        "res.domain"
       ],
       "status": "planned",
       "legacy_url": null
@@ -984,7 +1038,7 @@
       "id": "ml.cv",
       "title": "Cross-validation",
       "part": "PART 01",
-      "level": "Basic",
+      "level": "Intermediate",
       "prerequisites": [
         "ml.split"
       ],
@@ -1018,14 +1072,14 @@
         "m.norm"
       ],
       "next_topics": [],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#classification"
     },
     {
       "id": "ml.svm",
       "title": "SVM·Decision Boundary",
       "part": "PART 01",
-      "level": "Basic",
+      "level": "Intermediate",
       "prerequisites": [
         "ml.classification",
         "ml.loss"
@@ -1038,13 +1092,12 @@
       "id": "ml.calibration",
       "title": "Probability Calibration",
       "part": "PART 01",
-      "level": "Basic",
+      "level": "Intermediate",
       "prerequisites": [
         "ml.logistic",
         "ml.split"
       ],
       "next_topics": [
-        "an.threshold",
         "eval.threshold"
       ],
       "status": "planned",
@@ -1054,7 +1107,7 @@
       "id": "dl.perceptron",
       "title": "Perceptron",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ml.classification",
         "m.matmul"
@@ -1069,34 +1122,35 @@
       "id": "dl.mlp",
       "title": "Multi-layer Perceptron",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
-        "dl.perceptron"
+        "dl.perceptron",
+        "dl.activation"
       ],
       "next_topics": [
-        "dl.activation",
         "dl.forward",
         "dl.dropout",
         "dl.bn",
-        "dl.transfer",
+        "dl.repr",
         "an.recon",
         "an.svdd",
+        "an.ae",
         "video.rnn",
         "res.diffusion"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#nn"
     },
     {
       "id": "dl.activation",
       "title": "Activation·ReLU·GELU",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
-        "m.function",
-        "dl.mlp"
+        "m.function"
       ],
       "next_topics": [
+        "dl.mlp",
         "cnn.base"
       ],
       "status": "planned",
@@ -1106,7 +1160,7 @@
       "id": "dl.forward",
       "title": "Forward Propagation·Weight·Bias",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "dl.mlp"
       ],
@@ -1115,6 +1169,7 @@
         "dl.init",
         "dl.residual",
         "dl.mixed",
+        "res.quant",
         "res.prune"
       ],
       "status": "planned",
@@ -1128,6 +1183,7 @@
       "prerequisites": [
         "dl.forward",
         "m.gradient",
+        "m.chain",
         "ml.loss"
       ],
       "next_topics": [
@@ -1141,13 +1197,14 @@
       "id": "dl.gd",
       "title": "Gradient Descent",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "m.gradient",
         "ml.optim"
       ],
       "next_topics": [
-        "dl.sgd"
+        "dl.sgd",
+        "dl.lr"
       ],
       "status": "planned",
       "legacy_url": null
@@ -1163,7 +1220,7 @@
       ],
       "next_topics": [
         "dl.adam",
-        "dl.lr"
+        "dl.epoch"
       ],
       "status": "planned",
       "legacy_url": null
@@ -1182,10 +1239,23 @@
     },
     {
       "id": "dl.lr",
-      "title": "Learning Rate·Epoch·Batch",
+      "title": "Learning Rate",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
+        "dl.gd"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.epoch",
+      "title": "Epoch·Mini-batch",
+      "part": "PART 02",
+      "level": "Basic",
+      "prerequisites": [
+        "ml.dataset",
         "dl.sgd"
       ],
       "next_topics": [],
@@ -1241,6 +1311,19 @@
         "dl.mlp",
         "m.mean"
       ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "dl.ln",
+      "title": "Layer Normalization",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "m.mean",
+        "m.vector"
+      ],
       "next_topics": [
         "tr.encoder"
       ],
@@ -1264,7 +1347,23 @@
     },
     {
       "id": "dl.transfer",
-      "title": "Representation·Transfer Learning",
+      "title": "Transfer Learning",
+      "part": "PART 02",
+      "level": "Intermediate",
+      "prerequisites": [
+        "dl.repr",
+        "ml.generalize"
+      ],
+      "next_topics": [
+        "dl.finetune",
+        "res.distill"
+      ],
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#transfer"
+    },
+    {
+      "id": "dl.repr",
+      "title": "Representation Learning",
       "part": "PART 02",
       "level": "Intermediate",
       "prerequisites": [
@@ -1272,14 +1371,15 @@
         "ml.generalize"
       ],
       "next_topics": [
-        "dl.finetune",
-        "cv.sam",
-        "tr.token",
+        "dl.transfer",
+        "tr.ssl",
         "tr.foundation",
-        "res.distill"
+        "an.stfpm",
+        "an.efficientad",
+        "an.reverse"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#transfer"
     },
     {
       "id": "dl.finetune",
@@ -1300,7 +1400,7 @@
       "id": "dl.mixed",
       "title": "Mixed Precision",
       "part": "PART 02",
-      "level": "Intermediate",
+      "level": "Advanced",
       "prerequisites": [
         "dl.forward",
         "dl.backprop"
@@ -1313,7 +1413,7 @@
       "id": "img.pixel",
       "title": "Pixel·Image Decode",
       "part": "PART 03",
-      "level": "Basic",
+      "level": "Foundation",
       "prerequisites": [
         "m.tensor"
       ],
@@ -1331,7 +1431,7 @@
       "id": "img.rgb",
       "title": "RGB·Channel",
       "part": "PART 03",
-      "level": "Basic",
+      "level": "Foundation",
       "prerequisites": [
         "img.pixel",
         "m.shape"
@@ -1347,7 +1447,7 @@
       "id": "img.tensor",
       "title": "Image Tensor·HWC/CHW/NCHW",
       "part": "PART 03",
-      "level": "Basic",
+      "level": "Foundation",
       "prerequisites": [
         "img.rgb",
         "m.shape"
@@ -1436,7 +1536,7 @@
       "id": "img.edge",
       "title": "Sobel·Canny Edge",
       "part": "PART 03",
-      "level": "Basic",
+      "level": "Intermediate",
       "prerequisites": [
         "img.blur",
         "m.gradient"
@@ -1534,7 +1634,7 @@
       "id": "cnn.kernel",
       "title": "Spatial Filter Kernel",
       "part": "PART 04",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "m.matrix",
         "img.tensor"
@@ -1566,7 +1666,7 @@
       "id": "cnn.stride",
       "title": "Stride·Padding·Dilation",
       "part": "PART 04",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cnn.conv",
         "m.shape"
@@ -1582,7 +1682,7 @@
       "id": "cnn.map",
       "title": "Feature Map·Channel",
       "part": "PART 04",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cnn.conv",
         "cnn.stride"
@@ -1631,7 +1731,7 @@
       "id": "cnn.pool",
       "title": "Pooling",
       "part": "PART 04",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cnn.map"
       ],
@@ -1763,7 +1863,7 @@
       "id": "cv.task",
       "title": "Classification·Detection·Segmentation Output",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Foundation",
       "prerequisites": [
         "img.tensor",
         "ml.classification"
@@ -1780,7 +1880,7 @@
       "id": "cv.class",
       "title": "Image Classification",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cv.task",
         "cnn.base"
@@ -1796,7 +1896,7 @@
       "id": "cv.box",
       "title": "Bounding Box·Coordinates",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cv.task"
       ],
@@ -1821,7 +1921,7 @@
         "cv.nms",
         "cv.yolo",
         "cv.small",
-        "cv.grounding",
+        "cv.detr",
         "video.track"
       ],
       "status": "existing-section",
@@ -1857,8 +1957,7 @@
         "cv.detect"
       ],
       "next_topics": [
-        "cv.panoptic",
-        "cv.sam"
+        "cv.panoptic"
       ],
       "status": "existing-section",
       "legacy_url": "notes/tasks.html#overview"
@@ -1880,12 +1979,13 @@
       "id": "cv.mask",
       "title": "Polygon·Mask·Hole",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cv.semantic"
       ],
       "next_topics": [
         "cv.iou",
+        "cv.sam",
         "data.format"
       ],
       "status": "planned",
@@ -1895,7 +1995,7 @@
       "id": "cv.iou",
       "title": "IoU·Dice",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "cv.mask",
         "cv.box"
@@ -1981,10 +2081,10 @@
       "id": "cv.sam",
       "title": "SAM",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Advanced",
       "prerequisites": [
-        "cv.instance",
-        "dl.transfer"
+        "cv.mask",
+        "tr.encoder"
       ],
       "next_topics": [
         "cv.sam2"
@@ -1996,7 +2096,7 @@
       "id": "cv.sam2",
       "title": "SAM2 Video Segmentation",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Advanced",
       "prerequisites": [
         "cv.sam",
         "video.frame"
@@ -2007,14 +2107,43 @@
     },
     {
       "id": "cv.grounding",
-      "title": "Grounding DINO",
+      "title": "Grounding DINO (Open-Vocabulary Detection)",
       "part": "PART 05",
-      "level": "Intermediate",
+      "level": "Advanced",
       "prerequisites": [
-        "cv.detect",
-        "tr.clip"
+        "cv.dino_detr",
+        "tr.token"
       ],
       "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.detr",
+      "title": "DETR·Object Queries",
+      "part": "PART 05",
+      "level": "Advanced",
+      "prerequisites": [
+        "cv.detect",
+        "tr.encoder"
+      ],
+      "next_topics": [
+        "cv.dino_detr"
+      ],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "cv.dino_detr",
+      "title": "DINO-DETR (Denoising Detector)",
+      "part": "PART 05",
+      "level": "Advanced",
+      "prerequisites": [
+        "cv.detr"
+      ],
+      "next_topics": [
+        "cv.grounding"
+      ],
       "status": "planned",
       "legacy_url": null
     },
@@ -2022,14 +2151,15 @@
       "id": "tr.token",
       "title": "Token·Embedding",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
-        "m.vector",
-        "dl.transfer"
+        "m.vector"
       ],
       "next_topics": [
+        "cv.grounding",
         "tr.position",
-        "tr.qkv"
+        "tr.qkv",
+        "tr.clip"
       ],
       "status": "existing-section",
       "legacy_url": "notes/vit.html#tokens"
@@ -2038,7 +2168,7 @@
       "id": "tr.position",
       "title": "Positional Encoding",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
         "tr.token"
       ],
@@ -2052,7 +2182,7 @@
       "id": "tr.qkv",
       "title": "Query·Key·Value",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "tr.token",
         "m.matmul"
@@ -2067,7 +2197,7 @@
       "id": "tr.attention",
       "title": "Self-attention",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "tr.qkv",
         "ml.softmax"
@@ -2083,7 +2213,7 @@
       "id": "tr.multi",
       "title": "Multi-head Attention",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "tr.attention"
       ],
@@ -2097,12 +2227,14 @@
       "id": "tr.encoder",
       "title": "Transformer Encoder",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "tr.multi",
-        "dl.bn"
+        "dl.ln"
       ],
       "next_topics": [
+        "cv.sam",
+        "cv.detr",
         "tr.vit",
         "video.temporal"
       ],
@@ -2119,27 +2251,40 @@
         "img.tensor"
       ],
       "next_topics": [
-        "tr.dino",
-        "tr.clip"
+        "tr.dino"
       ],
       "status": "existing-section",
       "legacy_url": "notes/vit.html#patches"
     },
     {
       "id": "tr.ssl",
-      "title": "Self-supervised·Contrastive Learning",
+      "title": "Self-Supervised Learning",
       "part": "PART 06",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ml.paradigm",
+        "dl.repr"
+      ],
+      "next_topics": [
+        "tr.contrast",
+        "tr.dino",
+        "tr.foundation",
+        "video.mae"
+      ],
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#modern"
+    },
+    {
+      "id": "tr.contrast",
+      "title": "Contrastive Learning",
+      "part": "PART 06",
+      "level": "Intermediate",
+      "prerequisites": [
+        "tr.ssl",
         "m.cosine"
       ],
       "next_topics": [
-        "tr.dino",
-        "tr.clip",
-        "tr.foundation",
-        "an.stfpm",
-        "video.mae"
+        "tr.clip"
       ],
       "status": "planned",
       "legacy_url": null
@@ -2156,8 +2301,8 @@
       "next_topics": [
         "tr.dinov2"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#modern"
     },
     {
       "id": "tr.dinov2",
@@ -2177,15 +2322,14 @@
       "part": "PART 06",
       "level": "Advanced",
       "prerequisites": [
-        "tr.ssl",
-        "tr.vit"
+        "tr.contrast",
+        "tr.token"
       ],
       "next_topics": [
-        "cv.grounding",
         "tr.open"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/cs231n.html#modern"
     },
     {
       "id": "tr.foundation",
@@ -2194,7 +2338,7 @@
       "level": "Advanced",
       "prerequisites": [
         "tr.ssl",
-        "dl.transfer"
+        "dl.repr"
       ],
       "next_topics": [
         "tr.open"
@@ -2232,15 +2376,16 @@
       "id": "an.outlier",
       "title": "Outlier·Novelty Detection",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
         "ml.dataset"
       ],
       "next_topics": [
         "an.one",
+        "an.score",
         "video.anomaly",
         "geo.ransac",
-        "res.ood"
+        "eval.ood"
       ],
       "status": "existing-section",
       "legacy_url": "notes/patchcore.html#problem"
@@ -2249,7 +2394,7 @@
       "id": "an.one",
       "title": "One-class Learning",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
         "an.outlier"
       ],
@@ -2265,7 +2410,7 @@
       "id": "an.recon",
       "title": "Reconstruction-based Detection",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "an.one",
         "dl.mlp"
@@ -2280,14 +2425,17 @@
       "id": "an.feature",
       "title": "Feature-based Detection",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "an.one",
         "cnn.map"
       ],
       "next_topics": [
         "an.embedding",
-        "an.stfpm"
+        "an.stfpm",
+        "an.efficientad",
+        "an.reverse",
+        "an.shift"
       ],
       "status": "planned",
       "legacy_url": null
@@ -2296,13 +2444,14 @@
       "id": "an.embedding",
       "title": "Patch Embedding",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "an.feature",
         "cnn.map"
       ],
       "next_topics": [
         "an.nearest",
+        "an.memory",
         "an.padim",
         "an.spade"
       ],
@@ -2313,14 +2462,14 @@
       "id": "an.nearest",
       "title": "Nearest Neighbor",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "an.embedding",
         "m.norm"
       ],
       "next_topics": [
-        "an.memory",
         "an.ann",
+        "an.patchcore",
         "an.spade"
       ],
       "status": "existing-section",
@@ -2330,13 +2479,12 @@
       "id": "an.memory",
       "title": "Memory Bank",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
-        "an.nearest"
+        "an.embedding"
       ],
       "next_topics": [
-        "an.coreset",
-        "an.patchcore"
+        "an.coreset"
       ],
       "status": "existing-section",
       "legacy_url": "notes/patchcore.html#memory"
@@ -2373,12 +2521,10 @@
       "part": "PART 07",
       "level": "Advanced",
       "prerequisites": [
-        "an.memory",
+        "an.nearest",
         "an.coreset"
       ],
-      "next_topics": [
-        "an.score"
-      ],
+      "next_topics": [],
       "status": "existing-section",
       "legacy_url": "notes/patchcore.html#pipeline"
     },
@@ -2415,12 +2561,9 @@
       "level": "Advanced",
       "prerequisites": [
         "an.feature",
-        "tr.ssl"
+        "dl.repr"
       ],
-      "next_topics": [
-        "an.efficientad",
-        "an.ae"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -2430,7 +2573,8 @@
       "part": "PART 07",
       "level": "Advanced",
       "prerequisites": [
-        "an.stfpm"
+        "an.feature",
+        "dl.repr"
       ],
       "next_topics": [],
       "status": "planned",
@@ -2451,12 +2595,25 @@
     },
     {
       "id": "an.ae",
-      "title": "Autoencoder·Reverse Distillation",
+      "title": "Autoencoder for Anomaly Detection",
       "part": "PART 07",
       "level": "Advanced",
       "prerequisites": [
         "an.recon",
-        "an.stfpm"
+        "dl.mlp"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.reverse",
+      "title": "Reverse Distillation",
+      "part": "PART 07",
+      "level": "Advanced",
+      "prerequisites": [
+        "an.feature",
+        "dl.repr"
       ],
       "next_topics": [],
       "status": "planned",
@@ -2466,9 +2623,9 @@
       "id": "an.score",
       "title": "Anomaly Score·Heatmap",
       "part": "PART 07",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
-        "an.patchcore"
+        "an.outlier"
       ],
       "next_topics": [
         "an.threshold"
@@ -2478,17 +2635,27 @@
     },
     {
       "id": "an.threshold",
-      "title": "Threshold Calibration·Domain Shift",
+      "title": "Anomaly Threshold Selection",
+      "part": "PART 07",
+      "level": "Intermediate",
+      "prerequisites": [
+        "an.score",
+        "ml.split"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
+      "id": "an.shift",
+      "title": "Anomaly Domain Shift",
       "part": "PART 07",
       "level": "Advanced",
       "prerequisites": [
-        "an.score",
-        "ml.calibration"
+        "an.feature",
+        "ml.generalize"
       ],
-      "next_topics": [
-        "eval.ood",
-        "res.domain"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -2496,7 +2663,7 @@
       "id": "video.frame",
       "title": "Frame·FPS·Timestamp",
       "part": "PART 08",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "img.tensor"
       ],
@@ -2515,7 +2682,7 @@
       "id": "video.sample",
       "title": "Sampling·Temporal Window",
       "part": "PART 08",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "video.frame"
       ],
@@ -2523,8 +2690,7 @@
         "video.class",
         "video.rnn",
         "video.temporal",
-        "video.cnn3d",
-        "res.hmm"
+        "video.cnn3d"
       ],
       "status": "planned",
       "legacy_url": null
@@ -2628,7 +2794,7 @@
       "id": "video.aggregate",
       "title": "Temporal Aggregation",
       "part": "PART 08",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "video.class"
       ],
@@ -2643,7 +2809,7 @@
       "id": "video.persist",
       "title": "Persistence·Hysteresis",
       "part": "PART 08",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "video.aggregate"
       ],
@@ -2668,7 +2834,7 @@
       "id": "geo.coords",
       "title": "Coordinate Systems",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
         "m.vector",
         "img.pixel"
@@ -2684,7 +2850,7 @@
       "id": "geo.affine",
       "title": "Affine Transform",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "geo.coords",
         "m.matmul"
@@ -2726,7 +2892,7 @@
       "id": "geo.circle",
       "title": "Circle·Ellipse Geometry",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
         "geo.coords"
       ],
@@ -2740,7 +2906,7 @@
       "id": "geo.ls",
       "title": "Least Squares",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ml.linear",
         "m.norm"
@@ -2756,7 +2922,7 @@
       "id": "geo.eigen",
       "title": "Eigenvalue·Eigenvector",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "m.matrix"
       ],
@@ -2770,20 +2936,20 @@
       "id": "geo.svd",
       "title": "SVD·PCA",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "geo.eigen",
         "m.mean"
       ],
       "next_topics": [],
-      "status": "planned",
-      "legacy_url": null
+      "status": "needs-expansion",
+      "legacy_url": "notes/prml.html#ch12"
     },
     {
       "id": "geo.ransac",
       "title": "RANSAC",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "geo.ls",
         "an.outlier"
@@ -2796,13 +2962,12 @@
       "id": "geo.mad",
       "title": "MAD·Robust Statistics",
       "part": "PART 09",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "m.median"
       ],
       "next_topics": [
-        "geo.fit",
-        "ts.z"
+        "geo.fit"
       ],
       "status": "planned",
       "legacy_url": null
@@ -2855,14 +3020,16 @@
       "id": "ts.series",
       "title": "Time-series·Autocorrelation",
       "part": "PART 10",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "m.mean",
         "m.prob"
       ],
       "next_topics": [
         "ts.moving",
-        "ts.z"
+        "ts.z",
+        "ts.event",
+        "res.state"
       ],
       "status": "planned",
       "legacy_url": null
@@ -2871,7 +3038,7 @@
       "id": "ts.moving",
       "title": "Moving Average·Median",
       "part": "PART 10",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ts.series",
         "m.median"
@@ -2887,10 +3054,11 @@
       "id": "ts.z",
       "title": "Z-score·IQR·MAD",
       "part": "PART 10",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ts.series",
-        "geo.mad"
+        "m.mean",
+        "m.median"
       ],
       "next_topics": [
         "ts.threshold"
@@ -2902,7 +3070,7 @@
       "id": "ts.threshold",
       "title": "Static·Adaptive Threshold",
       "part": "PART 10",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ts.z",
         "ts.moving"
@@ -2960,7 +3128,7 @@
       "id": "ts.ph",
       "title": "Page–Hinkley",
       "part": "PART 10",
-      "level": "Intermediate",
+      "level": "Advanced",
       "prerequisites": [
         "ts.cusum"
       ],
@@ -2978,8 +3146,7 @@
         "ts.cusum"
       ],
       "next_topics": [
-        "ts.drift",
-        "ts.event"
+        "ts.drift"
       ],
       "status": "planned",
       "legacy_url": null
@@ -3017,8 +3184,8 @@
       "part": "PART 10",
       "level": "Intermediate",
       "prerequisites": [
-        "ts.changepoint",
-        "eval.confusion"
+        "eval.confusion",
+        "ts.series"
       ],
       "next_topics": [],
       "status": "planned",
@@ -3028,7 +3195,7 @@
       "id": "data.label",
       "title": "Annotation·Taxonomy",
       "part": "PART 11",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ml.dataset"
       ],
@@ -3043,7 +3210,7 @@
       "id": "data.format",
       "title": "Box·Polygon·Mask Formats",
       "part": "PART 11",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "data.label",
         "cv.mask"
@@ -3058,7 +3225,7 @@
       "id": "data.collect",
       "title": "Data Collection·Cleaning",
       "part": "PART 11",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "data.label"
       ],
@@ -3214,7 +3381,7 @@
       "id": "data.privacy",
       "title": "Privacy·License",
       "part": "PART 11",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "data.collect"
       ],
@@ -3226,7 +3393,7 @@
       "id": "eval.confusion",
       "title": "Confusion Matrix",
       "part": "PART 12",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ml.classification",
         "ml.split"
@@ -3242,7 +3409,7 @@
       "id": "eval.prf",
       "title": "Accuracy·Precision·Recall·F1",
       "part": "PART 12",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eval.confusion"
       ],
@@ -3250,7 +3417,8 @@
         "eval.auc",
         "eval.threshold",
         "eval.error",
-        "eval.ci"
+        "eval.ci",
+        "eval.ood"
       ],
       "status": "existing-section",
       "legacy_url": "notes/training.html#metrics"
@@ -3297,7 +3465,7 @@
       "id": "eval.reg",
       "title": "MAE·MSE·RMSE",
       "part": "PART 12",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "ml.mse"
       ],
@@ -3328,7 +3496,7 @@
       ],
       "next_topics": [
         "eval.ablation",
-        "eval.ood"
+        "eval.robust"
       ],
       "status": "planned",
       "legacy_url": null
@@ -3377,12 +3545,12 @@
     },
     {
       "id": "eval.ood",
-      "title": "OOD·Robustness Evaluation",
+      "title": "OOD Detection Evaluation",
       "part": "PART 12",
       "level": "Intermediate",
       "prerequisites": [
-        "eval.error",
-        "an.threshold"
+        "eval.prf",
+        "an.outlier"
       ],
       "next_topics": [
         "res.ood"
@@ -3391,17 +3559,34 @@
       "legacy_url": null
     },
     {
+      "id": "eval.robust",
+      "title": "Robustness Evaluation",
+      "part": "PART 12",
+      "level": "Intermediate",
+      "prerequisites": [
+        "eval.error",
+        "ml.generalize"
+      ],
+      "next_topics": [],
+      "status": "planned",
+      "legacy_url": null
+    },
+    {
       "id": "ops.pytorch",
       "title": "PyTorch·CUDA",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
         "m.tensor",
         "m.python"
       ],
       "next_topics": [
         "ops.onnx",
-        "ops.gpu"
+        "ops.triton",
+        "ops.batch",
+        "ops.gpu",
+        "ops.latency",
+        "res.quant"
       ],
       "status": "planned",
       "legacy_url": null
@@ -3410,15 +3595,14 @@
       "id": "ops.onnx",
       "title": "ONNX·Opset",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ops.pytorch"
       ],
       "next_topics": [
         "ops.ort",
         "ops.trt",
-        "ops.registry",
-        "res.quant"
+        "ops.registry"
       ],
       "status": "planned",
       "legacy_url": null
@@ -3427,13 +3611,11 @@
       "id": "ops.ort",
       "title": "ONNX Runtime",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ops.onnx"
       ],
-      "next_topics": [
-        "ops.triton"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3455,12 +3637,9 @@
       "part": "PART 13",
       "level": "Advanced",
       "prerequisites": [
-        "ops.ort"
+        "ops.pytorch"
       ],
-      "next_topics": [
-        "ops.batch",
-        "ops.pipeline"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3468,13 +3647,11 @@
       "id": "ops.batch",
       "title": "Batch Inference",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Basic",
       "prerequisites": [
-        "ops.triton"
+        "ops.pytorch"
       ],
-      "next_topics": [
-        "ops.latency"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3482,13 +3659,11 @@
       "id": "ops.gpu",
       "title": "GPU Memory·Precision",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ops.pytorch"
       ],
-      "next_topics": [
-        "res.quant"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3496,9 +3671,9 @@
       "id": "ops.latency",
       "title": "Latency·Throughput",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
-        "ops.batch"
+        "ops.pytorch"
       ],
       "next_topics": [
         "ops.monitor"
@@ -3526,9 +3701,7 @@
       "prerequisites": [
         "eng.project"
       ],
-      "next_topics": [
-        "ops.pipeline"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3540,9 +3713,7 @@
       "prerequisites": [
         "eng.project"
       ],
-      "next_topics": [
-        "ops.pipeline"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3550,7 +3721,7 @@
       "id": "ops.rtsp",
       "title": "RTSP·FFmpeg",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "video.frame"
       ],
@@ -3564,7 +3735,7 @@
       "id": "ops.ntp",
       "title": "Timestamp·NTP",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ops.rtsp"
       ],
@@ -3590,7 +3761,7 @@
       "id": "ops.registry",
       "title": "Model Registry·Versioning",
       "part": "PART 13",
-      "level": "Advanced",
+      "level": "Intermediate",
       "prerequisites": [
         "ops.onnx",
         "data.version"
@@ -3620,9 +3791,7 @@
       "part": "PART 13",
       "level": "Advanced",
       "prerequisites": [
-        "ops.kafka",
-        "ops.s3",
-        "ops.triton",
+        "eng.project",
         "ops.monitor"
       ],
       "next_topics": [],
@@ -3633,7 +3802,7 @@
       "id": "eng.project",
       "title": "Python Project Structure",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Foundation",
       "prerequisites": [
         "m.python"
       ],
@@ -3641,6 +3810,7 @@
         "ops.airflow",
         "ops.kafka",
         "ops.s3",
+        "ops.pipeline",
         "eng.venv",
         "eng.config",
         "eng.module",
@@ -3653,7 +3823,7 @@
       "id": "eng.venv",
       "title": "Virtual Environment",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eng.project"
       ],
@@ -3668,7 +3838,7 @@
       "id": "eng.jupyter",
       "title": "Jupyter",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eng.venv"
       ],
@@ -3680,7 +3850,7 @@
       "id": "eng.deps",
       "title": "Dependency Management",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eng.venv"
       ],
@@ -3694,7 +3864,7 @@
       "id": "eng.config",
       "title": "Configuration·Secrets",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eng.project"
       ],
@@ -3708,7 +3878,7 @@
       "id": "eng.module",
       "title": "Modular Design",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eng.project"
       ],
@@ -3738,7 +3908,7 @@
       "id": "eng.git",
       "title": "Git·GitHub",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Basic",
       "prerequisites": [
         "eng.project"
       ],
@@ -3780,7 +3950,7 @@
       "id": "eng.agent",
       "title": "Multi-Agent Workflow",
       "part": "PART 14",
-      "level": "Intermediate",
+      "level": "Advanced",
       "prerequisites": [
         "eng.review"
       ],
@@ -3807,7 +3977,7 @@
       "id": "res.bayes",
       "title": "Bayesian Inference",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Intermediate",
       "prerequisites": [
         "m.bayes",
         "m.likelihood"
@@ -3825,7 +3995,7 @@
       "id": "res.graph",
       "title": "Graphical Models",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
         "res.bayes"
       ],
@@ -3839,7 +4009,7 @@
       "id": "res.gmm",
       "title": "Gaussian Mixture",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Intermediate",
       "prerequisites": [
         "m.distribution",
         "ml.dataset"
@@ -3854,7 +4024,7 @@
       "id": "res.em",
       "title": "EM Algorithm",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
         "res.gmm",
         "res.bayes"
@@ -3867,7 +4037,7 @@
       "id": "res.vi",
       "title": "Variational Inference·ELBO",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
         "res.bayes",
         "m.entropy"
@@ -3880,7 +4050,7 @@
       "id": "res.mcmc",
       "title": "Monte Carlo·MCMC",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
         "m.sample",
         "res.bayes"
@@ -3893,25 +4063,39 @@
       "id": "res.hmm",
       "title": "HMM",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
-        "res.graph",
-        "video.sample"
+        "res.state",
+        "res.graph"
       ],
-      "next_topics": [
-        "res.kalman"
-      ],
+      "next_topics": [],
       "status": "existing-section",
       "legacy_url": "notes/prml.html#ch13"
+    },
+    {
+      "id": "res.state",
+      "title": "State-space Models",
+      "part": "PART 15",
+      "level": "Advanced",
+      "prerequisites": [
+        "m.distribution",
+        "m.matrix",
+        "ts.series"
+      ],
+      "next_topics": [
+        "res.hmm",
+        "res.kalman"
+      ],
+      "status": "planned",
+      "legacy_url": null
     },
     {
       "id": "res.kalman",
       "title": "Kalman Filter",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
-        "res.hmm",
-        "m.matrix"
+        "res.state"
       ],
       "next_topics": [],
       "status": "existing-section",
@@ -3921,10 +4105,10 @@
       "id": "res.domain",
       "title": "Domain Adaptation",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
-        "an.threshold",
-        "dl.finetune"
+        "dl.finetune",
+        "ml.generalize"
       ],
       "next_topics": [],
       "status": "planned",
@@ -3947,10 +4131,9 @@
       "id": "res.ood",
       "title": "OOD Detection",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
-        "eval.ood",
-        "an.outlier"
+        "eval.ood"
       ],
       "next_topics": [],
       "status": "planned",
@@ -3960,10 +4143,10 @@
       "id": "res.quant",
       "title": "Quantization",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
-        "ops.onnx",
-        "ops.gpu"
+        "dl.forward",
+        "ops.pytorch"
       ],
       "next_topics": [],
       "status": "planned",
@@ -3973,7 +4156,7 @@
       "id": "res.prune",
       "title": "Pruning",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
         "dl.forward"
       ],
@@ -3985,7 +4168,7 @@
       "id": "res.distill",
       "title": "Knowledge Distillation",
       "part": "PART 15",
-      "level": "Research",
+      "level": "Advanced",
       "prerequisites": [
         "dl.transfer"
       ],
