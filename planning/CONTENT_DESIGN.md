@@ -50,3 +50,7 @@ build.py의 TOPIC_LABELS/nav/render와 assets/site.js의 topic_copy/data-topic-p
 python scripts/build.py, python scripts/validate.py, python scripts/validate_concept_graph.py, node --check assets/site.js 실행을 기본으로 합니다. Browser에서 Desktop/Mobile 수식·Figure·스크롤·키보드·동작·숨김 패널을 검증합니다. 단순 소스 검사만 수행했다면 실제 렌더링 PASS로 표시하지 않습니다.
 
 독립 Reviewer는 수학 수치·계산 단계·Shape·출처·중복·누수·레거시 URL 호환·시각적 깨짐을 직접 확인합니다. 미실행 검사는 미검증으로 기록합니다.
+
+## Concept 커버리지 계약 (semantic audit 적용)
+
+`existing-section`은 기존 Anchor로 학습 안내 가능, `needs-expansion`은 기존 Anchor에 부분적 설명이 있지만 상세 단원 보강 필요, `planned`은 신규 계획입니다. 세 상태 모두 독립 검토/완성된 학습 페이지 판정을 의미하지 않습니다. 필수 prerequisite와 참고·선택 기술은 UI에서 별도 표시하고, planned 노드는 죽은 링크로 렌더링하지 않습니다.
