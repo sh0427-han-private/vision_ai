@@ -1,0 +1,55 @@
+# Learning Paths — 여러 분야로 분기하는 학습 경로
+
+현재는 **설계 단계**이며 planned 개념을 실제 완성된 페이지처럼 표시하지 않습니다. 개념별 직접 선수는 [Dependency Graph](CONCEPT_DEPENDENCIES.md)에 기록합니다.
+
+## 1. AI/ML Foundations
+
+Scalar → Vector → Matrix → Tensor 및 Function → Derivative → Gradient → Gradient Descent → Backpropagation. Probability → Bayes Rule → Likelihood → Classification/Loss도 병행합니다.
+
+기존 시작: [CS231n 최적화](../notes/cs231n.html#optimization), [PRML 확률](../notes/prml.html#ch1), [학습/평가](../notes/training.html#loop). 별도의 기초 수학 페이지는 아직 작성되지 않았습니다.
+
+## 2. Computer Vision
+
+Matrix/Tensor → Pixel/RGB/Image Tensor → Kernel → Convolution → Feature Map → CNN → Classification/Detection/Segmentation. 형상/채널 예시는 실제 계산과 일치해야 합니다.
+
+기존 활용: [이미지](../notes/pixels.html), [CNN](../notes/cnn.html#convolution), [Vision Tasks](../notes/tasks.html).
+
+## 3. Anomaly Detection
+
+Outlier/Novelty → One-class → Feature Extraction → Embedding → Nearest Neighbor → Memory Bank → Coreset → PatchCore → Anomaly Score/Threshold. 합성 정상 특징과 검사 점으로 NN 거리를 검산합니다.
+
+기존 활용: [Anomaly Detection·PatchCore](../notes/patchcore.html).
+
+## 4. Video Understanding
+
+Frame/FPS → Sampling/Window → Video Classification → RNN/GRU 또는 Temporal Transformer 또는 3D CNN → Temporal Aggregation → Persistence/Event Detection. frame-level과 event-level을 구분합니다.
+
+미작성: 독립 Video AI 학습 페이지. 기존 이미지/CNN/Transformer 기초를 재사용합니다.
+
+## 5. Geometry & Boundary
+
+Coordinate → Affine/Homography, Circle/Ellipse → Least Squares/MAD/RANSAC → Robust Ellipse Fitting → Subpixel Edge → Boundary Refinement. 타원이 아닌 객체나 부분 가림에 대한 한계를 명시합니다.
+
+실습: 합성 점·이상점으로 피팅 전후를 비교합니다. 실제 내부 원본 데이터는 사용하지 않습니다.
+
+## 6. Time-series Anomaly
+
+Moving Median → Z-score/Robust Threshold → Step Change → Baseline Update/Freeze → CUSUM/EWMA → Change Point/Drift. 경보 지연과 false alarm을 함께 다룹니다.
+
+실습: 합성 시간별 시계열의 직전 5개 중앙값, 연속 두 번 초과, 베이스라인 홀드를 각각 계산합니다.
+
+## 7. AI Engineering / MLOps
+
+Project Structure → Tests → PyTorch → ONNX → ONNX Runtime → Triton → Batch/Latency → Monitoring. 영상 데이터 경로는 RTSP/FFmpeg와 Timestamp/NTP를 함께 살핍니다.
+
+실습: shape·dtype·채널 순서 계약, 단일 vs 배치 추론, 배포 회귀를 검증합니다.
+
+## 8. Advanced Research
+
+확률 기초 → PRML Bayesian → Graphical Models/GMM → EM/VI/MCMC, 또는 CNN/Transformer → Self-supervised Learning → DINO/CLIP → OOD/Domain Adaptation.
+
+기존 활용: [PRML 종합](../notes/prml.html), [CS231n 종합](../notes/cs231n.html). 모델이나 논문명을 별도의 최상위 카테고리로 놓지 않습니다.
+
+## 탐색 UI 계약
+
+홈에서 시작 경로를 선택할 수 있고, 각 개념 설명 옆에 필수 선수·관련 후속·기존 출처를 표시합니다. 관련 concept가 planned라면 링크 없는 계획 상태로 표시합니다. 기존 index.html?topic=ai 와 ?topic=vision 북마크를 고려하되 기존 notes/*.html 및 #anchor는 바꾸지 않습니다. 반도체 전용 탐색을 제외한 뒤 과거 ?topic=semiconductor는 overview로 안전하게 fallback 합니다.
