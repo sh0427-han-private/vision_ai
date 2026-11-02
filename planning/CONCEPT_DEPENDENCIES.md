@@ -1,67 +1,65 @@
 # Concept Dependencies — 선수 관계와 DAG
 
-정본: [concepts.v1.json](concepts.v1.json). 각 concept의 prerequisites는 직접 선행 개념 ID 목록이고 next_topics는 직접 후속 개념 ID 목록입니다. PART 번호와 위상 정렬 순서는 다릅니다. 입문 후 여러 경로로 분기할 수 있습니다.
+정본: [concepts.v1.json](concepts.v1.json). `prerequisites`는 직접 **필수** 선행 개념, `next_topics`는 정확한 역방향 연결입니다. 관련 개념·권장 탐색 경로는 필수 의존성과 구분합니다. PART 번호와 위상 정렬은 다릅니다.
 
-## 개념 관계 설계 규칙
+## 설계 원칙
 
-1. 직접 선행 관계는 정의·수식·계산을 이해하는 데 실제로 필요한 것만 둡니다. 권장 복습이나 관련 주제를 무조건 필수 선행 관계로 만들지 않습니다.
-2. 직접 선수는 전이 관계를 모두 복사하지 않습니다. 예컨대 Convolution이 Matrix에서 시작하는 경로에 있다 해도 모든 조상 개념을 다시 연결하지 않습니다.
-3. 여러 직접 선행 조건이 필요한 개념은 DAG의 합류 노드입니다. 예컨대 PatchCore는 k-NN과 Memory Bank 및 Coreset을 연결합니다.
-4. 이미 있는 기존 HTML Anchor를 보존하며, 아직 작성되지 않은 concept는 클릭 가능한 새 페이지로 표시하지 않습니다.
-5. 같은 말의 별칭은 중복 개념을 만들지 않습니다. Image filter kernel과 Neural Network weight kernel, Mean Absolute Error와 Median Absolute Deviation 등 다른 대상은 반드시 분리해 설명합니다.
+1. 선수 관계는 정의·계산·모델 기법의 이해에 실제로 필요한 개념만 연결합니다. 특정 라이브러리, 논문, 적용 사례가 일반 개념의 필수 선수가 되어서는 안 됩니다.
+2. 전이 관계를 복제하지 않습니다. `an.score`처럼 여러 이상탐지 방법에 공통되는 개념을 PatchCore 같은 단일 알고리즘에 종속시키지 않습니다.
+3. 동명이의어를 명확히 분리합니다. `tr.dino`는 Caron et al.의 Self-supervised DINO이고, `cv.dino_detr`는 Object Detection의 DINO-DETR이며, `cv.grounding`은 이를 기반으로 한 언어 조건부 탐지입니다.
+4. 필수 의존성이 아닌 예제 구현 환경(예: Triton을 이용한 Batch Inference, Kafka·S3 기반 End-to-end Pipeline)은 응용 예제로 제시합니다.
+5. 기존 URL/Anchor는 유지하고 `needs-expansion`은 기존 소개가 있지만 상세 학습 목표를 완성하지 않았다는 의미로 기록합니다.
 
-## 핵심 학습 연쇄
+## 핵심 학습 경로 및 반례
 
-### Image → CNN
+### Scalar → CNN
 
-m.scalar → m.vector → m.matrix → m.tensor → img.pixel → img.rgb → img.tensor → cnn.kernel → cnn.conv → cnn.stride → cnn.map → cnn.base
+`m.scalar` → `m.vector` → `m.matrix` → `m.tensor` → `img.pixel` → `img.rgb` → `img.tensor` → `cnn.kernel` → `cnn.conv` → `cnn.stride` → `cnn.map` → `cnn.base`.
 
-이것은 핵심 직관 경로의 한 부분입니다. 실제 그래프는 Convolution에 m.dot가 합류하며, CNN에 Activation 및 Pooling이 들어옵니다. 이미지의 축 순서는 HWC와 NCHW의 사용 문맥을 명시합니다.
+Convolution의 Dot Product, CNN의 Activation/Pooling 등은 합류 선수입니다. HWC/NCHW 축 순서·출력 Shape는 별도 수치 검산합니다.
 
-### Gradient → Training
+### Calculus → Training
 
-m.function → m.derivative → m.gradient → dl.gd → dl.sgd → dl.adam.
-
-별도로 dl.perceptron → dl.mlp → dl.forward → dl.backprop으로 Gradient를 계산합니다. Backpropagation과 SGD/Adam의 파라미터 갱신 역할을 동일시하지 않습니다.
+`m.function` → `m.derivative`에서 `m.gradient`와 `m.chain`으로 분기합니다. `dl.forward` + `m.gradient` + `m.chain` + `ml.loss` → `dl.backprop`은 파라미터 Gradient 계산이고, `dl.gd` → `dl.sgd` → `dl.adam`은 갱신 알고리즘입니다. 개념적 Gradient Descent의 이해에 Backpropagation이 반드시 선행할 필요는 없습니다.
 
 ### Normal Features → PatchCore
 
-an.outlier → an.one → an.feature → an.embedding → an.nearest → an.memory → an.coreset → an.patchcore → an.score → an.threshold.
+`an.outlier` → `an.one` → `an.feature` → `an.embedding` → `an.memory` → `an.coreset` → `an.patchcore`. `an.nearest`도 PatchCore에 합류합니다. 반면 `an.score` → `an.threshold`는 **알고리즘 공통**의 이상 점수 및 운영 기준이며 PatchCore·Memory Bank가 필수 선행이 아닙니다.
 
-실제 score의 패치/이미지 집계 및 reweighting은 논문·해당 구현 버전 확인 후 별도로 설명합니다.
+### Open-Vocabulary Grounding
 
-### Segmentation → Boundary Refinement
+`cv.detect` + `tr.encoder` → `cv.detr` → `cv.dino_detr` → `cv.grounding`. Token/Language 관련 개념은 `tr.token`으로 연결합니다. `tr.clip`은 별도 Contrastive Vision–Language Model이지 Grounding DINO의 필수 선행 기술은 아닙니다. `tr.dino`(Self-supervised DINO)와 혼동하지 않습니다.
 
-cv.semantic + geo.circle + geo.ls + geo.mad + geo.subpixel → geo.boundary 경로. 타원 가정이 성립하지 않는 객체에 Ellipse Fitting을 만능 보정처럼 적용하지 않습니다. Boundary IoU·ASSD·HD95는 전체 IoU와 구분합니다.
+### Probabilistic Sequential Models
 
-### Video, Time-series, Serving
+`m.distribution` + `m.matrix` + `ts.series` → `res.state`. 여기서 HMM(`res.hmm`)과 Kalman Filter(`res.kalman`)가 분기합니다. HMM은 Kalman Filter의 필수 선행이 아닙니다.
 
-video.frame → video.sample → video.class → video.aggregate → video.persist.
+### Serving과 평가
 
-ts.series → ts.moving → ts.threshold → ts.step → ts.baseline.
+Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·벡터화 개념을 다룹니다. `ops.triton`은 그중 하나의 배포 환경입니다. `eval.ood`은 `eval.prf`와 `an.outlier`에서 진입하며 특정 이상탐지 모델이나 Threshold Calibration을 강제하지 않습니다. `eval.robust`는 별도 견고성 평가 개념입니다.
 
-ops.pytorch → ops.onnx → ops.ort → ops.triton → ops.batch → ops.latency → ops.monitor.
+### Geometry·Time-series
 
-## 그래프 데이터 계약
+`geo.circle` + `geo.ls` + `geo.mad` → `geo.fit`; `geo.fit` + `geo.subpixel` + `cv.semantic` → `geo.boundary`. 타원 가정이 맞지 않는 객체에 적용하지 않습니다.
 
-| 필드 | 의미 | 검증 |
-|---|---|---|
-| id | 영속 개념 ID | 유일성, 변경 최소화 |
-| part | 카테고리 | 등록된 PART 참조 |
-| level | Foundation / Basic / Intermediate / Advanced / Research | 선수 지식 수준과 일치 |
-| prerequisites | 직접 선행 ID | 존재성, 중복, 자기 참조, 순환 없음 |
-| next_topics | 직접 후속 ID | 역방향 참조 일치 |
-| status | existing-section 또는 planned | 구현 현황의 과장 금지 |
-| legacy_url | 기존 HTML/Anchor | 기존 파일·ID 검사 |
+`ts.series` → `ts.moving` → `ts.threshold` → `ts.step` → `ts.baseline`. `ts.z`는 일반 통계 기반이며 Geometry의 MAD 단원에 종속되지 않습니다.
 
-Builder 자체 구조 검사: 16 PART, 248 node, 직접 선수 edge 390개, 중복·없는 선수 0, Kahn 방식으로 248 node 모두 처리. 교육학적 의미론 검토·독립 Reviewer의 확인은 수행되지 않았습니다.
+## Graph 계약
 
-## 의미론적 리뷰 쟁점
+| 속성 | 조건 |
+|---|---|
+| id / part | 유일한 Stable ID, PART에서 한 번 등록 |
+| level | Foundation / Basic / Intermediate / Advanced / Research; PART별 획일 지정 금지 |
+| prerequisites / next_topics | 존재성·중복·역방향 대칭·비순환 DAG |
+| status | `existing-section` 기존 절 매핑, `needs-expansion` 기존 소개·보강, `planned` 신규 계획 |
+| legacy_url | 기존 매핑 두 상태에는 URL/Anchor 필수; planned에는 없음 |
 
-- ml.softmax에 Sigmoid와 Softmax를 묶을지, 별도 단원으로 나누는 편이 나은지 검토합니다.
-- dl.transfer의 Representation Learning/Transfer Learning은 독립 설명이 필요할 수 있습니다.
-- an.ae의 Autoencoder와 Reverse Distillation은 근거와 목적이 달라 분리 후보입니다.
-- cv.sam2는 PART 08의 video.frame을 선수로 가지므로 PART 05를 모두 읽는 순차 강제는 불가능합니다.
-- 선행 관계가 독자의 실제 이해를 돕는 최소·충분 조건인지 별도 Reviewer가 검증해야 합니다.
+현재 16 PART / 260 concepts / 411 direct edges. 검사기는 구조와 알려진 의미론적 회귀 규칙을 검사하지만 **교육과정 전체의 교육학적 타당성을 자동 보장하지 않습니다.** 독립 Reviewer는 별도 세션/Agent에서 검토해야 합니다.
 
-검증 도구는 scripts/validate_concept_graph.py를 사용합니다. 자세한 단계는 [Roadmap](IMPLEMENTATION_ROADMAP.md)을 참고합니다.
+## 참고 원 논문
+
+- Caron et al. (ICCV 2021), *Emerging Properties in Self-Supervised Vision Transformers*: https://openaccess.thecvf.com/content/ICCV2021/html/Caron_Emerging_Properties_in_Self-Supervised_Vision_Transformers_ICCV_2021_paper.html
+- Zhang et al. (ICLR 2023), *DINO: DETR with Improved DeNoising Anchor Boxes*: https://arxiv.org/abs/2203.03605
+- Liu et al. (ECCV 2024), *Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection*: https://arxiv.org/abs/2303.05499
+
+상세 수정 의사결정: [SEMANTIC_AUDIT.md](SEMANTIC_AUDIT.md).
