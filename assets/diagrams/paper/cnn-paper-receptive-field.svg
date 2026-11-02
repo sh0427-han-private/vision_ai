@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" role="img" aria-label="Figure 5. Receptive-field growth">
+<style>
+.title{font:700 27px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#18243b}
+.subtitle{font:18px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#5b6880}
+.panel-label{font:700 19px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#18243b}
+.label{font:700 18px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#203455}
+.body{font:16px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#526178}
+.small{font:14px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#68768c}
+.white{font:700 16px 'NanumGothic','Noto Sans CJK KR','Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;fill:#fff}
+.panel{fill:#fff;stroke:#d2dceb;stroke-width:2}
+.soft{fill:#f3f7fe;stroke:#c9d6ea;stroke-width:2}
+.blue{fill:#edf3ff;stroke:#8faee8;stroke-width:2}
+.green{fill:#e9f7f2;stroke:#8ccdbb;stroke-width:2}
+.orange{fill:#fff1e7;stroke:#e0ae82;stroke-width:2}
+.line{stroke:#7e91af;stroke-width:3;fill:none}
+.thin{stroke:#a8b5c8;stroke-width:2;fill:none}
+</style>
+<rect width="1200" height="690" rx="24" fill="#f8fafc"/>
+<text x="42" y="48" class="title">Figure 5. Receptive-field growth</text>
+<text x="42" y="78" class="subtitle">깊은 layer의 unit일수록 더 넓은 입력 영역과 연결될 수 있습니다.</text>
+<rect x="35" y="120" width="1130" height="520" rx="18" class="panel"/><text x="53" y="150" class="panel-label">(a)</text><text x="93" y="150" class="label">Receptive field grows through depth</text><rect x="80" y="180" width="1020" height="390" rx="22" fill="#fff7ee" stroke="#efc59c"/><ellipse cx="545" cy="380" rx="240" ry="160" fill="#efc087" stroke="#c98a49" stroke-width="3"/><polygon points="365,280 435,205 465,310" fill="#efc087" stroke="#c98a49" stroke-width="3"/><polygon points="725,280 655,205 625,310" fill="#efc087" stroke="#c98a49" stroke-width="3"/><circle cx="475" cy="365" r="18" fill="#26364d"/><circle cx="620" cy="365" r="18" fill="#26364d"/><rect x="450" y="340" width="55" height="55" rx="8" fill="none" stroke="#2454d8" stroke-width="5"/><rect x="405" y="300" width="150" height="145" rx="10" fill="none" stroke="#08796f" stroke-width="5"/><rect x="300" y="225" width="490" height="300" rx="14" fill="none" stroke="#a24d18" stroke-width="5"/><text x="835" y="300" class="label" fill="#2454d8">shallower unit: local region</text><text x="835" y="360" class="label" fill="#08796f">deeper unit: broader region</text><text x="835" y="430" class="label" fill="#a24d18">more layers: larger context</text><text x="835" y="490" class="small">넓은 수용영역이 특정 semantic 의미를 자동 보장하지는 않습니다.</text>
+</svg>
