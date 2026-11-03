@@ -985,10 +985,13 @@ def nav(current, prefix):
     for topic, label in TOPIC_LABELS.items():
         content += f'<div data-topic-nav="{topic}" {"hidden" if topic != active else ""}>'
         content += f'<a href="{prefix}index.html?topic={topic}">{label} 자료 전체</a>'
+        last_group = None
         for item in NOTES:
             if topic_for(item['slug']) != topic:
                 continue
-            content += f'<p class="nav-label">{item["group"]}</p>'
+            if item["group"] != last_group:
+                content += f'<p class="nav-label">{item["group"]}</p>'
+                last_group = item["group"]
             content += f'<a href="{prefix}notes/{item["slug"]}.html" {"aria-current=page" if current == item["slug"] else ""}>{names[item["slug"]]}</a>'
         content += '</div>'
     return content
