@@ -273,7 +273,7 @@ EQUATION_TEX.update({
     "P4_FUNCTION": r"\displaystyle f(x)=2x,\quad g(x)=2x+1,\quad h(x)=\max(0,x)",
     "P4_KERNEL": r"\begin{aligned}Y_{0,0}&=\sum_{i=0}^{2}\sum_{j=0}^{2}X_{i,j}K_{i,j}\\&=2+2+2=6\end{aligned}",
     "P4_CONV_SHAPE": r"\displaystyle H_{\mathrm{out}}=\left\lfloor\frac{H+2P-D(K-1)-1}{S}+1\right\rfloor=\left\lfloor\frac{5-3}{1}+1\right\rfloor=3",
-    "P4_POOL": r"\begin{aligned}\max(1,2,3,4)&=4\\\operatorname{avg}&=\frac{1+2+3+4}{4}=2.5\end{aligned}",
+    "P4_POOL": r"\begin{aligned}\max(1,2,3,4)&=4\\\operatorname{avg}&=\frac{1+2+3+4}{4}\\&=2.5\end{aligned}",
 })
 
 PAGE_TERMS = {
