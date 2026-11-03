@@ -1,7 +1,7 @@
 # TODO — CS231n / PRML 시각자료 품질 개선
 
-> Repository: https://github.com/sh0427-han/vision_ai  
-> Pages: https://sh0427-han.github.io/vision_ai/  
+> Repository: https://github.com/sh0427-han-private/vision_ai  
+> Pages: https://sh0427-han-private.github.io/vision_ai/  
 > 최근 inventory 재검수 기준 main commit: `dea42ace075ced294702d26ddd7bc1b35ff0f959`
 
 ## 작업 목적
@@ -377,7 +377,7 @@ CS231n과 PRML(Christopher Bishop, *Pattern Recognition and Machine Learning*) �
 # 5. 다음 세션 권장 작업 순서
 
 - [ ] GitHub Connector 확인
-- [ ] `sh0427-han/vision_ai` 최신 main 조회
+- [ ] `sh0427-han-private/vision_ai` 최신 main 조회
 - [ ] 이 `TODO.md` 확인
 - [ ] `scripts/reference_figures.py` 및 현재 `REFERENCE_VISUALS` 확인
 - [ ] 배포 artifact를 raster render하여 CS231n / PRML + paper-style figure 최종 visual QA

@@ -2,8 +2,8 @@
 
 Vision AI 지식을 개념, 데이터 흐름, 수치 예시와 도식으로 정리하는 개인 학습 사이트.
 
-- 사이트: https://sh0427-han.github.io/vision_ai/
-- 저장소: https://github.com/sh0427-han/vision_ai
+- 사이트: https://sh0427-han-private.github.io/vision_ai/
+- 저장소: https://github.com/sh0427-han-private/vision_ai
 - 프로젝트 기준: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md)
 
 ## 현재 자료
@@ -60,9 +60,9 @@ python -m http.server 8000
 
 ## GitHub Pages
 
-최초 1회 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정합니다.
+배포 설정: 저장소 Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 설정합니다.
 이후 main 변경 시 `Deploy study notes` workflow가 검증 후 정적 파일을 배포합니다.
-Pages가 활성화되지 않았다면 코드 반영만으로 사이트가 열리지 않을 수 있습니다.
+`main` 갱신 뒤에는 `Deploy study notes` Actions의 `validate` 및 `deploy` Job 성공과 실제 게시 URL을 확인합니다.
 
 ## 출처와 예시
 
@@ -72,4 +72,4 @@ Pages가 활성화되지 않았다면 코드 반영만으로 사이트가 열리
 
 ## Phase 4 기초 학습 (Stacked Draft PR)
 
-기초 수학은 Scalar → Vector → Matrix → Tensor → Shape/Axis 순으로 시작하며, Dot Product와 Function/Activation 경로에서 CNN 계산으로 연결합니다. 현재 `notes/scalar.html`, `notes/vector.html`, `notes/matrix.html`, `notes/tensor.html`, `notes/shape.html`, `notes/dot-product.html`, `notes/function.html`이 실제 생성 대상입니다. 기존 Pixel/CNN URL·Anchor를 유지합니다. 상단 활성 학습 분야는 **AI / Vision AI**이며 과거 `?topic=semiconductor` 북마크는 전체 목차(Overview)로 돌아갑니다. 기존 Memory/Process Book 외부 주소를 신규 AI 메뉴로 노출하지 않습니다. 계정/Pages 주소 정정은 별도 PR #36의 범위이므로 이 변경에서 수행하지 않습니다.
+기초 수학은 Scalar → Vector → Matrix → Tensor → Shape/Axis 순으로 시작하며, Dot Product와 Function/Activation 경로에서 CNN 계산으로 연결합니다. 현재 `notes/scalar.html`, `notes/vector.html`, `notes/matrix.html`, `notes/tensor.html`, `notes/shape.html`, `notes/dot-product.html`, `notes/function.html`이 실제 생성 대상입니다. 기존 Pixel/CNN URL·Anchor를 유지합니다. 상단 활성 학습 분야는 **AI / Vision AI**이며 과거 `?topic=semiconductor` 북마크는 전체 목차(Overview)로 돌아갑니다. 기존 Memory/Process Book 외부 주소를 신규 AI 메뉴로 노출하지 않습니다. GitHub Pages 기본 주소는 현재 저장소 소유 계정 `sh0427-han-private` 기준으로 표기하며, 별도 PR #36 자체는 병합하지 않았습니다.
