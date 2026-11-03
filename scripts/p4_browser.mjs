@@ -64,19 +64,43 @@ for (const width of [1440, 390]) {
       });
       if (slug === 'cnn') {
         for (const anchorName of ['kernel', 'pooling']) {
+          await page.goto(BASE + '/notes/cnn.html#' + anchorName, {
+            waitUntil: 'domcontentloaded',
+          });
+          await page.waitForFunction(
+            () => [...document.querySelectorAll('.math-display')].every(
+              element => element.querySelector('mjx-container') !== null,
+            ),
+            null,
+            { timeout: 20000 },
+          );
           const section = page.locator('#' + anchorName);
           assert.ok(
             (await section.locator('h2').innerText()).includes(
               anchorName === 'kernel' ? 'Kernel' : 'Pooling',
             ),
           );
-          await section.evaluate(
-            element => element.scrollIntoView({ block: 'start', behavior: 'instant' }),
+          await section.evaluate(element => {
+            window.scrollTo({
+              top: Math.max(0, element.getBoundingClientRect().top + window.scrollY - 30),
+              behavior: 'instant',
+            });
+          });
+          const headingTop = await section.locator('h2').evaluate(
+            element => element.getBoundingClientRect().top,
           );
-          await page.screenshot({
+          assert.ok(
+            headingTop >= 0 && headingTop < 250,
+            'Section heading must be visible: ' + anchorName + ' top=' + headingTop,
+          );
+          const bytes = await page.screenshot({
             path: dir + '/' + width + '-cnn-' + anchorName + '.png',
             animations: 'disabled',
           });
+          assert.ok(
+            bytes.byteLength > 12000,
+            'Screenshot is unexpectedly blank: ' + width + '/' + anchorName,
+          );
         }
       }
     });
