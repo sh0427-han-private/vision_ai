@@ -11,7 +11,7 @@
 - 각 수준은 PART 전체에 일괄 적용하지 않고 실제 설명 및 수학적·시스템적 선수 지식에 따라 지정합니다. 추가 콘텐츠 검증 시 조정합니다.
 - 기존 CS231n·PRML의 개요/논문 지도를 새 상세 학습 페이지로 오인하지 않습니다. [기존 콘텐츠 인벤토리](EXISTING_CONTENT_AUDIT.md) 참조.
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=53 needs-expansion=19 planned=191 -->
 
 ## PART 00 — AI & Mathematical Foundations
 
@@ -21,16 +21,16 @@
 | `m.python` | Python 기본 문법 | Foundation | 신규 작성 계획 |
 | `m.numpy` | NumPy 배열 | Basic | 신규 작성 계획 |
 | `m.plot` | Matplotlib | Basic | 신규 작성 계획 |
-| `m.scalar` | Scalar | Foundation | 신규 작성 계획 |
-| `m.vector` | Vector | Foundation | 신규 작성 계획 |
-| `m.matrix` | Matrix | Foundation | 신규 작성 계획 |
-| `m.tensor` | Tensor | Foundation | 신규 작성 계획 |
-| `m.shape` | Shape·Dimension·Axis | Foundation | 신규 작성 계획 |
-| `m.dot` | Dot Product | Foundation | 신규 작성 계획 |
+| `m.scalar` | Scalar | Foundation | [기존 절](../notes/scalar.html#scalar) |
+| `m.vector` | Vector | Foundation | [기존 절](../notes/vector.html#vector) |
+| `m.matrix` | Matrix | Foundation | [기존 절](../notes/matrix.html#matrix) |
+| `m.tensor` | Tensor | Foundation | [기존 절](../notes/tensor.html#tensor) |
+| `m.shape` | Shape·Dimension·Axis | Foundation | [기존 절](../notes/shape.html#shape) |
+| `m.dot` | Dot Product | Foundation | [기존 절](../notes/dot-product.html#dot-product) |
 | `m.matmul` | Matrix Multiplication | Foundation | 신규 작성 계획 |
 | `m.norm` | Norm·Euclidean Distance | Foundation | 신규 작성 계획 |
 | `m.cosine` | Cosine Similarity | Foundation | 신규 작성 계획 |
-| `m.function` | Function·Linear/Nonlinear | Foundation | 신규 작성 계획 |
+| `m.function` | Function·Linear/Nonlinear | Foundation | [기존 절](../notes/function.html#function) |
 | `m.derivative` | Derivative·Partial Derivative | Foundation | 신규 작성 계획 |
 | `m.gradient` | Gradient (Partial Derivatives) | Foundation | 신규 작성 계획 |
 | `m.chain` | Chain Rule | Foundation | 신규 작성 계획 |
@@ -77,7 +77,7 @@
 |---|---|---|---|
 | `dl.perceptron` | Perceptron | Basic | 신규 작성 계획 |
 | `dl.mlp` | Multi-layer Perceptron | Basic | [기존 소개·보강 필요](../notes/cs231n.html#nn) |
-| `dl.activation` | Activation·ReLU·GELU | Basic | [기존 소개·보강 필요](../notes/cnn.html#nonlinear) |
+| `dl.activation` | Activation·ReLU·GELU | Basic | [기존 절](../notes/cnn.html#nonlinear) |
 | `dl.forward` | Forward Propagation·Weight·Bias | Basic | 신규 작성 계획 |
 | `dl.autograd` | Computation Graph·Automatic Differentiation | Intermediate | 신규 작성 계획 |
 | `dl.backprop` | Backpropagation | Intermediate | [기존 절](../notes/cs231n.html#optimization) |
@@ -121,13 +121,13 @@
 
 | ID | 개념 | 수준 | 현재 대응 |
 |---|---|---|---|
-| `cnn.kernel` | Spatial Filter Kernel | Basic | 신규 작성 계획 |
+| `cnn.kernel` | Spatial Filter Kernel | Basic | [기존 절](../notes/cnn.html#kernel) |
 | `cnn.conv` | Convolution·Cross-correlation | Intermediate | [기존 절](../notes/cnn.html#convolution) |
 | `cnn.stride` | Stride·Padding·Dilation | Basic | [기존 절](../notes/cnn.html#shape) |
-| `cnn.map` | Feature Map·Channel | Basic | [기존 소개·보강 필요](../notes/cnn.html#overview) |
+| `cnn.map` | Feature Map·Channel | Basic | [기존 절](../notes/cnn.html#overview) |
 | `cnn.multi` | Multi-channel Convolution | Intermediate | [기존 절](../notes/cnn.html#channels) |
 | `cnn.rf` | Receptive Field | Intermediate | [기존 절](../notes/cnn.html#shape) |
-| `cnn.pool` | Pooling | Basic | 신규 작성 계획 |
+| `cnn.pool` | Pooling | Basic | [기존 절](../notes/cnn.html#pooling) |
 | `cnn.base` | CNN·Activation Blocks | Intermediate | [기존 절](../notes/cnn.html#overview) |
 | `cnn.bnh` | Backbone·Neck·Head | Intermediate | 신규 작성 계획 |
 | `cnn.vgg` | VGG | Intermediate | 신규 작성 계획 |
@@ -361,3 +361,7 @@
 - 16 PART · 263 Concept · 394 직접 prerequisite edge. 커버리지: existing-section 42, needs-expansion 21, planned 200.
 - 기존 260개 ID 유지; 추가 Stable ID는 `m.covariance`, `m.gaussian_multi`, `dl.autograd`.
 - AP/mAP 정의는 `cv.map`, Detection 평가 프로토콜은 `eval.iou`; MAE/MSE/RMSE의 정의는 `ml.mse`, 평가 응용은 `eval.reg`을 정본으로 합니다.
+
+## P4/R0 실제 콘텐츠 반영
+
+2026-11-03 P4 신규 독립 URL 7개와 기존 CNN 내부 Section 2개를 실제 빌더에서 생성하도록 등록했습니다. `cnn.map`, `dl.activation`은 기존 Section을 P4 수치 목표로 보강했습니다. 263 Stable ID·390 필수 Edge는 유지하고, 현재 `existing-section` 53 / `needs-expansion` 19 / `planned` 191입니다. 상태는 Anchor·학습 목표의 매핑을 나타내며 독립 Reviewer 승인과는 별개입니다.

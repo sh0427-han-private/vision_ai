@@ -428,8 +428,8 @@
         "m.function",
         "m.mean"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/scalar.html#scalar"
     },
     {
       "id": "m.vector",
@@ -450,8 +450,8 @@
         "geo.coords",
         "m.covariance"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/vector.html#vector"
     },
     {
       "id": "m.matrix",
@@ -467,8 +467,8 @@
         "geo.eigen",
         "res.state"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/matrix.html#matrix"
     },
     {
       "id": "m.tensor",
@@ -482,8 +482,8 @@
         "m.shape",
         "ops.pytorch"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/tensor.html#tensor"
     },
     {
       "id": "m.shape",
@@ -496,8 +496,8 @@
       "next_topics": [
         "img.tensor"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/shape.html#shape"
     },
     {
       "id": "m.dot",
@@ -513,8 +513,8 @@
         "img.fft",
         "cnn.conv"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/dot-product.html#dot-product"
     },
     {
       "id": "m.matmul",
@@ -584,8 +584,8 @@
         "dl.activation",
         "img.fft"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/function.html#function"
     },
     {
       "id": "m.derivative",
@@ -1180,7 +1180,7 @@
         "dl.mlp",
         "cnn.base"
       ],
-      "status": "needs-expansion",
+      "status": "existing-section",
       "legacy_url": "notes/cnn.html#nonlinear"
     },
     {
@@ -1673,8 +1673,8 @@
       "next_topics": [
         "cnn.conv"
       ],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#kernel"
     },
     {
       "id": "cnn.conv",
@@ -1721,7 +1721,7 @@
         "an.feature",
         "cnn.base"
       ],
-      "status": "needs-expansion",
+      "status": "existing-section",
       "legacy_url": "notes/cnn.html#overview"
     },
     {
@@ -1763,8 +1763,8 @@
         "cnn.map"
       ],
       "next_topics": [],
-      "status": "planned",
-      "legacy_url": null
+      "status": "existing-section",
+      "legacy_url": "notes/cnn.html#pooling"
     },
     {
       "id": "cnn.base",

@@ -69,3 +69,7 @@ Pages가 활성화되지 않았다면 코드 반영만으로 사이트가 열리
 각 문서 하단에 논문과 공식 문서 링크를 적었습니다. SVG 구조도는 설명을 위해 직접
 재구성한 자료이며 원문 figure를 복사하지 않았습니다. 인터랙티브 실험은 학습용 숫자를
 사용하며 실제 모델을 실행하거나 실제 공정 성능을 표시하지 않습니다.
+
+## Phase 4 기초 학습 (Stacked Draft PR)
+
+기초 수학은 Scalar → Vector → Matrix → Tensor → Shape/Axis 순으로 시작하며, Dot Product와 Function/Activation 경로에서 CNN 계산으로 연결합니다. 현재 `notes/scalar.html`, `notes/vector.html`, `notes/matrix.html`, `notes/tensor.html`, `notes/shape.html`, `notes/dot-product.html`, `notes/function.html`이 실제 생성 대상입니다. 기존 Pixel/CNN URL·Anchor를 유지합니다. 상단 활성 학습 분야는 **AI / Vision AI**이며 과거 `?topic=semiconductor` 북마크는 전체 목차(Overview)로 돌아갑니다. 기존 Memory/Process Book 외부 주소를 신규 AI 메뉴로 노출하지 않습니다. 계정/Pages 주소 정정은 별도 PR #36의 범위이므로 이 변경에서 수행하지 않습니다.

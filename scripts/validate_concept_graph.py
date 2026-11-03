@@ -298,7 +298,7 @@ def validate() -> list[str]:
             if predecessor not in closure:
                 closure.add(predecessor)
                 stack.append(predecessor)
-    p4_section = roadmap.split("## P4 필수 선수 폐포 — R2 계획 (구현 전)")[-1]
+    p4_section = roadmap.split("## P4 필수 선수 폐포 — P4 구현 (R0)")[-1]
     p4_section = p4_section.split("## P4 구현 단계")[0]
     listed_p4 = re.findall(r"^\| `([^\x60]+)` \|", p4_section, re.MULTILINE)
     if set(listed_p4) != closure or len(listed_p4) != len(closure):
@@ -309,7 +309,7 @@ def validate() -> list[str]:
              if line.startswith(f"| `{concept_id}` |")), None
         )
         if p4row and not any(
-            marker in p4row for marker in ("신규 페이지", "기존 Section", "P4 내부 Section")
+            marker in p4row for marker in ("구현된 신규 페이지", "기존 Section", "구현된 P4 Section")
         ):
             errors.append(f"P4 learning delivery type missing: {concept_id}")
 

@@ -54,7 +54,7 @@ Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·�
 | status | `existing-section` 기존 절 매핑, `needs-expansion` 기존 소개·보강, `planned` 신규 계획 |
 | legacy_url | 기존 매핑 두 상태에는 URL/Anchor 필수; planned에는 없음 |
 
-현재 R2 정본은 16 PART / 263 concepts / 390 direct edges입니다. 검사기는 구조와 알려진 의미론적 회귀 규칙을 검사하지만 **교육과정 전체의 교육학적 타당성을 자동 보장하지 않습니다.** 독립 Reviewer는 별도 세션/Agent에서 검토해야 합니다.
+R2 Graph 의미론은 P4에서도 16 PART / 263 concepts / 390 direct edges로 불변입니다. P4/R0는 구현 상태만 변경했습니다. 검사기는 구조와 알려진 의미론적 회귀 규칙을 검사하지만 **교육과정 전체의 교육학적 타당성을 자동 보장하지 않습니다.** 독립 Reviewer는 별도 세션/Agent에서 검토해야 합니다.
 
 ## 참고 원 논문
 
@@ -67,7 +67,7 @@ Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·�
 
 ## R1 선수 의미론·정본 개념
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=53 needs-expansion=19 planned=191 -->
 
 - Pixel 기초(`img.pixel`)는 Tensor에, Polygon/Mask(`cv.mask`)는 Semantic Segmentation에 필수로 의존하지 않습니다.
 - `m.covariance` → `m.gaussian_multi`는 PaDiM/GMM/Kalman의 확률 선행입니다. PCA/SVD(`geo.svd`)는 중심화·Covariance와 연관하되 SVD 자체가 Covariance 역행렬을 계산한다는 뜻은 아닙니다.
@@ -83,3 +83,7 @@ Batch Inference(`ops.batch`)는 `ops.pytorch`를 통해 일반적 배치 축·�
 - Temporal Split(`data.temporal`)은 `ml.split`로, Drift(`ts.drift`)는 `m.distribution`으로 진입합니다. Group/Video 분할 및 Change-point/CUSUM은 선택 응용입니다.
 - Model Registry(`ops.registry`)는 특정 Dataset Versioning 시스템을 필수로 요구하지 않습니다. 아티팩트/모델 버전과 데이터 버전의 연계는 추적성 사례입니다.
 - IoU/Dice(`cv.iou`)는 일반 집합/영역 교집합÷합집합을 먼저 정의합니다. Box/Mask 표현은 독립 응용 사례이며, 합집합이 0인 경우는 사전 정의한 정책과 라이브러리 관례를 구분합니다.
+
+## P4/R0 실제 URL과 필수/선택 구분
+
+P4 필수 폐포 16개는 [Roadmap](IMPLEMENTATION_ROADMAP.md)에 정본 Anchor를 기록했습니다. Scalar/Vector/Matrix/Tensor/Shape/Dot Product/Function 7개는 독립 학습 페이지이고, Kernel은 `notes/cnn.html#kernel`, Pooling은 **선택 실습** `notes/cnn.html#pooling`입니다. 기존 Pixel/RGB/Image Tensor/Convolution/Stride/Feature Map/CNN/Activation은 이전 URL을 그대로 사용합니다. 기존 필수 Graph Edge와 모든 `next_topics`는 변경하지 않았습니다.

@@ -1,6 +1,6 @@
 # Learning Paths — 여러 분야로 분기하는 학습 경로
 
-현재는 **설계 단계**이며 planned 개념을 실제 완성된 페이지처럼 표시하지 않습니다. 개념별 직접 선수는 [Dependency Graph](CONCEPT_DEPENDENCIES.md)에 기록합니다.
+Phase 4의 16개 필수 기초 개념은 실제 페이지/기존 Section으로 연결하며, 나머지 `planned` 개념은 여전히 미작성 계획으로 표시합니다. 개념별 직접 선수는 [Dependency Graph](CONCEPT_DEPENDENCIES.md)에 기록합니다.
 
 ## 1. AI/ML Foundations
 
@@ -57,14 +57,20 @@ Project Structure → Tests → PyTorch → Batch Inference/Latency를 먼저 �
 개념 커버리지의 `needs-expansion`은 기존 설명이 있지만 보강 대상이라는 의미이며, 기존 링크를 새 독립 학습 페이지로 오해하지 않습니다. 자세한 연결은 [Dependency Graph](CONCEPT_DEPENDENCIES.md)를 기준으로 합니다.
 
 
-## P4 폐포·수치 재현 — R2 설계
+## P4 폐포·수치 재현 — R2 기준 및 P4/R0 구현
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=53 needs-expansion=19 planned=191 -->
 
-P4는 핵심 8개 + 필수 보조 8개(총 16개)를 포함하며 각 Concept의 신규 페이지·기존 Section·P4 내부 Section을 [Roadmap](IMPLEMENTATION_ROADMAP.md)에 지정했습니다. 기초 Pixel/Mask에는 고급 모델이 필요하지 않습니다.
+P4는 핵심 8개 + 필수 보조 8개(총 16개)를 포함하며 각 Concept의 신규 페이지·기존 Section·P4 내부 Section을 [Roadmap](IMPLEMENTATION_ROADMAP.md)에 연결했습니다. 기초 Pixel/Mask에는 고급 모델이 필요하지 않습니다.
 
 **OOD 평가 예제 (합성값)**: Positive=OOD인 `y=[1,1,1,0,0,0]`, 높은 값이 OOD인 `score=[0.9,0.8,0.4,0.7,0.3,0.1]`. 정렬 순서 P,P,N,P,N,N. AUROC=`8/9≈0.8889`(9개 양성-음성 쌍 중 8개 순위 성공). AP 방식 AUPR=`(1+1+3/4)/3=11/12≈0.9167`. TPR≥95%를 충족하려면 score≥0.4가 필요하여 `FPR@95TPR=1/3≈0.3333`(TPR=1)입니다. 소수 Positive로 정확히 95% 운영점을 만들 수 없으며, PR의 trapezoidal AUC와 AP는 다를 수 있습니다. Score tie, ID/OOD convention, 클래스 비율을 항상 보고합니다. AUROC/AP는 threshold-free, FPR@95TPR은 threshold-dependent입니다.
 
 **Covariance 예제**: 2D feature `[1,2],[3,4]`의 평균 `[2,3]`, 표본 공분산(분모 n−1)은 `[[2,2],[2,2]]`. Singular covariance이므로 Mahalanobis 역행렬을 그대로 사용할 수 없고 regularization이 필요합니다. PaDiM(위치별 Gaussian), Kalman(process/measurement noise), GMM(성분별 Gaussian), PCA(주축/분산)의 수학적 역할을 따로 다룹니다.
 
 **IoU/Dice 학습**: 집합 A, B의 IoU는 |A∩B|/|A∪B|, Dice는 2|A∩B|/(|A|+|B|)로 소개합니다. Bounding Box/Mask는 선택적 표현 사례입니다. 두 집합이 모두 비어 분모가 0일 때는 값을 임의 단정하지 않고 적용 평가 프로토콜/라이브러리 정책을 먼저 정의합니다.
+
+## P4/R0 실제 학습 링크 (구현된 URL만 제공)
+
+필수 수학 경로: [Scalar](../notes/scalar.html#scalar) → [Vector](../notes/vector.html#vector) → [Matrix](../notes/matrix.html#matrix) → [Tensor](../notes/tensor.html#tensor) → [Shape/Axis](../notes/shape.html#shape) → [Image Tensor](../notes/pixels.html#layout). 별도 수학 경로 [Vector](../notes/vector.html#vector) → [Dot Product](../notes/dot-product.html#dot-product), [Scalar](../notes/scalar.html#scalar) → [Function](../notes/function.html#function) → [Activation](../notes/cnn.html#nonlinear)을 병행합니다.
+
+영상 기초는 [Pixel·RGB](../notes/pixels.html#pixels) → [Image Tensor](../notes/pixels.html#layout)로 이어지고, CNN은 [Kernel](../notes/cnn.html#kernel) → [Cross-correlation](../notes/cnn.html#convolution) → [Stride/Shape](../notes/cnn.html#shape) → [Feature Map](../notes/cnn.html#overview) + [Activation](../notes/cnn.html#nonlinear)로 진입합니다. [2×2 Pooling](../notes/cnn.html#pooling)은 선택 실습입니다. 미구현 Phase 5 Concept에는 가짜 학습 URL을 부여하지 않습니다.

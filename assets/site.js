@@ -2,8 +2,7 @@
 // The URL keeps the chosen field shareable and supports back/forward navigation.
 if (document.body.dataset.page === 'home') {
   const topic_copy = {
-    overview: ['STUDY NOTEBOOK · CONTENTS', '학습 자료 목차', '반도체 · AI · Vision AI 자료를 분야별로 찾아보세요.'],
-    semiconductor: ['SEMICONDUCTOR · STUDY NOTEBOOK', '반도체의 원리와 공정을 함께 공부하기.', 'Memory Book과 Process Book으로 이어지는 반도체 학습 자료입니다.'],
+    overview: ['STUDY NOTEBOOK · CONTENTS', '학습 자료 목차', 'AI · Vision AI 학습 개념을 분야별로 찾아보세요.'],
     ai: ['AI · STUDY NOTEBOOK', '데이터에서 시작해, 학습의 원리까지.', '머신러닝·확률·학습·평가의 기본 개념을 연결해 이해합니다.'],
     vision: ['VISION AI · STUDY NOTEBOOK', '이미지에서 시작해, 모델의 동작까지.', '이미지·모델·평가를 연결해 이해하는 학습 자료입니다.'],
   };

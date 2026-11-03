@@ -182,7 +182,7 @@ CS231n은 개념별 학습 뒤 해당 강의 흐름을 다시 연결하는 **교
 
 새 용어가 이미 있는 Concept의 부분 개념이면 해당 페이지 내 Section으로 추가합니다. 별도 전제·수식·실습·재사용 수요가 있는 경우에만 Concept 승격을 제안합니다. 출처는 논문→공식 구현/문서→대학 강의 순서로 확인합니다.
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=53 needs-expansion=19 planned=191 -->
 
 ## 의미론적 정정 및 상태
 
@@ -192,3 +192,7 @@ CS231n은 개념별 학습 뒤 해당 강의 흐름을 다시 연결하는 **교
 R1 역사적 기록: 16 PART · 263 Concept · 394 직접 prerequisite edge. `m.covariance`·`m.gaussian_multi`·`dl.autograd` 신규 ID. Batch Normalization과 Layer Normalization, SGD 업데이트와 Epoch/Mini-batch 정의, AP/mAP·회귀 손실 공식과 평가 프로토콜을 분리합니다. R1 당시 P4의 17개 학습 위치는 [Roadmap](IMPLEMENTATION_ROADMAP.md)의 R2 재계산으로 대체되었으며 **구현되었다는 의미는 아닙니다**.
 
 R2 현행: 16 PART · 263 Concept · 390 직접 prerequisite edge. Backpropagation은 Gradient·Chain Rule·Forward·Loss에서 독립적으로 도입하고 Autograd는 구현상의 선택 경로로 다룹니다. CNN은 Feature Map·Activation을 필수로 하고 Pooling은 선택적입니다. Temporal Split·Registry·Drift·IoU/Dice의 일반 정의에서도 불필요한 필수 선수를 제거했습니다. P4 핵심 8 + 필수 보조 8 = 16개 학습 위치이며 실제 구현은 아닙니다.
+
+## P4/R0 Vertical Slice 구현 기록
+
+기존 16 PART의 Concept 목록·Title·Level·ID는 변경하지 않았습니다. Foundation Mathematics 7개 독립 페이지와 기존 Image Tensor/CNN Section 및 Kernel·Pooling을 실제 URL에 매핑했습니다. Phase 4 필수 폐포 16개를 구현했으며 Pooling은 별도 선택 학습입니다. Coverage: existing-section **53**, needs-expansion **19**, planned **191**. 독립 Reviewer 검수 전에는 최종 승인으로 취급하지 않습니다.

@@ -7,6 +7,9 @@ on:
       - 'scripts/validate_concept_graph.py'
       - 'scripts/test_validate_concept_graph.py'
       - 'scripts/build.py'
+      - 'scripts/foundations_note.py'
+      - 'scripts/p4_examples.py'
+      - 'scripts/test_p4_examples.py'
       - 'scripts/reference_notes.py'
       - 'scripts/cs231n_note.py'
       - 'scripts/prml_note.py'
@@ -30,5 +33,7 @@ jobs:
           node --check assets/site.js
       - name: Check concept references, curriculum, and existing anchors
         run: python3 scripts/validate_concept_graph.py
+      - name: Run P4 numeric examples
+        run: python3 -m unittest discover -s scripts -p test_p4_examples.py -v
       - name: Run mutation regression tests
         run: python3 -m unittest discover -s scripts -p test_validate_concept_graph.py -v

@@ -7,7 +7,8 @@
 - **초기 의미론적 감사 단계 (Historical)**: 16 PART, 248 Concept, 390 prerequisite edge
 - **R0 완료 Snapshot (Historical)**: 16 PART, 260 Concept, 411 prerequisite edge; coverage `existing-section` 42, `needs-expansion` 16, `planned` 202
 - **R1 완료 Snapshot (Historical)**: 16 PART, 263 Concept, 394 prerequisite edge; coverage `existing-section` 42, `needs-expansion` 21, `planned` 200
-- **R2 정본 현재 수치**: 16 PART, 263 Concept, 390 prerequisite edge; coverage `existing-section` 42, `needs-expansion` 21, `planned` 200
+- **R2 완료 Snapshot (Historical)**: 16 PART, 263 Concept, 390 prerequisite edge; coverage `existing-section` 42, `needs-expansion` 21, `planned` 200
+- **P4/R0 구현 후 현재 정본**: 16 PART, 263 Concept, 390 prerequisite edge; coverage `existing-section` 53, `needs-expansion` 19, `planned` 191
 - `existing-section`은 기존 절에 이미 대응, `needs-expansion`은 기존 절에 내용이 있으나 독립 학습 목표의 설명·예제 보강 필요, `planned`은 아직 확인된 기존 Anchor 없이 신규 작성 예정입니다. 이 중 어느 상태도 완성도 보증은 아닙니다.
 
 ## 주요 변경 결정
@@ -45,7 +46,7 @@
 
 ## R1 Reviewer DEF-01~11 수정 기록 (2026-11-02)
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=53 needs-expansion=19 planned=191 -->
 
 R0: 260 Concept, 411 Edge → R1: **263 Concept, 394 Edge**. 상태: existing-section 42, needs-expansion 21, planned 200. 기존 260개 Stable ID 및 기존 URL/Anchor를 보존하고 `m.covariance`, `m.gaussian_multi`, `dl.autograd`을 추가했습니다(삭제 0).
 
@@ -101,4 +102,8 @@ R0: 260 Concept, 411 Edge → R1: **263 Concept, 394 Edge**. 상태: existing-se
 
 R2에서 제거한 Autograd/Pooling 및 일반 개념의 필수 Edge를 되살리는 Mutation, 전이 중복 Edge Mutation을 추가하여 Validator의 실제 오류 메시지를 검증하도록 보강했습니다. 기존 테스트와 함께 CI에서 실행합니다.
 
-본 R2 기록은 Builder의 설계·구현 근거로, 독립 Reviewer의 PASS를 의미하지 않습니다.
+본 R2 기록은 당시 Builder의 설계·구현 근거이며, P4/R0의 독립 Reviewer PASS를 의미하지 않습니다.
+
+## P4/R0 실제 구현 커버리지 (2026-11-03)
+
+7개 신규 Scalar/Vector/Matrix/Tensor/Shape/Dot Product/Function 페이지와 CNN의 Kernel·Pooling Section이 생성되므로 `planned` 9개를 `existing-section`으로 매핑합니다. 기존 `cnn.map`과 `dl.activation`은 정량 예시·학습 연결을 추가하여 `needs-expansion`에서 `existing-section`으로 변경합니다. 기존 63개 URL Mapping은 정확히 유지하고 9개 신규 매핑을 추가해 72개로 확장합니다. P4 대상 중 미작성인 Concept는 없습니다. 기존 R2 필수 선수 Graph 390 Edge는 그대로이며 Pooling은 선택 학습입니다. 본 상태는 콘텐츠 구현·정적 검증 범위이며 최종 Reviewer PASS가 아닙니다.

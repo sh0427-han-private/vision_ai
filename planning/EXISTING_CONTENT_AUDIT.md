@@ -143,7 +143,7 @@
 
 ## 의미론적 감사 이후: 기존 소개와 신규 작성의 구분 (R1)
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=53 needs-expansion=19 planned=191 -->
 
 기존 8개 원고·70개 Section 및 R0의 기존 58개 Concept 매핑을 보존하면서 5개 기존 설명을 `needs-expansion`으로 재분류합니다. 아래 URL은 실제 기존 Anchor에 대응하나 독립 본문 완성을 뜻하지 않습니다.
 
@@ -160,10 +160,8 @@
 | `ml.sigmoid` | [notes/prml.html#ch4](../notes/prml.html#ch4) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
 | `ml.knn` | [notes/cs231n.html#classification](../notes/cs231n.html#classification) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
 | `dl.mlp` | [notes/cs231n.html#nn](../notes/cs231n.html#nn) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
-| `dl.activation` | [notes/cnn.html#nonlinear](../notes/cnn.html#nonlinear) | ReLU/GELU 수식·미분 비교 |
 | `dl.transfer` | [notes/cs231n.html#transfer](../notes/cs231n.html#transfer) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
 | `dl.repr` | [notes/cs231n.html#transfer](../notes/cs231n.html#transfer) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
-| `cnn.map` | [notes/cnn.html#overview](../notes/cnn.html#overview) | 채널/shape 수치 예제 |
 | `tr.multi` | [notes/vit.html#attention](../notes/vit.html#attention) | Head 분할·합산 및 projection |
 | `tr.ssl` | [notes/cs231n.html#modern](../notes/cs231n.html#modern) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
 | `tr.dino` | [notes/cs231n.html#modern](../notes/cs231n.html#modern) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
@@ -171,4 +169,8 @@
 | `an.score` | [notes/patchcore.html#score](../notes/patchcore.html#score) | PatchCore 이외의 score 정의 및 heatmap/threshold 분리 |
 | `geo.svd` | [notes/prml.html#ch12](../notes/prml.html#ch12) | 기존 개요와 독립 단원 차이를 예제·수식으로 보강 |
 
-총 existing-section 42, needs-expansion 21; 모든 기존 URL/Anchor/Redirect 및 JS 실습 4개를 유지합니다.
+R1 당시 총 existing-section 42, needs-expansion 21이었으며, P4 이후 현재는 existing-section 53, needs-expansion 19입니다. R2 기존 63개 Mapping과 기존 70개 Anchor/Redirect, JS 실습 4개는 유지합니다.
+
+## P4/R0 신규 학습 및 기존 소개 확장 (2026-11-03)
+
+기존 8개 원고의 70개 Section은 원본 Anchor를 모두 보존합니다. `notes/cnn.html#kernel`과 `notes/cnn.html#pooling` 두 Section이 추가되어 빌드 후 총 72개 Section입니다. 신규 독립 페이지는 Scalar, Vector, Matrix, Tensor, Shape, Dot Product, Function이며 각각 독립적인 첫 학습 Anchor를 가집니다. 기존 `dl.activation`과 `cnn.map`의 P4 수치 학습 목표를 보강해 기존 Section 매핑으로 분류했습니다. 다른 19개 `needs-expansion` 항목은 계획 상태를 보존합니다.

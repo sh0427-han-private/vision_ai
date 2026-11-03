@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 
 from reference_notes import register_reference_notes
+from foundations_note import register_foundation_notes, extend_p4_notes
 from extra_diagrams import build_extra_diagrams, EXTRA_DIAGRAM_META
 from paper_figures import build_paper_figures, PAPER_FIGURE_META
 from reference_figures import build_reference_figures, REFERENCE_FIGURE_META, REFERENCE_VISUALS
@@ -262,6 +263,19 @@ y_{\mathrm{COM}}(x)
 """,
 }
 
+EQUATION_TEX.update({
+    "P4_SCALAR": r"\displaystyle v=\frac{5\,\mathrm{m}}{2\,\mathrm{s}}=2.5\,\mathrm{m/s}",
+    "P4_VECTOR": r"\displaystyle \|\mathbf v\|_2=\sqrt{3^2+4^2}=\sqrt{25}=5",
+    "P4_MATRIX": r"\displaystyle \begin{bmatrix}1&2\\3&4\end{bmatrix}\begin{bmatrix}2&0\\1&2\end{bmatrix}=\begin{bmatrix}4&4\\10&8\end{bmatrix}",
+    "P4_TENSOR": r"\displaystyle N=\prod_{i=1}^{3}d_i=2\times2\times3=12",
+    "P4_SHAPE": r"\displaystyle \operatorname{shape}_{HWC}=(2,3,3)\ \xrightarrow{\operatorname{transpose}(2,0,1)}\ \operatorname{shape}_{CHW}=(3,2,3)",
+    "P4_DOT": r"\displaystyle [1,2,3]\cdot[4,5,6]=1\cdot4+2\cdot5+3\cdot6=32",
+    "P4_FUNCTION": r"\displaystyle f(x)=2x,\quad g(x)=2x+1,\quad h(x)=\max(0,x)",
+    "P4_KERNEL": r"\displaystyle Y_{0,0}=\sum_{i=0}^{2}\sum_{j=0}^{2}X_{i,j}K_{i,j}=2+2+2=6",
+    "P4_CONV_SHAPE": r"\displaystyle H_{\mathrm{out}}=\left\lfloor\frac{H+2P-D(K-1)-1}{S}+1\right\rfloor=\left\lfloor\frac{5-3}{1}+1\right\rfloor=3",
+    "P4_POOL": r"\displaystyle \max(1,2,3,4)=4,\quad \operatorname{avg}=\frac{1+2+3+4}{4}=2.5",
+})
+
 PAGE_TERMS = {
     "pixels": [
         ("RGB", "Red, Green, Blue", "빨강·초록·파랑의 세 색상 채널"),
@@ -371,6 +385,16 @@ PAGE_TERMS = {
     ],
 }
 
+
+PAGE_TERMS.update({
+    "scalar": [("Scalar", "Scalar", "하나의 수와 단위를 구분하는 수치 개념")],
+    "vector": [("Vector", "Vector", "순서 있는 수치 성분으로 표현하는 벡터")],
+    "matrix": [("Matrix", "Matrix", "행과 열에 배치된 2차원 수치 배열")],
+    "tensor": [("Tensor", "Tensor", "여러 축을 가진 숫자 배열")],
+    "shape": [("Shape", "Shape", "각 축의 길이를 기록하는 튜플")],
+    "dot-product": [("Dot Product", "Dot Product", "대응 원소의 곱을 더한 내적")],
+    "function": [("Function", "Function", "입력값을 출력값에 대응시키는 규칙")],
+})
 
 TERM_ALIASES = {
     ("pixels", "Tensor"): r"(?:텐서|Tensor)",
@@ -834,6 +858,9 @@ def note(slug, title, subtitle, group, label, minutes, sections, sources):
                       label=label, minutes=minutes, sections=sections, sources=sources))
 
 
+register_foundation_notes(note, section, table, callout, equation, svg)
+
+
 note('pixels', '이미지는 어떻게 숫자가 될까?', '이미지 파일이 픽셀 배열과 모델 입력 Tensor로 바뀌는 과정을 shape·채널·값 범위 관점에서 이해합니다.', '이미지·CNN', '01 · IMAGE & TENSOR', 20, [
 section('overview', '이미지 파일과 픽셀 배열은 같은 것이 아니다', '''<p>카메라나 저장장치에 있는 JPEG·PNG 파일은 곧바로 <code>[H,W,C]</code> 숫자 배열인 것이 아닙니다. 파일에는 압축된 이미지 데이터와 형식 정보가 들어 있고, <strong>decoder가 파일을 해석한 뒤</strong> 비로소 각 위치의 픽셀 값을 가진 raster 배열을 얻습니다. 모델은 파일 형식 자체보다 이렇게 디코딩되고 전처리된 숫자 배열을 입력으로 받습니다.</p><p>예를 들어 디코딩된 224 × 224 RGB 이미지는 공간 위치가 50,176개이고, 각 위치에 R·G·B 세 값이 있으므로 총 <strong>150,528개의 채널 값</strong>을 가집니다. JPEG 파일의 용량이 작다고 해서 모델 입력의 숫자 개수도 적다는 뜻은 아닙니다. 압축 파일 크기와 디코딩된 배열 크기는 다른 개념입니다.</p>''' + callout('먼저 구분할 것', '파일 → decode → 픽셀 배열 → 전처리 → Tensor → 모델 순서로 생각하면, 이미지 I/O 문제와 모델 입력 문제를 섞지 않게 됩니다.') + chapter01_image_to_pixels()),
 section('pixels', '한 픽셀에는 무엇이 들어 있을까?', table(['표현', '자료 구조 예시', '의미'], [('8-bit Grayscale 예시', '<code>[H, W]</code> · 값 0~255', '한 위치를 밝기 값 하나로 표현합니다. 이 예시에서는 0이 검정, 255가 흰색입니다.'), ('RGB', '<code>[H, W, 3]</code> · <code>[220, 60, 30]</code>', '같은 공간 위치에 R, G, B 세 채널 값이 있습니다.'), ('RGBA', '<code>[H, W, 4]</code>', 'RGB에 투명도 alpha 채널이 추가된 예입니다. 모델이 항상 3채널만 받는 것은 아닙니다.')]) + '''<p>RGB 이미지 한 장을 세 장의 2차원 평면으로 생각해도 됩니다. R plane, G plane, B plane은 <strong>같은 (y,x) 좌표</strong>를 공유하며, 한 픽셀의 색은 그 위치의 세 채널 값을 함께 읽어 결정됩니다.</p><p>여기서 0~255는 흔한 8-bit 표현의 예시입니다. 실제 파이프라인에서는 10/12/16-bit 센서 값, float 이미지, 다른 color space도 사용할 수 있습니다. 또한 저장된 RGB 숫자는 조명·노출·white balance·감마 같은 카메라 처리의 영향을 받은 값이지, 물체의 고정된 “진짜 색 숫자”가 아닙니다.</p>''' + chapter01_rgb_channels()),
@@ -923,11 +950,15 @@ patchcore["sections"][0] = (
 )
 
 
-TOPIC_LABELS = {'semiconductor': '반도체', 'ai': 'AI', 'vision': 'Vision AI'}
+extend_p4_notes(NOTES, section, table, callout, equation, svg)
+
+
+TOPIC_LABELS = {'ai': 'AI', 'vision': 'Vision AI'}
 
 
 def topic_for(slug):
-    return 'ai' if slug in ('training', 'prml') else 'vision'
+    return 'ai' if slug in ('training', 'prml', 'scalar', 'vector', 'matrix',
+                         'tensor', 'shape', 'dot-product', 'function') else 'vision'
 
 
 def topic_tabs(current, prefix):
@@ -941,6 +972,9 @@ def topic_tabs(current, prefix):
 
 def nav(current, prefix):
     names = {
+        'scalar': 'Scalar', 'vector': 'Vector', 'matrix': 'Matrix',
+        'tensor': 'Tensor', 'shape': 'Shape · Axis',
+        'dot-product': 'Dot Product', 'function': 'Function',
         'pixels': '이미지와 텐서', 'cnn': 'CNN · ResNet',
         'vit': 'Transformer · ViT', 'tasks': 'Vision Tasks · U-Net',
         'training': '학습과 평가', 'patchcore': 'Anomaly Detection',
@@ -951,9 +985,6 @@ def nav(current, prefix):
     for topic, label in TOPIC_LABELS.items():
         content += f'<div data-topic-nav="{topic}" {"hidden" if topic != active else ""}>'
         content += f'<a href="{prefix}index.html?topic={topic}">{label} 자료 전체</a>'
-        if topic == 'semiconductor':
-            for name, url in [('Memory Book', 'https://memorybook.euiyun.com/index.html'), ('Process Book', 'https://processbook.euiyun.com/')]:
-                content += f'<a href="{url}" target="_blank" rel="noopener noreferrer">{name} ↗</a>'
         for item in NOTES:
             if topic_for(item['slug']) != topic:
                 continue
@@ -1046,8 +1077,9 @@ def render():
             encoding='utf-8',
         )
 
-    home = '<div class="home-intro"><p class="eyebrow" id="topic-eyebrow">STUDY NOTEBOOK · CONTENTS</p><h1 id="topic-heading">학습 자료 목차</h1><p class="lead" id="topic-description">반도체 · AI · Vision AI 자료를 분야별로 찾아보세요.</p></div>'
+    home = '<div class="home-intro"><p class="eyebrow" id="topic-eyebrow">STUDY NOTEBOOK · CONTENTS</p><h1 id="topic-heading">학습 자료 목차</h1><p class="lead" id="topic-description">AI · Vision AI 학습 개념을 분야별로 찾아보세요.</p></div>'
     summaries = {
+        '기초 수학': 'Scalar · Vector · Matrix · Tensor · Shape · Dot Product · Function',
         '이미지·CNN': '픽셀 · 텐서 · 합성곱 · ResNet',
         'Transformer·Attention': 'token · Q/K/V · ViT',
         'Vision Tasks·Segmentation': '분류 · 탐지 · mask · U-Net',
@@ -1057,6 +1089,9 @@ def render():
     }
     home += '<nav class="contents-grid" data-topic-panel="overview" aria-label="전체 학습 자료 목차">'
     short_names = {
+        'scalar': 'Scalar', 'vector': 'Vector', 'matrix': 'Matrix',
+        'tensor': 'Tensor', 'shape': 'Shape · Axis',
+        'dot-product': 'Dot Product', 'function': 'Function',
         'pixels': '이미지와 텐서', 'cnn': 'CNN · ResNet',
         'vit': 'Transformer · ViT', 'tasks': '분류 · 탐지 · 분할 · U-Net',
         'training': '학습과 평가', 'patchcore': '이상 탐지 · PatchCore',
@@ -1064,42 +1099,26 @@ def render():
     }
     for topic, label in TOPIC_LABELS.items():
         home += f'<section class="contents-section"><h2><a href="index.html?topic={topic}">{label}</a></h2><ol class="contents-list">'
-        if topic == 'semiconductor':
-            for name, url, domain in [
-                ('Memory Book', 'https://memorybook.euiyun.com/index.html', 'memorybook.euiyun.com'),
-                ('Process Book', 'https://processbook.euiyun.com/', 'processbook.euiyun.com'),
-            ]:
-                home += f'<li><a href="{url}" target="_blank" rel="noopener noreferrer">{name} ↗</a><small>출처: {name} · {domain}</small></li>'
-        else:
-            for item in NOTES:
-                if topic_for(item['slug']) == topic:
-                    home += f'<li><a href="notes/{item["slug"]}.html">{short_names[item["slug"]]}</a></li>'
+        for item in NOTES:
+            if topic_for(item['slug']) == topic:
+                home += f'<li><a href="notes/{item["slug"]}.html">{short_names[item["slug"]]}</a></li>'
         home += '</ol></section>'
     home += '</nav>'
     for topic, label in TOPIC_LABELS.items():
         home += f'<div data-topic-panel="{topic}" hidden>'
-        if topic == 'semiconductor':
-            home += '<div class="section-label"><h2>반도체 학습 자료</h2><span>외부 자료 2개</span></div><p>Memory Book과 Process Book을 함께 보는 반도체 학습 공간입니다. 각 카드를 누르면 원본 자료가 새 탭에서 열립니다.</p><div class="note-grid">'
-            for name, url, description in [
-                ('Memory Book', 'https://memorybook.euiyun.com/index.html', '메모리 분야 공부를 위한 외부 자료'),
-                ('Process Book', 'https://processbook.euiyun.com/', '반도체 공정 공부를 위한 외부 자료'),
-            ]:
-                home += f'<a class="note-card" href="{url}" target="_blank" rel="noopener noreferrer"><div class="card-body"><div class="card-meta"><span>반도체 · 외부 자료</span><span>새 탭 ↗</span></div><h3>{name}</h3><p>{description}</p><small class="resource-source">출처: {name} · {url.split("/")[2]}</small></div></a>'
+        groups = list(dict.fromkeys(item['group'] for item in NOTES if topic_for(item['slug']) == topic))
+        for group in groups:
+            home += f'<div class="section-label"><h2>{group}</h2><span>{summaries[group]}</span></div><div class="note-grid">'
+            for item in NOTES:
+                if item['group'] != group or topic_for(item['slug']) != topic:
+                    continue
+                home += f'<a class="note-card" href="notes/{item["slug"]}.html"><div class="mini-viz">{miniature(item["slug"])}</div><div class="card-body"><div class="card-meta"><span>{item["label"]}</span><span>약 {item["minutes"]}분</span></div><h3>{item["title"]}</h3><p>{item["subtitle"]}</p></div></a>'
             home += '</div>'
-        else:
-            groups = list(dict.fromkeys(item['group'] for item in NOTES if topic_for(item['slug']) == topic))
-            for group in groups:
-                home += f'<div class="section-label"><h2>{group}</h2><span>{summaries[group]}</span></div><div class="note-grid">'
-                for item in NOTES:
-                    if item['group'] != group or topic_for(item['slug']) != topic:
-                        continue
-                    home += f'<a class="note-card" href="notes/{item["slug"]}.html"><div class="mini-viz">{miniature(item["slug"])}</div><div class="card-body"><div class="card-meta"><span>{item["label"]}</span><span>약 {item["minutes"]}분</span></div><h3>{item["title"]}</h3><p>{item["subtitle"]}</p></div></a>'
-                home += '</div>'
-            other_topic = 'vision' if topic == 'ai' else 'ai'
-            home += f'<section class="article-section"><h2>관련 분야로 이어서 공부하기</h2><p><a href="index.html?topic={other_topic}">{TOPIC_LABELS[other_topic]} 학습 자료 보기 →</a></p></section>'
+        other_topic = 'vision' if topic == 'ai' else 'ai'
+        home += f'<section class="article-section"><h2>관련 분야로 이어서 공부하기</h2><p><a href="index.html?topic={other_topic}">{TOPIC_LABELS[other_topic]} 학습 자료 보기 →</a></p></section>'
         home += '</div>'
-    home += '<footer class="footer">Study Notes · 반도체 · AI · Vision AI · 설명용 예시는 실제 실험 결과와 구분해 표시합니다.</footer>'
-    (ROOT / 'index.html').write_text(page('학습 노트', '반도체, AI, Vision AI 분야별 한국어 학습 자료.', 'home', home), encoding='utf-8')
+    home += '<footer class="footer">Study Notes · AI · Vision AI · 설명용 수치 및 고정 필터는 실제 학습 결과와 구분합니다.</footer>'
+    (ROOT / 'index.html').write_text(page('학습 노트', 'AI와 Vision AI 분야별 한국어 학습 자료.', 'home', home), encoding='utf-8')
     print(f'Built {len(NOTES) + 1} HTML pages.')
 
 

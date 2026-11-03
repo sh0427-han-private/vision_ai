@@ -112,3 +112,7 @@ CS231n 공개 강의 노트의 전체 학습 흐름과 Bishop PRML 14개 장 전
 - 홈페이지는 `?topic=semiconductor|ai|vision`으로 선택 분야를 유지한다. 기본 첫 화면은 세 분야의 전체 목차다.
 - 분야 선택 시 자료 카드와 왼쪽 목차가 함께 바뀐다. 상세 문서의 분야 탭은 해당 분야 홈페이지로 이동한다.
 
+
+## P4 구현 범위 (2026-11-03)
+
+신규 기초 수학 7개 페이지와 기존 Pixel/Image Tensor/CNN의 목표만 보강합니다. CNN의 Kernel·Pooling은 내부 Section이며 Pooling은 선택 구성입니다. 활성 탐색은 AI/Vision AI만 유지하고 `?topic=semiconductor`는 전체 목차(Overview)로 Fallback합니다. 과거 외부 Memory Book/Process Book은 탐색에서 제외하며 연구·기록 문서 보존은 허용합니다. 기존 PR #36의 저장소/Pages 주소 변경은 흡수하지 않습니다. R2 Stable ID·Edge·기존 70 Section과 63 Mapping은 보존합니다.

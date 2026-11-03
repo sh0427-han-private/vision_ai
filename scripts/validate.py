@@ -64,6 +64,14 @@ for required_group in [
 ]:
     if f'>{required_group}<' not in index_html:
         errors.append(f'Missing topic-first category in index.html: {required_group}')
+if 'data-topic-tab="semiconductor"' in index_html or 'data-topic-panel="semiconductor"' in index_html or 'data-topic-nav="semiconductor"' in index_html:
+    errors.append('Semiconductor tab/panel/nav is still active')
+for slug, anchor in [('scalar','scalar'),('vector','vector'),('matrix','matrix'),
+                     ('tensor','tensor'),('shape','shape'),('dot-product','dot-product'),
+                     ('function','function'),('cnn','kernel'),('cnn','pooling')]:
+    path = (ROOT / 'notes' / f'{slug}.html').resolve()
+    if path not in pages or anchor not in pages[path].ids:
+        errors.append(f'Missing P4 page/anchor: {slug}#{anchor}')
 for forbidden_link in ['notes/resnet.html', 'notes/unet.html']:
     if forbidden_link in index_html:
         errors.append(f'Legacy standalone topic card remains: {forbidden_link}')
