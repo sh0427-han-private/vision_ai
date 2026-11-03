@@ -93,13 +93,27 @@ for (const width of [1440, 390]) {
             headingTop >= 0 && headingTop < 250,
             'Section heading must be visible: ' + anchorName + ' top=' + headingTop,
           );
-          const bytes = await page.screenshot({
-            path: dir + '/' + width + '-cnn-' + anchorName + '.png',
-            animations: 'disabled',
-          });
+          const target = dir + '/' + width + '-cnn-' + anchorName + '.png';
+          let bytes;
+          for (let attempt = 0; attempt < 3; attempt++) {
+            // Chromium may capture an unpainted frame after a large scroll.
+            await page.waitForTimeout(250);
+            await page.evaluate(() => new Promise(resolve => {
+              requestAnimationFrame(() => requestAnimationFrame(resolve));
+            }));
+            bytes = await page.screenshot({
+              path: target,
+              animations: 'disabled',
+            });
+            if (bytes.byteLength > 12000) break;
+            await section.evaluate(element => {
+              element.scrollIntoView({ block: 'start', behavior: 'instant' });
+            });
+          }
           assert.ok(
             bytes.byteLength > 12000,
-            'Screenshot is unexpectedly blank: ' + width + '/' + anchorName,
+            'Screenshot remains blank after repaint retries: '
+              + width + '/' + anchorName,
           );
         }
       }
