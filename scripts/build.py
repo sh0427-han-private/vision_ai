@@ -268,12 +268,12 @@ EQUATION_TEX.update({
     "P4_VECTOR": r"\displaystyle \|\mathbf v\|_2=\sqrt{3^2+4^2}=\sqrt{25}=5",
     "P4_MATRIX": r"\displaystyle \begin{bmatrix}1&2\\3&4\end{bmatrix}\begin{bmatrix}2&0\\1&2\end{bmatrix}=\begin{bmatrix}4&4\\10&8\end{bmatrix}",
     "P4_TENSOR": r"\displaystyle N=\prod_{i=1}^{3}d_i=2\times2\times3=12",
-    "P4_SHAPE": r"\displaystyle \operatorname{shape}_{HWC}=(2,3,3)\ \xrightarrow{\operatorname{transpose}(2,0,1)}\ \operatorname{shape}_{CHW}=(3,2,3)",
-    "P4_DOT": r"\displaystyle [1,2,3]\cdot[4,5,6]=1\cdot4+2\cdot5+3\cdot6=32",
+    "P4_SHAPE": r"\begin{aligned}(H,W,C)&=(2,3,3)\\(C,H,W)&=(3,2,3)\\\text{axis order}&=(2,0,1)\end{aligned}",
+    "P4_DOT": r"\begin{aligned}\mathbf{a}\cdot\mathbf{b}&=1\cdot4+2\cdot5+3\cdot6\\&=4+10+18=32\end{aligned}",
     "P4_FUNCTION": r"\displaystyle f(x)=2x,\quad g(x)=2x+1,\quad h(x)=\max(0,x)",
-    "P4_KERNEL": r"\displaystyle Y_{0,0}=\sum_{i=0}^{2}\sum_{j=0}^{2}X_{i,j}K_{i,j}=2+2+2=6",
+    "P4_KERNEL": r"\begin{aligned}Y_{0,0}&=\sum_{i=0}^{2}\sum_{j=0}^{2}X_{i,j}K_{i,j}\\&=2+2+2=6\end{aligned}",
     "P4_CONV_SHAPE": r"\displaystyle H_{\mathrm{out}}=\left\lfloor\frac{H+2P-D(K-1)-1}{S}+1\right\rfloor=\left\lfloor\frac{5-3}{1}+1\right\rfloor=3",
-    "P4_POOL": r"\displaystyle \max(1,2,3,4)=4,\quad \operatorname{avg}=\frac{1+2+3+4}{4}=2.5",
+    "P4_POOL": r"\begin{aligned}\max(1,2,3,4)&=4\\\operatorname{avg}&=\frac{1+2+3+4}{4}=2.5\end{aligned}",
 })
 
 PAGE_TERMS = {
