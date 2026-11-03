@@ -125,6 +125,28 @@ for (const width of [1440, 390]) {
     assert.equal(texRaw, 0);
     assert.ok(await page.locator('.math-display mjx-container').count() > 0);
   });
+  await check(width + ' kernel/pooling math fits equation panel', async () => {
+    for (const anchor of ['kernel', 'pooling']) {
+      await page.goto(BASE + '/notes/cnn.html#' + anchor, {
+        waitUntil: 'domcontentloaded',
+      });
+      await page.waitForFunction(
+        selector => document.querySelector(selector + ' mjx-container') !== null,
+        '#' + anchor + ' .math-display',
+        { timeout: 20000 },
+      );
+      const widthCheck = await page.locator('#' + anchor + ' .equation').evaluate(
+        container => ({
+          available: container.clientWidth,
+          content: container.scrollWidth,
+        }),
+      );
+      assert.ok(
+        widthCheck.content <= widthCheck.available + 2,
+        anchor + ' equation still overflows: ' + JSON.stringify(widthCheck),
+      );
+    }
+  });
   await check(width + ' topic fallback + back/forward', async () => {
     await page.goto(BASE + '/index.html?topic=semiconductor');
     assert.equal(await page.locator('[data-topic-panel="overview"]').getAttribute('hidden'), null);
