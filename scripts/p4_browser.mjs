@@ -44,6 +44,15 @@ for (const width of [1440, 390]) {
       assert.equal(await page.locator('#' + anchor).count(), 1);
       assert.ok(await page.locator('a[href*="#"]').count() > 0);
       assert.ok(await page.locator('figure').count() > 0);
+      if (await page.locator('.math-display').count() > 0) {
+        await page.waitForFunction(
+          () => [...document.querySelectorAll('.math-display')].every(
+            element => element.querySelector('mjx-container') !== null,
+          ),
+          null,
+          { timeout: 20000 },
+        );
+      }
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth > innerWidth + 1,
       );
@@ -53,6 +62,14 @@ for (const width of [1440, 390]) {
         fullPage: true,
         animations: 'disabled',
       });
+      if (slug === 'cnn') {
+        for (const anchorName of ['kernel', 'pooling']) {
+          await page.locator('#' + anchorName).screenshot({
+            path: dir + '/' + width + '-cnn-' + anchorName + '.png',
+            animations: 'disabled',
+          });
+        }
+      }
     });
   }
   await check(width + ' MathJax actual CHTML typesetting', async () => {
