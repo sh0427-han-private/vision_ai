@@ -143,7 +143,7 @@
 
 ## 의미론적 감사 이후: 기존 소개와 신규 작성의 구분 (R1)
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
 
 기존 8개 원고·70개 Section 및 R0의 기존 58개 Concept 매핑을 보존하면서 5개 기존 설명을 `needs-expansion`으로 재분류합니다. 아래 URL은 실제 기존 Anchor에 대응하나 독립 본문 완성을 뜻하지 않습니다.
 

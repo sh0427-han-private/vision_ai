@@ -125,7 +125,11 @@ def validate() -> list[str]:
     # Targeted curriculum regression checks: not a replacement for human review.
     mandatory_edges = {
         ("dl.autograd", "m.chain"),
-        ("dl.backprop", "dl.autograd"),
+        ("dl.backprop", "m.chain"),
+        ("dl.backprop", "dl.forward"),
+        ("cnn.base", "cnn.map"),
+        ("data.temporal", "ml.split"),
+        ("ts.drift", "m.distribution"),
         ("eval.ood", "eval.auc"),
         ("eval.ood", "an.score"),
         ("m.gaussian_multi", "m.covariance"),
@@ -154,6 +158,15 @@ def validate() -> list[str]:
         ("res.distill", "dl.transfer"),
         ("ops.registry", "ops.onnx"),
         ("eng.independent", "eng.agent"),
+        ("dl.backprop", "dl.autograd"),
+        ("cnn.base", "cnn.pool"),
+        ("data.temporal", "data.group"),
+        ("data.temporal", "video.frame"),
+        ("ops.registry", "data.version"),
+        ("ts.drift", "ts.changepoint"),
+        ("ts.drift", "ml.generalize"),
+        ("cv.iou", "cv.mask"),
+        ("cv.iou", "cv.box"),
     }
     for concept_id, prerequisite in mandatory_edges:
         if concept_id not in node_by_id or prerequisite not in node_by_id:
@@ -285,7 +298,7 @@ def validate() -> list[str]:
             if predecessor not in closure:
                 closure.add(predecessor)
                 stack.append(predecessor)
-    p4_section = roadmap.split("## P4 필수 선수 폐포 — R1 계획 (구현 전)")[-1]
+    p4_section = roadmap.split("## P4 필수 선수 폐포 — R2 계획 (구현 전)")[-1]
     p4_section = p4_section.split("## P4 구현 단계")[0]
     listed_p4 = re.findall(r"^\| `([^\x60]+)` \|", p4_section, re.MULTILINE)
     if set(listed_p4) != closure or len(listed_p4) != len(closure):

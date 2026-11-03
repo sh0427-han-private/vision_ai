@@ -17,11 +17,11 @@
 | P5 Track Expansion | Foundation/ML/DL/CV/Anomaly/Video/Geometry/Time-series/MLOps/Research | Chapter별 근거와 독립 검수 | 미착수 |
 | P6 Site QA | Build·Validator·JS·Browser·Pages/CI 확인 | 실행 근거·기존 URL 회귀 | 미착수 |
 
-## P4 필수 선수 폐포 — R1 계획 (구현 전)
+## P4 필수 선수 폐포 — R2 계획 (구현 전)
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
 
-핵심 8개: `m.scalar`, `m.vector`, `m.matrix`, `m.tensor`, `img.tensor`, `cnn.conv`, `cnn.map`, `cnn.base`. 추가 필수 보조 9개: `img.rgb`, `img.pixel`, `m.shape`, `cnn.kernel`, `m.dot`, `cnn.stride`, `cnn.pool`, `dl.activation`, `m.function`. 전체 **17개** Concept은 아래의 제공 위치가 예정되어 있습니다. “신규 페이지” 및 “P4 내부 Section”은 아직 작성되지 않았으며 링크로 노출하지 않습니다.
+핵심 8개: `m.scalar`, `m.vector`, `m.matrix`, `m.tensor`, `img.tensor`, `cnn.conv`, `cnn.map`, `cnn.base`. 추가 필수 보조 8개: `img.rgb`, `img.pixel`, `m.shape`, `cnn.kernel`, `m.dot`, `cnn.stride`, `dl.activation`, `m.function`. 전체 **16개** Concept은 아래의 제공 위치가 예정되어 있습니다. “신규 페이지” 및 “P4 내부 Section”은 아직 작성되지 않았으며 링크로 노출하지 않습니다.
 
 | Concept ID | 역할 | 제공 방식 | 정본 위치·필요한 보강 |
 |---|---|---|---|
@@ -40,12 +40,11 @@
 | `cnn.conv` | 핵심 | 기존 Section | notes/cnn.html#convolution — Convolution 수치 실습 |
 | `cnn.stride` | 보조·필수 | 기존 Section | notes/cnn.html#shape — Stride/Padding/Dilation |
 | `cnn.map` | 핵심 | 기존 Section | notes/cnn.html#overview — Feature Map; 수치 보강 |
-| `cnn.pool` | 보조·필수 | P4 내부 Section | notes/cnn.html#nonlinear에 Pooling 수치 보강 |
 | `cnn.base` | 핵심 | 기존 Section | notes/cnn.html#overview — CNN Architecture |
 
 - 기초 Pixel → RGB는 Tensor 없이 도입합니다. Image Tensor는 별도 수학 경로(Shape/Matrix/Tensor)와 합류합니다.
 - Polygon/Mask는 Pixel 이후 배우는 데이터 표현이며 Semantic Segmentation 모델은 필요하지 않습니다.
-- P4 검산 사례는 Dot Product, Kernel의 곱·합, Stride/Output Shape, 2×2 Pooling, Activation, 채널 변환을 입력·계산·출력으로 정합 검증합니다.
+- P4 필수 검산 사례는 Dot Product, Kernel의 곱·합, Stride/Output Shape, Activation, 채널 변환입니다. 2×2 Pooling 계산은 별도 선택 실습으로 유지합니다.
 
 ## P4 구현 단계
 
@@ -53,9 +52,10 @@
 2. Image Tensor 설명은 기존 [pixels](../notes/pixels.html#layout)를 canonical로 유지하며 차원과 축 순서를 연결합니다.
 3. Convolution은 기존 [CNN 수치 실습](../notes/cnn.html#convolution)을 재사용하여 고정 필터와 실제 학습되는 가중치를 구분하고 연산을 검산합니다.
 4. Feature Map·Channel·CNN을 기존 [channels](../notes/cnn.html#channels) 및 [overview](../notes/cnn.html#overview)에 연결합니다.
-5. 선수/후속 개념 링크를 추가하되 없는 페이지는 클릭 가능 URL로 렌더링하지 않습니다. 기존 resnet/unet redirect와 종합 PRML/CS231n Anchor를 유지합니다.
-6. 반도체 탐색을 제거할 때 build.py TOPIC_LABELS/nav/render, assets/site.js topic_copy, index.html, README/PROJECT_CONTEXT 및 검증 스크립트를 일관되게 변경합니다. 외부 출처 링크는 탐색에서 제외하되 안전한 기록으로 보존합니다.
-7. 빌드 시 변경된 원고와 생성된 HTML을 함께 관리합니다. 신규 의존성 도입은 원칙적으로 제외합니다.
+5. **P4 선택 실습 — `cnn.pool`**: Feature Map을 입력으로 2×2 Max/Average Pooling의 출력값과 Shape를 손으로 검산하며, 기존 [nonlinear](../notes/cnn.html#nonlinear)에서 P4 내부 Section으로 보강하도록 계획합니다. 이 Concept은 필수 선수 폐포 표에 포함하지 않습니다. 실제 페이지 구현은 P4에서만 수행합니다.
+6. 선수/후속 개념 링크를 추가하되 없는 페이지는 클릭 가능 URL로 렌더링하지 않습니다. 기존 resnet/unet redirect와 종합 PRML/CS231n Anchor를 유지합니다.
+7. 반도체 탐색을 제거할 때 build.py TOPIC_LABELS/nav/render, assets/site.js topic_copy, index.html, README/PROJECT_CONTEXT 및 검증 스크립트를 일관되게 변경합니다. 외부 출처 링크는 탐색에서 제외하되 안전한 기록으로 보존합니다.
+8. 빌드 시 변경된 원고와 생성된 HTML을 함께 관리합니다. 신규 의존성 도입은 원칙적으로 제외합니다.
 
 ## 실제 실행해야 할 검증 명령
 
@@ -98,6 +98,10 @@ P1–3 설계의 독립 검토 전에는 그 설계를 검증된 정본처럼 �
 - 독립 Reviewer가 본문 심도·선수 개념의 의미론적 완전성·다른 PR과의 충돌을 검토하기 전에는 P4를 완료하거나 PR을 병합하지 않습니다.
 
 
-## R1 범위와 인계
+## R1 범위와 인계 (과거 Snapshot)
 
-16 PART · 263 Concept · 394 직접 prerequisite edge; P4 페이지 구현·브라우저 검증·Merge·배포는 포함하지 않습니다. PR #35/#36의 병합 여부 확인 후 독립 Reviewer 검수 대상으로 인계합니다.
+R1 기준 16 PART · 263 Concept · 394 직접 prerequisite edge; P4 페이지 구현·브라우저 검증·Merge·배포는 포함하지 않습니다. PR #35/#36의 병합 여부 확인 후 독립 Reviewer 검수 대상으로 인계합니다.
+
+## R2 범위와 인계 (현행)
+
+R2 기준 16 PART · 263 Concept · 390 직접 prerequisite edge, `existing-section` 42 · `needs-expansion` 21 · `planned` 200. P4 핵심 8 + 필수 보조 8 = **16개 폐포**; `cnn.pool`은 별도 선택 실습입니다. 기존 페이지와 URL/Anchor를 변경하지 않고 R2 독립 검수를 요청합니다.

@@ -182,11 +182,13 @@ CS231n은 개념별 학습 뒤 해당 강의 흐름을 다시 연결하는 **교
 
 새 용어가 이미 있는 Concept의 부분 개념이면 해당 페이지 내 Section으로 추가합니다. 별도 전제·수식·실습·재사용 수요가 있는 경우에만 Concept 승격을 제안합니다. 출처는 논문→공식 구현/문서→대학 강의 순서로 확인합니다.
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
 
 ## 의미론적 정정 및 상태
 
 개념 분리, 과도한 의존성 제거, 기존 내용의 부분 커버리지 분류는 [SEMANTIC_AUDIT.md](SEMANTIC_AUDIT.md)에 기록했습니다. Curriculum의 개념명·수량은 DAG JSON과 동기화했습니다. 독립 Reviewer의 최종 PASS는 아직 받지 않았습니다.
 
 
-R1 갱신: 16 PART · 263 Concept · 394 직접 prerequisite edge. `m.covariance`·`m.gaussian_multi`·`dl.autograd` 신규 ID. Batch Normalization과 Layer Normalization, SGD 업데이트와 Epoch/Mini-batch 정의, AP/mAP·회귀 손실 공식과 평가 프로토콜을 분리합니다. P4의 17개 학습 위치는 [Roadmap](IMPLEMENTATION_ROADMAP.md)을 참조하며 **구현되었다는 의미는 아닙니다**.
+R1 역사적 기록: 16 PART · 263 Concept · 394 직접 prerequisite edge. `m.covariance`·`m.gaussian_multi`·`dl.autograd` 신규 ID. Batch Normalization과 Layer Normalization, SGD 업데이트와 Epoch/Mini-batch 정의, AP/mAP·회귀 손실 공식과 평가 프로토콜을 분리합니다. R1 당시 P4의 17개 학습 위치는 [Roadmap](IMPLEMENTATION_ROADMAP.md)의 R2 재계산으로 대체되었으며 **구현되었다는 의미는 아닙니다**.
+
+R2 현행: 16 PART · 263 Concept · 390 직접 prerequisite edge. Backpropagation은 Gradient·Chain Rule·Forward·Loss에서 독립적으로 도입하고 Autograd는 구현상의 선택 경로로 다룹니다. CNN은 Feature Map·Activation을 필수로 하고 Pooling은 선택적입니다. Temporal Split·Registry·Drift·IoU/Dice의 일반 정의에서도 불필요한 필수 선수를 제거했습니다. P4 핵심 8 + 필수 보조 8 = 16개 학습 위치이며 실제 구현은 아닙니다.

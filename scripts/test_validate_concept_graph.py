@@ -95,6 +95,44 @@ class GraphMutationTests(unittest.TestCase):
             "Catalog level/status/title mismatch: m.entropy",
         )
 
+    def test_backprop_does_not_require_autograd(self) -> None:
+        def mutate(graph: dict, by: dict) -> None:
+            by["dl.backprop"]["prerequisites"].append("dl.autograd")
+            by["dl.autograd"]["next_topics"].append("dl.backprop")
+
+        self.check_mutation(
+            mutate,
+            "Over-restrictive curriculum edge: dl.backprop <- dl.autograd",
+        )
+
+    def test_cnn_does_not_require_pooling(self) -> None:
+        def mutate(graph: dict, by: dict) -> None:
+            by["cnn.base"]["prerequisites"].append("cnn.pool")
+            by["cnn.pool"]["next_topics"].append("cnn.base")
+
+        self.check_mutation(
+            mutate, "Over-restrictive curriculum edge: cnn.base <- cnn.pool"
+        )
+
+    def test_temporal_split_does_not_require_video(self) -> None:
+        def mutate(graph: dict, by: dict) -> None:
+            by["data.temporal"]["prerequisites"].append("video.frame")
+            by["video.frame"]["next_topics"].append("data.temporal")
+
+        self.check_mutation(
+            mutate,
+            "Over-restrictive curriculum edge: data.temporal <- video.frame",
+        )
+
+    def test_transitive_redundant_direct_edge(self) -> None:
+        def mutate(graph: dict, by: dict) -> None:
+            by["cnn.base"]["prerequisites"].append("cnn.stride")
+            by["cnn.stride"]["next_topics"].append("cnn.base")
+
+        self.check_mutation(
+            mutate, "Transitively redundant edge: cnn.base <- cnn.stride"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

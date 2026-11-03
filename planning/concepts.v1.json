@@ -628,7 +628,8 @@
         "m.derivative"
       ],
       "next_topics": [
-        "dl.autograd"
+        "dl.autograd",
+        "dl.backprop"
       ],
       "status": "planned",
       "legacy_url": null
@@ -732,7 +733,8 @@
         "m.likelihood",
         "res.state",
         "res.diffusion",
-        "m.gaussian_multi"
+        "m.gaussian_multi",
+        "ts.drift"
       ],
       "status": "needs-expansion",
       "legacy_url": "notes/prml.html#ch2"
@@ -1011,7 +1013,8 @@
         "ml.calibration",
         "an.threshold",
         "data.experiment",
-        "eval.confusion"
+        "eval.confusion",
+        "data.temporal"
       ],
       "status": "existing-section",
       "legacy_url": "notes/training.html#split"
@@ -1029,7 +1032,6 @@
         "dl.dropout",
         "dl.repr",
         "an.shift",
-        "ts.drift",
         "eval.robust",
         "res.ood"
       ],
@@ -1194,7 +1196,8 @@
         "res.quant",
         "res.prune",
         "dl.autograd",
-        "res.distill"
+        "res.distill",
+        "dl.backprop"
       ],
       "status": "planned",
       "legacy_url": null
@@ -1208,9 +1211,7 @@
         "dl.forward",
         "m.chain"
       ],
-      "next_topics": [
-        "dl.backprop"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -1221,8 +1222,9 @@
       "level": "Intermediate",
       "prerequisites": [
         "m.gradient",
-        "dl.autograd",
-        "ml.loss"
+        "ml.loss",
+        "m.chain",
+        "dl.forward"
       ],
       "next_topics": [
         "dl.vanish",
@@ -1716,7 +1718,8 @@
         "cnn.multi",
         "cnn.pool",
         "cv.semantic",
-        "an.feature"
+        "an.feature",
+        "cnn.base"
       ],
       "status": "needs-expansion",
       "legacy_url": "notes/cnn.html#overview"
@@ -1759,9 +1762,7 @@
       "prerequisites": [
         "cnn.map"
       ],
-      "next_topics": [
-        "cnn.base"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -1771,8 +1772,8 @@
       "part": "PART 04",
       "level": "Intermediate",
       "prerequisites": [
-        "cnn.pool",
-        "dl.activation"
+        "dl.activation",
+        "cnn.map"
       ],
       "next_topics": [
         "cnn.bnh",
@@ -1924,8 +1925,7 @@
         "cv.task"
       ],
       "next_topics": [
-        "cv.detect",
-        "cv.iou"
+        "cv.detect"
       ],
       "status": "planned",
       "legacy_url": null
@@ -2005,7 +2005,6 @@
         "img.pixel"
       ],
       "next_topics": [
-        "cv.iou",
         "cv.sam",
         "data.format"
       ],
@@ -2017,10 +2016,7 @@
       "title": "IoU·Dice",
       "part": "PART 05",
       "level": "Basic",
-      "prerequisites": [
-        "cv.mask",
-        "cv.box"
-      ],
+      "prerequisites": [],
       "next_topics": [
         "cv.nms",
         "eval.boundary",
@@ -2683,7 +2679,6 @@
         "video.sample",
         "video.flow",
         "video.track",
-        "data.temporal",
         "ops.rtsp"
       ],
       "status": "planned",
@@ -3152,9 +3147,7 @@
       "prerequisites": [
         "ts.series"
       ],
-      "next_topics": [
-        "ts.drift"
-      ],
+      "next_topics": [],
       "status": "planned",
       "legacy_url": null
     },
@@ -3164,8 +3157,7 @@
       "part": "PART 10",
       "level": "Intermediate",
       "prerequisites": [
-        "ts.changepoint",
-        "ml.generalize"
+        "m.distribution"
       ],
       "next_topics": [
         "res.continual"
@@ -3306,8 +3298,7 @@
         "ml.leakage"
       ],
       "next_topics": [
-        "data.kfold",
-        "data.temporal"
+        "data.kfold"
       ],
       "status": "existing-section",
       "legacy_url": "notes/training.html#split"
@@ -3331,8 +3322,7 @@
       "part": "PART 11",
       "level": "Intermediate",
       "prerequisites": [
-        "data.group",
-        "video.frame"
+        "ml.split"
       ],
       "next_topics": [],
       "status": "planned",
@@ -3347,8 +3337,7 @@
         "data.collect"
       ],
       "next_topics": [
-        "data.experiment",
-        "ops.registry"
+        "data.experiment"
       ],
       "status": "planned",
       "legacy_url": null
@@ -3766,9 +3755,7 @@
       "title": "Model Registry·Versioning",
       "part": "PART 13",
       "level": "Intermediate",
-      "prerequisites": [
-        "data.version"
-      ],
+      "prerequisites": [],
       "next_topics": [
         "ops.cicd"
       ],

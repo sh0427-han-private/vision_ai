@@ -11,7 +11,7 @@
 - 각 수준은 PART 전체에 일괄 적용하지 않고 실제 설명 및 수학적·시스템적 선수 지식에 따라 지정합니다. 추가 콘텐츠 검증 시 조정합니다.
 - 기존 CS231n·PRML의 개요/논문 지도를 새 상세 학습 페이지로 오인하지 않습니다. [기존 콘텐츠 인벤토리](EXISTING_CONTENT_AUDIT.md) 참조.
 
-<!-- graph-snapshot: parts=16 concepts=263 edges=394 existing-section=42 needs-expansion=21 planned=200 -->
+<!-- graph-snapshot: parts=16 concepts=263 edges=390 existing-section=42 needs-expansion=21 planned=200 -->
 
 ## PART 00 — AI & Mathematical Foundations
 
