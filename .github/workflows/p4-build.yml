@@ -1,0 +1,45 @@
+name: P4 generate and verify committed HTML
+
+on:
+  push:
+    branches:
+      - feat/p4-foundations-20261103
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Build original static site with P4 lessons
+        run: python3 scripts/build.py
+      - name: Check deterministic second build
+        run: |
+          find index.html notes -name '*.html' -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/p4-build-first.sha
+          python3 scripts/build.py
+          find index.html notes -name '*.html' -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/p4-build-second.sha
+          diff -u /tmp/p4-build-first.sha /tmp/p4-build-second.sha
+      - name: Site, graph, numeric and JS regression
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/validate_concept_graph.py
+          python3 -m unittest discover -s scripts -p test_validate_concept_graph.py -v
+          python3 -m unittest discover -s scripts -p test_p4_examples.py -v
+          node --check assets/site.js
+      - name: Commit generated HTML on the isolated P4 branch only
+        run: |
+          test "$GITHUB_REF_NAME" = "feat/p4-foundations-20261103"
+          git add index.html notes/*.html
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "build(p4): commit generated static HTML for P4 lesson sources"
+            git push origin HEAD:feat/p4-foundations-20261103
+          else
+            echo "Generated HTML is already up to date"
+          fi

@@ -1,0 +1,46 @@
+name: P4 Chromium desktop and mobile QA
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/foundations_note.py'
+      - 'scripts/p4_browser.mjs'
+      - 'scripts/p4_examples.py'
+      - 'scripts/build.py'
+      - 'assets/site.js'
+      - 'assets/site.css'
+      - 'notes/**'
+      - 'index.html'
+      - '.github/workflows/p4-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and static validate
+        run: |
+          python3 scripts/build.py
+          python3 scripts/validate.py
+          python3 scripts/validate_concept_graph.py
+          node --check assets/site.js
+      - name: Install Chromium for actual desktop/mobile browser checks
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Run browser interactions and capture screenshots
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/p4-http.log 2>&1 &
+          node scripts/p4_browser.mjs
+      - name: Preserve 1440px and 390px screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p4-desktop-mobile-screenshots
+          path: p4-browser-evidence/
+          if-no-files-found: warn

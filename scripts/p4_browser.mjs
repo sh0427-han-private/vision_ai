@@ -1,0 +1,131 @@
+import { chromium } from 'playwright';
+import { mkdir } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+
+const BASE = 'http://127.0.0.1:8000';
+const PAGE_SLUGS = [
+  ['scalar', 'scalar'], ['vector', 'vector'], ['matrix', 'matrix'],
+  ['tensor', 'tensor'], ['shape', 'shape'],
+  ['dot-product', 'dot-product'], ['function', 'function'],
+  ['cnn', 'kernel'], ['pixels', 'layout'],
+];
+const dir = 'p4-browser-evidence';
+await mkdir(dir, { recursive: true });
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
+const failures = [];
+
+async function check(name, run) {
+  try {
+    await run();
+    console.log('PASS', name);
+  } catch (error) {
+    failures.push({ name, message: error.message });
+    console.error('FAIL', name, error.message);
+  }
+}
+
+async function changeValue(page, selector, wanted, eventType = 'input') {
+  const element = page.locator(selector);
+  await element.evaluate((node, args) => {
+    node.value = args.wanted;
+    node.dispatchEvent(new Event(args.eventType, { bubbles: true }));
+  }, { wanted: String(wanted), eventType });
+}
+
+for (const width of [1440, 390]) {
+  const page = await browser.newPage({ viewport: { width, height: 900 } });
+  for (const [slug, anchor] of PAGE_SLUGS) {
+    await check(width + ' render ' + slug, async () => {
+      const response = await page.goto(BASE + '/notes/' + slug + '.html', {
+        waitUntil: 'domcontentloaded',
+      });
+      assert.equal(response.status(), 200);
+      assert.equal(await page.locator('h1').count(), 1);
+      assert.equal(await page.locator('#' + anchor).count(), 1);
+      assert.ok(await page.locator('a[href*="#"]').count() > 0);
+      assert.ok(await page.locator('figure').count() > 0);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth + 1,
+      );
+      assert.equal(overflow, false, 'unintended page-level horizontal overflow');
+      await page.screenshot({
+        path: dir + '/' + width + '-' + slug + '.png',
+        fullPage: true,
+        animations: 'disabled',
+      });
+    });
+  }
+  await check(width + ' MathJax actual CHTML typesetting', async () => {
+    await page.goto(BASE + '/notes/dot-product.html', { waitUntil: 'domcontentloaded' });
+    await page.waitForFunction(
+      () => document.querySelector('.math-display mjx-container') !== null,
+      { timeout: 20000 },
+    );
+    const texRaw = await page.locator('.equation-fallback').count();
+    assert.equal(texRaw, 0);
+    assert.ok(await page.locator('.math-display mjx-container').count() > 0);
+  });
+  await check(width + ' topic fallback + back/forward', async () => {
+    await page.goto(BASE + '/index.html?topic=semiconductor');
+    assert.equal(await page.locator('[data-topic-panel="overview"]').getAttribute('hidden'), null);
+    assert.equal(await page.locator('[data-topic-tab="semiconductor"]').count(), 0);
+    await page.goto(BASE + '/index.html?topic=ai');
+    assert.equal(await page.locator('[data-topic-panel="ai"]').getAttribute('hidden'), null);
+    await page.locator('[data-topic-tab="vision"]').click();
+    assert.equal(await page.locator('[data-topic-panel="vision"]').getAttribute('hidden'), null);
+    await page.goBack();
+    assert.equal(await page.locator('[data-topic-panel="ai"]').getAttribute('hidden'), null);
+    await page.goForward();
+    assert.equal(await page.locator('[data-topic-panel="vision"]').getAttribute('hidden'), null);
+  });
+  await check(width + ' legacy JS brightness lab', async () => {
+    await page.goto(BASE + '/notes/pixels.html');
+    const before = await page.locator('#pixel-matrix').innerText();
+    await changeValue(page, '#brightness', 175);
+    const after = await page.locator('#pixel-matrix').innerText();
+    assert.notEqual(after, before);
+    assert.ok(await page.locator('#pixel-matrix span').count() === 64);
+  });
+  await check(width + ' legacy JS convolution lab', async () => {
+    await page.goto(BASE + '/notes/cnn.html');
+    const before = await page.locator('#conv-value').innerText();
+    await changeValue(page, '#conv-position', 4);
+    const after = await page.locator('#conv-value').innerText();
+    assert.notEqual(after, before);
+    assert.ok(after.includes('위치 (1, 1)'));
+  });
+  await check(width + ' legacy JS patch lab', async () => {
+    await page.goto(BASE + '/notes/vit.html');
+    const before = await page.locator('#patch-result').innerText();
+    const nextValue = await page.locator('#patch-size').evaluate(node => {
+      if (node.options) return [...node.options].map(x => x.value).find(x => x !== node.value);
+      return node.value === '16' ? '32' : '16';
+    });
+    assert.ok(nextValue);
+    await changeValue(page, '#patch-size', nextValue, 'change');
+    const after = await page.locator('#patch-result').innerText();
+    assert.notEqual(after, before);
+  });
+  await check(width + ' legacy JS threshold lab', async () => {
+    await page.goto(BASE + '/notes/training.html');
+    const before = await page.locator('#threshold-value').innerText();
+    await changeValue(page, '#threshold', 90);
+    const after = await page.locator('#threshold-value').innerText();
+    assert.notEqual(after, before);
+  });
+  if (width === 390) {
+    await check('mobile sidebar open, Escape and focus', async () => {
+      await page.goto(BASE + '/notes/scalar.html');
+      const menu = page.locator('.menu');
+      await menu.click();
+      assert.ok(await page.locator('.sidebar').evaluate(n => n.classList.contains('open')));
+      assert.equal(await menu.getAttribute('aria-expanded'), 'true');
+      await page.keyboard.press('Escape');
+      assert.equal(await menu.getAttribute('aria-expanded'), 'false');
+    });
+  }
+  await page.close();
+}
+await browser.close();
+console.log('BROWSER CHECKS', failures.length === 0 ? 'ALL PASS' : 'FAILED', failures.length);
+if (failures.length) process.exitCode = 1;
