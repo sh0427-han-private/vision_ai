@@ -81,6 +81,16 @@ for (const width of [1440, 390]) {
       }
     });
   }
+  await check(width + ' P4 prerequisite/next-topic deep link', async () => {
+    await page.goto(BASE + '/notes/scalar.html', { waitUntil: 'domcontentloaded' });
+    await page.locator('a[href="vector.html#vector"]').first().click();
+    await page.waitForURL('**/notes/vector.html#vector');
+    assert.equal(await page.locator('#vector').count(), 1);
+    await page.goto(BASE + '/notes/cnn.html#pooling', { waitUntil: 'domcontentloaded' });
+    assert.equal(await page.locator('#pooling h2').count(), 1);
+    await page.goto(BASE + '/notes/cnn.html#kernel', { waitUntil: 'domcontentloaded' });
+    assert.equal(await page.locator('#kernel h2').count(), 1);
+  });
   await check(width + ' MathJax actual CHTML typesetting', async () => {
     await page.goto(BASE + '/notes/dot-product.html', { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(
