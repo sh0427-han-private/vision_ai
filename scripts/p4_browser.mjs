@@ -64,7 +64,16 @@ for (const width of [1440, 390]) {
       });
       if (slug === 'cnn') {
         for (const anchorName of ['kernel', 'pooling']) {
-          await page.locator('#' + anchorName).screenshot({
+          const section = page.locator('#' + anchorName);
+          assert.ok(
+            (await section.locator('h2').innerText()).includes(
+              anchorName === 'kernel' ? 'Kernel' : 'Pooling',
+            ),
+          );
+          await section.evaluate(
+            element => element.scrollIntoView({ block: 'start', behavior: 'instant' }),
+          );
+          await page.screenshot({
             path: dir + '/' + width + '-cnn-' + anchorName + '.png',
             animations: 'disabled',
           });
