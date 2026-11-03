@@ -29,6 +29,18 @@ def related(items: list[tuple[str, str]], missing: str = "") -> str:
 
 def register_foundation_notes(note, section, table, callout, equation, svg):
     """Register seven original beginner pages before the eight legacy notes."""
+    render_svg = svg
+
+    def svg(body, height, caption):
+        """Show an explicit horizontal-swipe hint above narrow mobile diagrams."""
+        html = render_svg(body, height, caption)
+        return html.replace(
+            '<figure><div class="diagram">',
+            '<figure><p class="small">도식이 화면보다 넓다면 그림 영역을 '
+            '좌우로 스크롤해 입력·출력을 확인하세요.</p><div class="diagram">',
+            1,
+        )
+
     note(
         "scalar", "Scalar: 값 하나에서 시작하기",
         "한 개의 수, 자료형, 단위를 구분하고 다른 개념의 입력값으로 연결합니다.",
