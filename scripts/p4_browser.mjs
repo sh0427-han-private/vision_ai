@@ -161,6 +161,8 @@ for (const width of [1440, 390]) {
     }));
     console.log('FUNCTION_EQUATION_METRICS', width, JSON.stringify(metrics));
     assert.ok(metrics.clientWidth > 100);
+    assert.ok(metrics.scrollWidth <= metrics.clientWidth + 2,
+      'Function equation must fit without sideways scrolling: ' + JSON.stringify(metrics));
     assert.ok(metrics.pageWidth <= metrics.viewportWidth + 1, 'Function equation causes page overflow');
     await page.locator('#example .equation').scrollIntoViewIfNeeded();
     await page.screenshot({

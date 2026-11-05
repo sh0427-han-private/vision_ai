@@ -1,5 +1,6 @@
 """Independent numeric assertions for the P4 teaching examples."""
 
+import hashlib
 import math
 import re
 import subprocess
@@ -101,6 +102,30 @@ class P4ExampleTests(unittest.TestCase):
                 self.assertEqual(result.stdout, expected + "\n")
                 self.assertEqual(displayed, result.stdout.rstrip("\n"))
                 self.assertEqual(len(displayed.splitlines()), 2)
+
+    def test_deterministic_build_and_committed_generated_pages(self):
+        """Rebuild twice and check every generated HTML, not just R1 pages."""
+        root = Path(__file__).resolve().parents[1]
+        pages = [root / "index.html", *sorted((root / "notes").glob("*.html"))]
+
+        def fingerprint():
+            return {p.relative_to(root).as_posix():
+                    hashlib.sha256(p.read_bytes()).hexdigest() for p in pages}
+
+        before = fingerprint()
+        for _ in range(2):
+            subprocess.run(
+                [sys.executable, "scripts/build.py"], cwd=root,
+                capture_output=True, text=True, check=True,
+            )
+            self.assertEqual(fingerprint(), before, "build changed committed HTML")
+
+        if (root / ".git").exists():
+            clean = subprocess.run(
+                ["git", "diff", "--exit-code", "--", "index.html", "notes"],
+                cwd=root, capture_output=True, text=True,
+            )
+            self.assertEqual(clean.returncode, 0, clean.stdout + clean.stderr)
 
     def test_multiline_html_is_escaped_and_one_line_unchanged(self):
         rendered = code("print('<test>')", "<script>\n&value")
