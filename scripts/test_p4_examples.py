@@ -1,7 +1,15 @@
 """Independent numeric assertions for the P4 teaching examples."""
 
+import hashlib
 import math
+import re
+import subprocess
+import sys
 import unittest
+from html import unescape
+from pathlib import Path
+
+from foundations_note import code
 
 from p4_examples import (
     conv_output_dim,
@@ -65,6 +73,65 @@ class P4ExampleTests(unittest.TestCase):
             pool2x2([[1, 2], [3]], "max")
         with self.assertRaises(ValueError):
             conv_output_dim(2, 3)
+
+    def test_multiline_display_matches_executed_python_stdout(self):
+        """Check authored snippets against real Python stdout and committed HTML."""
+        root = Path(__file__).resolve().parents[1]
+        cases = (
+            ("notes/shape.html", "hwc = ", "(3, 2, 3)\n[0, 3, 6] 18"),
+            ("notes/cnn.html", "from math import erf, sqrt", "[0.0, 0.5, 3]\n0.3457"),
+        )
+        pattern = re.compile(
+            r"<pre><code>([^<]*)</code></pre><p>예상 출력:</p>"
+            r"<pre><code>([^<]*)</code></pre>", re.DOTALL,
+        )
+        for rel_path, snippet_marker, expected in cases:
+            with self.subTest(page=rel_path):
+                html = (root / rel_path).read_text(encoding="utf-8")
+                matched = [
+                    (unescape(source), unescape(displayed))
+                    for source, displayed in pattern.findall(html)
+                    if snippet_marker in unescape(source)
+                ]
+                self.assertEqual(len(matched), 1, "missing or duplicated stdout block")
+                source, displayed = matched[0]
+                result = subprocess.run(
+                    [sys.executable, "-c", source], capture_output=True,
+                    text=True, check=True,
+                )
+                self.assertEqual(result.stdout, expected + "\n")
+                self.assertEqual(displayed, result.stdout.rstrip("\n"))
+                self.assertEqual(len(displayed.splitlines()), 2)
+
+    def test_deterministic_build_and_committed_generated_pages(self):
+        """Rebuild twice and check every generated HTML, not just R1 pages."""
+        root = Path(__file__).resolve().parents[1]
+        pages = [root / "index.html", *sorted((root / "notes").glob("*.html"))]
+
+        def fingerprint():
+            return {p.relative_to(root).as_posix():
+                    hashlib.sha256(p.read_bytes()).hexdigest() for p in pages}
+
+        before = fingerprint()
+        for _ in range(2):
+            subprocess.run(
+                [sys.executable, "scripts/build.py"], cwd=root,
+                capture_output=True, text=True, check=True,
+            )
+            self.assertEqual(fingerprint(), before, "build changed committed HTML")
+
+        if (root / ".git").exists():
+            clean = subprocess.run(
+                ["git", "diff", "--exit-code", "--", "index.html", "notes"],
+                cwd=root, capture_output=True, text=True,
+            )
+            self.assertEqual(clean.returncode, 0, clean.stdout + clean.stderr)
+
+    def test_multiline_html_is_escaped_and_one_line_unchanged(self):
+        rendered = code("print('<test>')", "<script>\n&value")
+        self.assertIn("<pre><code>&lt;script&gt;\n&amp;value</code></pre>", rendered)
+        self.assertNotIn("<script>", rendered)
+        self.assertIn("<p>예상 출력: <code>1</code>. ", code("print(1)", "1"))
 
 
 if __name__ == "__main__":

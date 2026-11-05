@@ -270,7 +270,7 @@ EQUATION_TEX.update({
     "P4_TENSOR": r"\displaystyle N=\prod_{i=1}^{3}d_i=2\times2\times3=12",
     "P4_SHAPE": r"\begin{aligned}(H,W,C)&=(2,3,3)\\(C,H,W)&=(3,2,3)\\\text{axis order}&=(2,0,1)\end{aligned}",
     "P4_DOT": r"\begin{aligned}\mathbf{a}\cdot\mathbf{b}&=1\cdot4+2\cdot5+3\cdot6\\&=4+10+18=32\end{aligned}",
-    "P4_FUNCTION": r"\displaystyle f(x)=2x,\quad g(x)=2x+1,\quad h(x)=\max(0,x)",
+    "P4_FUNCTION": r"\begin{aligned}f(x)&=2x\\g(x)&=2x+1\\h(x)&=\max(0,x)\end{aligned}",
     "P4_KERNEL": r"\begin{aligned}Y_{0,0}&=\sum_{i=0}^{2}\sum_{j=0}^{2}X_{i,j}K_{i,j}\\&=2+2+2=6\end{aligned}",
     "P4_CONV_SHAPE": r"\displaystyle H_{\mathrm{out}}=\left\lfloor\frac{H+2P-D(K-1)-1}{S}+1\right\rfloor=\left\lfloor\frac{5-3}{1}+1\right\rfloor=3",
     "P4_POOL": r"\begin{aligned}\max(1,2,3,4)&=4\\\operatorname{avg}&=\frac{1+2+3+4}{4}\\&=2.5\end{aligned}",
