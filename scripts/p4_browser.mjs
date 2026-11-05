@@ -131,8 +131,8 @@ for (const width of [1440, 390]) {
   });
   await check(width + ' Shape and GELU two-line stdout display', async () => {
     for (const [slug, section, expected] of [
-      ['shape', 'python', '(3, 2, 3)\\n[0, 3, 6] 18'],
-      ['cnn', 'nonlinear', '[0.0, 0.5, 3]\\n0.3457'],
+      ['shape', 'python', '(3, 2, 3)\n[0, 3, 6] 18'],
+      ['cnn', 'nonlinear', '[0.0, 0.5, 3]\n0.3457'],
     ]) {
       await page.goto(BASE + '/notes/' + slug + '.html', { waitUntil: 'domcontentloaded' });
       const output = page.locator('#' + section + ' p:has-text("예상 출력:") + pre > code');
