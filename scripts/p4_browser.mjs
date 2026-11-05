@@ -129,6 +129,45 @@ for (const width of [1440, 390]) {
     await page.goto(BASE + '/notes/cnn.html#kernel', { waitUntil: 'domcontentloaded' });
     assert.equal(await page.locator('#kernel h2').count(), 1);
   });
+  await check(width + ' Shape and GELU two-line stdout display', async () => {
+    for (const [slug, section, expected] of [
+      ['shape', 'python', '(3, 2, 3)\\n[0, 3, 6] 18'],
+      ['cnn', 'nonlinear', '[0.0, 0.5, 3]\\n0.3457'],
+    ]) {
+      await page.goto(BASE + '/notes/' + slug + '.html', { waitUntil: 'domcontentloaded' });
+      const output = page.locator('#' + section + ' p:has-text("예상 출력:") + pre > code');
+      assert.equal(await output.count(), 1);
+      assert.equal(await output.textContent(), expected);
+      assert.equal(await output.evaluate(el => getComputedStyle(el.parentElement).whiteSpace), 'pre');
+      await output.scrollIntoViewIfNeeded();
+      await page.screenshot({
+        path: dir + '/' + width + '-' + slug + '-stdout.png',
+        animations: 'disabled',
+      });
+    }
+  });
+  await check(width + ' Function equation CHTML and contained width', async () => {
+    await page.goto(BASE + '/notes/function.html', { waitUntil: 'domcontentloaded' });
+    await page.waitForFunction(
+      () => document.querySelector('#example .equation mjx-container') !== null,
+      null, { timeout: 20000 },
+    );
+    const metrics = await page.locator('#example .equation').evaluate(el => ({
+      clientWidth: el.clientWidth,
+      scrollWidth: el.scrollWidth,
+      mathWidth: el.querySelector('mjx-container').getBoundingClientRect().width,
+      pageWidth: document.documentElement.scrollWidth,
+      viewportWidth: innerWidth,
+    }));
+    console.log('FUNCTION_EQUATION_METRICS', width, JSON.stringify(metrics));
+    assert.ok(metrics.clientWidth > 100);
+    assert.ok(metrics.pageWidth <= metrics.viewportWidth + 1, 'Function equation causes page overflow');
+    await page.locator('#example .equation').scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: dir + '/' + width + '-function-equation.png',
+      animations: 'disabled',
+    });
+  });
   await check(width + ' MathJax actual CHTML typesetting', async () => {
     await page.goto(BASE + '/notes/dot-product.html', { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(

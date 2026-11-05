@@ -4,7 +4,7 @@
 
 작업 저장소: [sh0427-han-private/vision_ai](https://github.com/sh0427-han-private/vision_ai). 참고 저장소는 design-template-library이며 읽기 전용입니다. vision_ai_lecture는 별도 강의 프로젝트로, 이 브랜치에서 변경하지 않습니다.
 
-기준 main SHA: e2b2c2f377c1c97c3b6d010cb34c63988d0fca05. 원본 페이지·기존 URL·수식·디자인을 보존합니다. 별도 승인 없이 main merge 및 Pages deploy를 수행하지 않습니다.
+R2 초기 설계 시점 기준 main SHA(과거): e2b2c2f377c1c97c3b6d010cb34c63988d0fca05. **현재 P4/R1 작업의 코드 기준 main**: 2024db2b91e0fe9137fdd527357046f173cb0a4d. 원본 페이지·기존 URL·수식·디자인을 보존합니다. 이번 R1에서 추가 main merge 및 Pages deploy를 수행하지 않습니다.
 
 ## 단계
 
@@ -13,7 +13,7 @@
 | P1 Audit | Python 빌더·70개 Section·JS/CSS·Workflow·Legacy URL 및 반도체 메뉴 조사 | 누락 없이 기존 자산 분류 | 인벤토리 작성, 의미론적 감사 반영·독립 리뷰 대기 |
 | P2 Curriculum | PART 00–15, 263개 후보 개념, 선수/후속 DAG, 여러 학습 경로 | 그래프 검사 + 의미론적 선수 검수 | 구조 검사 및 자체 의미론적 정정 완료, 독립 검토 대기 |
 | P3 Design | 기존 note/section, Figure, URL/탐색 확장 설계 | 새 Framework 없음, 호환 계약 | 문서 작성, 독립 리뷰 대기 |
-| P4 Vertical Slice | Scalar→Vector→Matrix→Tensor→Image Tensor→Convolution→Feature Map→CNN | 계산·Shape·Python·Figure·링크/브라우저 검사 | **Builder 구현·검증 중 / Reviewer PENDING** |
+| P4 Vertical Slice | Scalar→Vector→Matrix→Tensor→Image Tensor→Convolution→Feature Map→CNN | 계산·Shape·Python·Figure·링크/브라우저 검사 | **P4/R0 구현·main 반영(배포 이력 있음); R0 Reviewer BLOCKED, R1 수정·검수 진행** |
 | P5 Track Expansion | Foundation/ML/DL/CV/Anomaly/Video/Geometry/Time-series/MLOps/Research | Chapter별 근거와 독립 검수 | 미착수 |
 | P6 Site QA | Build·Validator·JS·Browser·Pages/CI 확인 | 실행 근거·기존 URL 회귀 | 미착수 |
 
@@ -88,7 +88,7 @@ Browser에서는 Desktop 1440px/모바일 390px 기준으로 H1, Sidebar 열기�
 
 ## 승인 게이트
 
-P1–3 설계의 독립 검토 전에는 그 설계를 검증된 정본처럼 취급하지 않습니다. P4 구현은 독립 검토/최신 main 대조 이후 진행하고, main merge/배포는 별도 승인 후 수행합니다.
+P1–3 설계의 독립 검토 전에는 그 설계를 검증된 정본처럼 취급하지 않습니다. P4/R0 콘텐츠는 이미 main에 반영·배포된 이력이 있으나 R0 Reviewer 판정은 BLOCKED입니다. P4/R1 후속 수정은 최신 main과 독립 검수를 거치며, 새로운 main merge/배포는 별도 승인 후 수행합니다.
 
 ## Semantic Audit 후속 정정 — 2026-11-02
 
@@ -106,6 +106,6 @@ R1 기준 16 PART · 263 Concept · 394 직접 prerequisite edge; P4 페이지 �
 
 R2 기준 16 PART · 263 Concept · 390 직접 prerequisite edge, `existing-section` 42 · `needs-expansion` 21 · `planned` 200. P4 핵심 8 + 필수 보조 8 = **16개 폐포**; `cnn.pool`은 별도 선택 실습입니다. 기존 페이지와 URL/Anchor를 변경하지 않고 R2 독립 검수를 요청합니다.
 
-## P4/R0 실제 구현 — 현재 Coverage
+## P4/R0 실제 구현 — 현재 main Coverage
 
-새 페이지 7개(Scalar, Vector, Matrix, Tensor, Shape, Dot Product, Function), 기존 Section 재활용 8개, CNN Kernel/Pooling Section 2개를 등록했습니다. P4 필수 폐포 16개와 별도 Pooling을 포함한 17개 Concept가 실제 Anchor를 갖습니다. 263 Stable ID와 390 직접 선수 Edge는 불변, 7개 계획 문서의 Snapshot은 `existing-section` 53 / `needs-expansion` 19 / `planned` 191로 동기화합니다. PR #37 R2 Graph를 토대로 별도 P4 브랜치와 Draft Stacked PR에서 검수하며 main Merge/Pages 배포는 별도 승인입니다.
+새 페이지 7개(Scalar, Vector, Matrix, Tensor, Shape, Dot Product, Function), 기존 Section 재활용 8개, CNN Kernel/Pooling Section 2개를 등록했습니다. P4 필수 폐포 16개와 별도 Pooling을 포함한 17개 Concept가 실제 Anchor를 갖습니다. 263 Stable ID와 390 직접 선수 Edge는 불변, 7개 계획 문서의 Snapshot은 `existing-section` 53 / `needs-expansion` 19 / `planned` 191로 동기화합니다. P4/R0 콘텐츠는 main에 반영·배포된 이력이 있으나 독립 Reviewer R0 판정은 **BLOCKED**입니다. 기존 Draft PR #38은 Open/Unmerged 상태로 유지합니다. P4/R1은 main@2024db2에서 별도 브랜치와 신규 Draft PR로 후속 수정하며, 새 main Merge/Pages 배포는 별도 승인입니다.

@@ -106,10 +106,9 @@ CS231n 공개 강의 노트의 전체 학습 흐름과 Bishop PRML 14개 장 전
 
 ## 분야별 탐색
 
-- 상단 분야: 반도체 / AI / Vision AI.
-- 반도체: Memory Book, Process Book 외부 링크. 외부 자료에는 자료명과 출처 도메인을 간단히 표시한다.
-- AI: 학습·평가, PRML. Vision AI: 이미지·CNN, Transformer·ViT, Vision Tasks, Anomaly Detection, CS231n.
-- 홈페이지는 `?topic=semiconductor|ai|vision`으로 선택 분야를 유지한다. 기본 첫 화면은 세 분야의 전체 목차다.
+- 현재 활성 분야 탭: **AI / Vision AI**. 반도체 분야 탭과 Memory Book/Process Book 링크는 활성 탐색에서 제외한다.
+- AI: 기초 수학, 학습·평가, PRML. Vision AI: 이미지·CNN, Transformer·ViT, Vision Tasks, Anomaly Detection, CS231n.
+- `?topic=ai`와 `?topic=vision`은 해당 분야를 선택한다. 예전 북마크 `?topic=semiconductor`는 **전체 목차(Overview)**로 Fallback한다. 기본 첫 화면도 전체 목차다.
 - 분야 선택 시 자료 카드와 왼쪽 목차가 함께 바뀐다. 상세 문서의 분야 탭은 해당 분야 홈페이지로 이동한다.
 
 

@@ -1,8 +1,8 @@
 # Semantic Audit — 선수 개념 의미론 정정 (2026-11-02)
 
-> 대상: [Draft PR #37](https://github.com/sh0427-han-private/vision_ai/pull/37). 작성자 자체 설계 감사로서 **독립 Reviewer PASS가 아닙니다(PENDING)**. 원본 HTML/JS/CSS 학습 페이지는 수정하지 않았습니다.
+> 이 문서의 R0–R2 설계 감사는 [과거 PR #37](https://github.com/sh0427-han-private/vision_ai/pull/37) 당시의 기록입니다. R2 당시 작성자 자체 감사의 독립 Reviewer 상태는 PENDING이었으며, 이 기록만으로 PASS를 주장하지 않습니다. 원본 HTML/JS/CSS 학습 페이지를 수정하지 않았다는 설명 역시 **R2 설계 작업 당시**에 한정됩니다. **현재 P4/R0는 main에 구현·배포된 이력이 있지만, 별도 P4/R0 독립 Reviewer 판정은 BLOCKED**입니다.
 
-## 범위 및 정량 결과 (R2 현행 / 이전 이력 구분)
+## 범위 및 정량 결과 (P4 main 현행 / R0–R2 과거 이력)
 
 - **초기 의미론적 감사 단계 (Historical)**: 16 PART, 248 Concept, 390 prerequisite edge
 - **R0 완료 Snapshot (Historical)**: 16 PART, 260 Concept, 411 prerequisite edge; coverage `existing-section` 42, `needs-expansion` 16, `planned` 202
@@ -40,7 +40,7 @@
 
 1. Graph 구조: 유일 ID, PART 멤버십, 직접 참조와 역참조의 대칭성, Kahn 위상 정렬을 재검사합니다. 단순 cycle-free는 의미론적 적합성 보장이 아닙니다.
 2. `scripts/validate_concept_graph.py`에 지정된 필수·금지 선수 관계를 회귀 규칙으로 추가했습니다. 일반적 개념 타당성까지 전부 보증하지 않습니다.
-3. 기존 실제 HTML Anchor와 원고 빌드는 CI에서 재확인하며, R0 당시 16개(현행 R2에서는 21개) `needs-expansion`의 설명 깊이는 독립 Reviewer가 재판단해야 합니다.
+3. 기존 실제 HTML Anchor와 원고 빌드는 CI에서 재확인하며, R0 당시 16개, R2 당시 21개, 현재 P4 main 19개 `needs-expansion`의 설명 깊이는 각각 해당 시점의 상태입니다. 설명 품질은 독립 Reviewer가 재판단해야 합니다.
 4. 독립 Reviewer는 별도 Agent/세션에서 최신 PR Diff와 기본 브랜치를 비교하고 PASS/REVISE/BLOCKED를 판정합니다. 병합·배포는 하지 않습니다.
 
 
@@ -78,7 +78,7 @@ R0: 260 Concept, 411 Edge → R1: **263 Concept, 394 Edge**. 상태: existing-se
 
 본 기록은 Builder의 수정 근거이지 Independent Reviewer의 PASS가 아닙니다.
 
-## R2 Reviewer 결함 정정 — 현재 상태 (2026-11-03)
+## R2 Reviewer 결함 정정 — 과거 R2 설계 상태 (2026-11-03)
 
 - **R1-DEF-01 / HIGH**: `dl.backprop`: R1 `m.gradient`, `dl.autograd`, `ml.loss` → R2 `m.gradient`, `m.chain`, `dl.forward`, `ml.loss`. Backprop의 수동 미분 원리를 Autograd 구현보다 먼저 학습할 수 있습니다. `dl.autograd` 자체는 `dl.forward`, `m.chain`에 의존하며 계산 그래프 자동화의 **선택적 구현 경로**입니다. Optimizer Update는 별도 개념입니다.
 - **R1-DEF-02 / HIGH**: `cnn.base`: R1 `cnn.pool`, `dl.activation` → R2 `cnn.map`, `dl.activation`. Pooling은 `cnn.map` 이후에 익힐 수 있는 선택 다운샘플링 블록으로 유지하되 CNN의 필수 선수는 아닙니다. P4 2×2 Pooling 실습은 Roadmap의 선택 실습으로 이동했습니다.
@@ -96,14 +96,14 @@ R0: 260 Concept, 411 Edge → R1: **263 Concept, 394 Edge**. 상태: existing-se
 
 ### R1-DEF-04 / MEDIUM — 수치 시점 정정
 
-초기 감사 248/390, R0 260/411, R1 263/394는 변경 당시 기록으로 유지합니다. 현행 Graph는 **16 PART / 263 Concept / 390 직접 Edge**, coverage **42/21/200**으로 다시 계산했으며 모든 계획 문서 Snapshot Marker에 R2 현재 수치를 반영합니다. R1의 17개 P4 폐포는 R2의 **16개(핵심 8 + 필수 보조 8)**로 재계산되며 Pooling은 선택 실습으로 유지합니다.
+초기 감사 248/390, R0 260/411, R1 263/394는 변경 당시 기록으로 유지합니다. R2 완료 시점 Graph는 **16 PART / 263 Concept / 390 직접 Edge**, 당시 coverage **42/21/200**으로 계산했으며 당시 계획 문서 Snapshot Marker에 반영했습니다. **현재 P4 main의 Graph는 동일한 16/263/390이지만 coverage는 53/19/191**입니다. 현행 Snapshot Marker는 현재 수치를 유지합니다. R1의 17개 P4 폐포는 R2의 **16개(핵심 8 + 필수 보조 8)**로 재계산되며 Pooling은 선택 실습으로 유지합니다.
 
 ### R1-DEF-05 / LOW — 회귀 테스트
 
 R2에서 제거한 Autograd/Pooling 및 일반 개념의 필수 Edge를 되살리는 Mutation, 전이 중복 Edge Mutation을 추가하여 Validator의 실제 오류 메시지를 검증하도록 보강했습니다. 기존 테스트와 함께 CI에서 실행합니다.
 
-본 R2 기록은 당시 Builder의 설계·구현 근거이며, P4/R0의 독립 Reviewer PASS를 의미하지 않습니다.
+본 R2 기록은 당시 Builder의 설계·구현 근거이며, P4/R0의 독립 Reviewer PASS를 의미하지 않습니다. P4/R0 독립 Reviewer 판정은 **BLOCKED**이며, P4/R1의 독립 검토는 별도로 수행해야 합니다.
 
 ## P4/R0 실제 구현 커버리지 (2026-11-03)
 
-7개 신규 Scalar/Vector/Matrix/Tensor/Shape/Dot Product/Function 페이지와 CNN의 Kernel·Pooling Section이 생성되므로 `planned` 9개를 `existing-section`으로 매핑합니다. 기존 `cnn.map`과 `dl.activation`은 정량 예시·학습 연결을 추가하여 `needs-expansion`에서 `existing-section`으로 변경합니다. 기존 63개 URL Mapping은 정확히 유지하고 9개 신규 매핑을 추가해 72개로 확장합니다. P4 대상 중 미작성인 Concept는 없습니다. 기존 R2 필수 선수 Graph 390 Edge는 그대로이며 Pooling은 선택 학습입니다. 본 상태는 콘텐츠 구현·정적 검증 범위이며 최종 Reviewer PASS가 아닙니다.
+7개 신규 Scalar/Vector/Matrix/Tensor/Shape/Dot Product/Function 페이지와 CNN의 Kernel·Pooling Section이 생성되므로 `planned` 9개를 `existing-section`으로 매핑합니다. 기존 `cnn.map`과 `dl.activation`은 정량 예시·학습 연결을 추가하여 `needs-expansion`에서 `existing-section`으로 변경합니다. 기존 63개 URL Mapping은 정확히 유지하고 9개 신규 매핑을 추가해 72개로 확장합니다. P4 대상 중 미작성인 Concept는 없습니다. 기존 R2 필수 선수 Graph 390 Edge는 그대로이며 Pooling은 선택 학습입니다. P4/R0 구현 결과가 현행 main에 반영되었고 Pages 배포 이력이 있으나, 이는 독립 Reviewer 승인이나 사용자 수용을 의미하지 않습니다. **P4/R0 Reviewer=BLOCKED**, P4/R1 검수는 미실시입니다.

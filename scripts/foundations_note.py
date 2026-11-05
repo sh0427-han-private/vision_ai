@@ -7,10 +7,18 @@ from html import escape
 
 
 def code(source: str, output: str) -> str:
+    # Multiple print() calls must preserve stdout row boundaries. Escape content
+    # before rendering it inside <pre><code>; single-line examples stay inline.
+    output_html = (
+        f'<p>예상 출력:</p><pre><code>{escape(output)}</code></pre>'
+        '<p>실제 학습 모델의 출력이 아닌 고정 예제입니다.</p>'
+    ) if '\n' in output else (
+        f'<p>예상 출력: <code>{escape(output)}</code>. 실제 학습 모델의 출력이 아닌 고정 예제입니다.</p>'
+    )
     return (
         '<p><strong>Python 3 표준 라이브러리 예제</strong> — 아래 셀은 독립 실행할 수 있습니다.</p>'
         f'<pre><code>{escape(source.strip())}</code></pre>'
-        f'<p>예상 출력: <code>{escape(output)}</code>. 실제 학습 모델의 출력이 아닌 고정 예제입니다.</p>'
+        f'{output_html}'
     )
 
 
@@ -139,7 +147,7 @@ def register_foundation_notes(note, section, table, callout, equation, svg):
                     ("원소 개수", "2×3×3 = 3×2×3 = 18", "값 수 동일"),
                 ]) + callout("중요", "reshape는 데이터 배열을 다른 크기로 해석할 뿐 HWC 축을 CHW로 바꾸지 않습니다. transpose/permute가 필요합니다.")),
             section("python", "18개 값 보존 검산",
-                code("hwc = [[[9*h + 3*w + c for c in range(3)]\n        for w in range(3)] for h in range(2)]\nchw = [[[hwc[h][w][c] for w in range(3)]\n        for h in range(2)] for c in range(3)]\nprint((len(chw), len(chw[0]), len(chw[0][0])))\nprint(chw[0][0], sum(len(row) for plane in chw for row in plane))", "(3, 2, 3) / [0, 3, 6] 18")
+                code("hwc = [[[9*h + 3*w + c for c in range(3)]\n        for w in range(3)] for h in range(2)]\nchw = [[[hwc[h][w][c] for w in range(3)]\n        for h in range(2)] for c in range(3)]\nprint((len(chw), len(chw[0]), len(chw[0][0])))\nprint(chw[0][0], sum(len(row) for plane in chw for row in plane))", "(3, 2, 3)\n[0, 3, 6] 18")
                 + related([("선수 Tensor", "tensor.html#tensor"), ("Image Tensor HWC/CHW/NCHW", "pixels.html#layout"), ("Kernel로 연결", "cnn.html#kernel")], "Broadcasting과 Strides")),
         ],
         [("NumPy · transpose", "https://numpy.org/doc/stable/reference/generated/numpy.transpose.html", "Axis permutation의 정확한 의미"),
@@ -278,7 +286,7 @@ def extend_p4_notes(notes, section, table, callout, equation, svg):
                        "gelu = lambda x: 0.5*x*(1+erf(x/sqrt(2)))\n"
                        "print([relu(x) for x in [-2, 0.5, 3]])\n"
                        "print(round(gelu(0.5), 4))",
-                       "[0.0, 0.5, 3] / 0.3457")
+                       "[0.0, 0.5, 3]\n0.3457")
                 + related([("Function·Linear/Nonlinear", "function.html#function"),
                            ("Feature Map과 CNN", "cnn.html#overview")])
             ),
