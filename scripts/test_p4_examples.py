@@ -81,8 +81,8 @@ class P4ExampleTests(unittest.TestCase):
             ("notes/cnn.html", "from math import erf, sqrt", "[0.0, 0.5, 3]\n0.3457"),
         )
         pattern = re.compile(
-            r"<pre><code>(.*?)</code></pre><p>예상 출력:</p>"
-            r"<pre><code>(.*?)</code></pre>", re.DOTALL,
+            r"<pre><code>([^<]*)</code></pre><p>예상 출력:</p>"
+            r"<pre><code>([^<]*)</code></pre>", re.DOTALL,
         )
         for rel_path, snippet_marker, expected in cases:
             with self.subTest(page=rel_path):
